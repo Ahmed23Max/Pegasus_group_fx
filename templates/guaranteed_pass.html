@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% block title %}Guaranteed Pass{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <h1 class="my-5">Guaranteed Pass</h1>
+    
+    <div class="circle-group">
+        <a href="{{ url_for('funding_25k') }}" class="circle-link">
+            <div class="circle">
+                <div class="circle-content">
+                    <p class="circle-amount">£25k</p>
+                </div>
+            </div>
+        </a>
+        
+        <a href="{{ url_for('funding_50k') }}" class="circle-link">
+            <div class="circle">
+                <div class="circle-content">
+                    <p class="circle-amount">£50k</p>
+                </div>
+            </div>
+        </a>
+        
+        <a href="{{ url_for('funding_100k') }}" class="circle-link">
+            <div class="circle">
+                <div class="circle-content">
+                    <p class="circle-amount">£100k</p>
+                </div>
+            </div>
+        </a>
+        
+        <a href="{{ url_for('funding_200k') }}" class="circle-link">
+            <div class="circle">
+                <div class="circle-content">
+                    <p class="circle-amount">£200k</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    
+    <div class="circle-group">
+        <a href="{{ url_for('funding_300k') }}" class="circle-link">
+            <div class="circle">
+                <div class="circle-content">
+                    <p class="circle-amount">£300</p>
+                </div>
+            </div>
+        </a>
+        
+        <a href="{{ url_for('funding_400k') }}" class="circle-link">
+            <div class="circle">
+                <div class="circle-content">
+                    <p class="circle-amount">£400</p>
+                </div>
+            </div>
+        </a>
+        
+        <a href="{{ url_for('funding_550k') }}" class="circle-link">
+            <div class="circle">
+                <div class="circle-content">
+                    <p class="circle-amount">£550</p>
+                </div>
+            </div>
+        </a>
+        
+        <a href="{{ url_for('funding_650k') }}" class="circle-link">
+            <div class="circle">
+                <div class="circle-content">
+                    <p class="circle-amount">£650</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}
