@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request
-import stripe
+from flask import Flask, render_template, jsonify
+import requests
+
 
 app = Flask(__name__)
 
-# Set your Stripe secret key here
-stripe.api_key = 'your_stripe_secret_key'
+
 
 @app.route('/')
 def index():
@@ -18,54 +18,43 @@ def about_us():
 def guaranteed_pass():
     return render_template('guaranteed_pass.html')
 
-@app.route('/funding_25k')
-def funding_25k():
+@app.route('/25000-guaranteed-funding')
+def funding_25000():
     return render_template('guaranteed_funding/funding_25000.html')
 
-@app.route('/funding_50k')
-def funding_50k():
+@app.route('/50000-guaranteed-funding')
+def funding_50000():
     return render_template('guaranteed_funding/funding_50000.html')
 
-@app.route('/funding_100k')
-def funding_100k():
+@app.route('/100000-guaranteed-funding')
+def funding_100000():
     return render_template('guaranteed_funding/funding_100000.html')
 
-@app.route('/funding_200k')
-def funding_200k():
+@app.route('/200000-guaranteed-funding')
+def funding_200000():
     return render_template('guaranteed_funding/funding_200000.html')
 
-@app.route('/funding_300k')
-def funding_300k():
+@app.route('/300000-guaranteed-funding')
+def funding_300000():
     return render_template('guaranteed_funding/funding_300000.html')
 
-@app.route('/funding_400k')
-def funding_400k():
+@app.route('/400000-guaranteed-funding')
+def funding_400000():
     return render_template('guaranteed_funding/funding_400000.html')
 
-@app.route('/funding_550k')
-def funding_550k():
+@app.route('/550000-guaranteed-funding')
+def funding_550000():
     return render_template('guaranteed_funding/funding_550000.html')
 
-@app.route('/funding_650k')
-def funding_650k():
+@app.route('/650000-guaranteed-funding')
+def funding_650000():
     return render_template('guaranteed_funding/funding_650000.html')
 
 
-@app.route('/purchase/<int:amount>', methods=['GET', 'POST'])
-def purchase(amount):
-    if request.method == 'POST':
-        try:
-            # Create a payment intent
-            payment_intent = stripe.PaymentIntent.create(
-                amount=amount * 100,  # Stripe uses cents, so multiply by 100
-                currency='gbp',  # Use appropriate currency code
-            )
-            
-            return render_template('payment.html', client_secret=payment_intent.client_secret)
-        except Exception as e:
-            return str(e)
-    
-    return render_template('funding_purchase.html', amount=amount)
+@app.route('/FAQ')
+def FAQ():
+    return render_template('FAQ.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

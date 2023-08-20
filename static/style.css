@@ -1,8 +1,17 @@
-/* Navbar Styles */
+/* Navbar and Footer Styles */
+nav, footer {
+    background-color: #040606;
+}
+
+.home-section:nth-child(2n) {
+    background-color: #040606;
+    color: white;
+}
+
 .navbar-nav {
     display: flex;
     align-items: center;
-    height: 60px; /* Adjust this value to match the logo's max-height */
+    height: 60px;
 }
 
 .navbar-nav .nav-item {
@@ -12,9 +21,9 @@
 
 .navbar-nav .nav-link {
     text-decoration: none;
-    color: #ffff; /* Set the color of the links */
+    color: #ffff;
     padding: 0.5rem 1rem;
-    height: 100%; /* Full height for the navbar link */
+    height: 100%;
     display: flex;
     align-items: center;
 }
@@ -39,11 +48,10 @@
     color: #0088CC; /* Telegram */
 }
 
-
 /* Body Styles */
 body {
     background: #042b2e;
-    color: white; /* Set text color to white for better visibility */
+    color: white;
     margin: 0;
     animation: fadeIn ease 1s;
     animation-fill-mode: forwards;
@@ -58,7 +66,6 @@ body {
     }
 }
 
-
 /* Footer Styles */
 footer {
     background-color: #040606;
@@ -70,29 +77,24 @@ footer p {
     margin: 0;
 }
 
-
 /* About Section Styles */
 .about-section {
     padding: 50px 0;
-    color: #FFFF; /* Set the text color */
+    color: #FFFF;
     text-align: center;
-    font-size: 2rem; /* Set the font size to make the text larger */
-    height: 100vh; /* Set the height to 100vh to take up the full screen */
+    font-size: 2rem;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-
 
 /* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
 }
 
-/* style.css */
-
-/* ... Other styles ... */
-
+/* Other Styles */
 .block {
     display: flex;
     flex-direction: row;
@@ -105,16 +107,31 @@ html {
     margin: 20px 0;
 }
 
+/* Circle Styles */
 .circle {
-    width: 120px;
-    height: 120px;
-    background-color: #e3f9fa;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 0 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    margin: 10px;
+    cursor: pointer;
+    animation: bounce 1s ease;
+    transition: transform 0.2s;
+    background-color: #042b2e;
+    color: white;
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+    border: 10px solid transparent;
+    border-image: linear-gradient(to bottom right, #e3f9fa, #18c4e0, #040606, #07555c, #0a748d, #042b2e, #053748, #108e56);
+    border-image-slice: 1;
+}
+
+.circle-text {
+    font-size: 24px;
+    color: white;
 }
 
 .circle-content {
@@ -123,7 +140,7 @@ html {
 
 .circle-amount {
     font-size: 24px;
-    color: #108e56;
+    color: #FFFF;
     font-weight: bold;
     margin: 0;
 }
@@ -137,4 +154,32 @@ html {
 
 .circle-link:hover {
     transform: scale(1.05);
+}
+
+.circle-group {
+    gap: 300px;
+}
+
+.circle-container a {
+    text-decoration: none;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Font Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
 }
