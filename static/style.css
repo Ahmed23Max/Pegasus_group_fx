@@ -183,3 +183,13 @@ html {
 body {
     font-family: 'Montserrat', sans-serif;
 }
+
+
+/* Your style.css code remains unchanged */
+
+/* Additional Mobile Styles */
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 20px 0;
+    }
+}
