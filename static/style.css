@@ -185,11 +185,24 @@ body {
 }
 
 
-/* Your style.css code remains unchanged */
+/* Your existing CSS styles */
 
-/* Additional Mobile Styles */
-@media (max-width: 768px) {
-    .faq-section {
-        padding: 20px 0;
-    }
-}
+        /* Additional Mobile Styles */
+        @media (max-width: 767.98px) {
+            .navbar-nav {
+                flex-direction: column;
+            }
+
+            .navbar-nav .nav-link {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .content {
+                padding: 20px; /* Adjust the value as needed */
+            }
+
+            .footer {
+                padding: 10px 0;
+            }
+        }
