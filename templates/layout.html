@@ -57,10 +57,16 @@
         </div>
     </nav>
 
-    <div class=""flex-grow-1 py-5 px-3 content"">
-        {% block content %}{% endblock %}
+    <div class="container-fluid content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="flex-grow-1 p-5 content">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
     </div>
-    
+
     <footer>
         {% block footer %}
         <div class="container text-center">
