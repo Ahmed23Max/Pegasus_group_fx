@@ -184,51 +184,9 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+/* Your existing CSS styles */
+
 /* Additional Mobile Styles */
-@media (max-width: 767.98px) {
-    .navbar-nav {
-        flex-direction: column;
-    }
-
-    .navbar-nav .nav-link {
-        padding: 10px;
-        text-align: center;
-    }
-
-    .content {
-        padding: 20px; /* Adjust the value as needed */
-    }
-
-    .footer {
-        padding: 10px 0;
-    }
-    
-    .circle-group {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .circle-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .circle {
-        width: 200px;
-        height: 200px;
-        font-size: 48px;
-        border-width: 8px;
-    }
-
-    .circle-amount {
-        font-size: 18px;
-    }
-}
-
-
-
 @media (max-width: 767.98px) {
     .navbar-toggler {
         display: none;
@@ -276,5 +234,75 @@ body {
     .blur-background.show-blur {
         display: block;
         opacity: 1;
+    }
+    
+    .navbar-toggler {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 1001;
+    }
+    
+    .navbar-toggler-icon {
+        font-size: 2rem;
+        color: white;
+    }
+    
+    .full-screen-navbar .navbar-toggler {
+        top: 20px;
+        right: 20px;
+        z-index: 1002;
+    }
+    
+    .full-screen-navbar .navbar-toggler-icon {
+        color: white;
+    }
+    
+    .full-screen-navbar .navbar-content .navbar-toggler {
+        top: 20px;
+        right: 20px;
+        z-index: 1002;
+    }
+    
+    .full-screen-navbar .navbar-content .navbar-toggler-icon {
+        color: white;
+    }
+    
+    .full-screen-navbar .navbar-content .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding-top: 50px;
+        width: 100%;
+    }
+    
+    .full-screen-navbar .navbar-content .navbar-nav .nav-item {
+        margin: 0;
+    }
+    
+    .full-screen-navbar .navbar-content .navbar-nav .nav-link {
+        text-align: right;
+        padding: 10px 20px;
+        color: white;
+    }
+    
+    .full-screen-navbar .navbar-content .navbar-nav .nav-link.main:hover {
+        color: #18c4e0; /* Instagram */
+    }
+    
+    .full-screen-navbar .navbar-content .navbar-nav .nav-link.social-icon:hover {
+        color: #E4405F; /* Instagram */
+    }
+    
+    .full-screen-navbar .navbar-content .navbar-nav .nav-link.social-icon.facebook:hover {
+        color: #1877F2; /* Facebook */
+    }
+    
+    .full-screen-navbar .navbar-content .navbar-nav .nav-link.social-icon.twitter:hover {
+        color: #1DA1F2; /* Twitter */
+    }
+    
+    .full-screen-navbar .navbar-content .navbar-nav .nav-link.social-icon.telegram:hover {
+        color: #0088CC; /* Telegram */
     }
 }
