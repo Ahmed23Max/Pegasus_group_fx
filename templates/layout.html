@@ -54,33 +54,38 @@
     <div class="blur-background"></div>
     <div class="full-screen-navbar">
         <div class="navbar-content">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link main" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link main" href="{{ url_for('about_us') }}">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link main" href="{{ url_for('guaranteed_pass') }}">Guaranteed Pass</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link main" href="#">Pegasus HFTBot</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link social-icon instagram" href="https://www.instagram.com/pegasusfxgroup/" target="_blank">
-                        <i class="bi bi-instagram"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link social-icon telegram" href="https://t.me/Pegasusfxgroup" target="_blank">
-                        <i class="bi bi-telegram"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link main" href="{{ url_for('FAQ') }}">FAQ</a>
-                </li>
-            </ul>
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavMobile" aria-controls="navbarNavMobile" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavMobile">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link main" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link main" href="{{ url_for('about_us') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link main" href="{{ url_for('guaranteed_pass') }}">Guaranteed Pass</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link main" href="#">Pegasus HFTBot</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link social-icon instagram" href="https://www.instagram.com/pegasusfxgroup/" target="_blank">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link social-icon telegram" href="https://t.me/Pegasusfxgroup" target="_blank">
+                            <i class="bi bi-telegram"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link main" href="{{ url_for('FAQ') }}">FAQ</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -94,7 +99,7 @@
             <p>&copy; 2023 Pegasus Group FX. All rights reserved.</p>
         </div>
         {% endblock %}
-    </footer>	
+    </footer>
     <script src="static/app.js"></script>
     <script src="extensions/mobile/bootstrap-table-mobile.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
