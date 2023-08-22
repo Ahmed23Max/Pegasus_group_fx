@@ -184,25 +184,45 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+/* Additional Mobile Styles */
+@media (max-width: 767.98px) {
+    .navbar-nav {
+        flex-direction: column;
+    }
 
-/* Your existing CSS styles */
+    .navbar-nav .nav-link {
+        padding: 10px;
+        text-align: center;
+    }
 
-        /* Additional Mobile Styles */
-        @media (max-width: 767.98px) {
-            .navbar-nav {
-                flex-direction: column;
-            }
+    .content {
+        padding: 20px; /* Adjust the value as needed */
+    }
 
-            .navbar-nav .nav-link {
-                padding: 10px;
-                text-align: center;
-            }
+    .footer {
+        padding: 10px 0;
+    }
+    
+    .circle-group {
+        flex-direction: column;
+        align-items: center;
+    }
 
-            .content {
-                padding: 20px; /* Adjust the value as needed */
-            }
+    .circle-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
 
-            .footer {
-                padding: 10px 0;
-            }
-        }
+    .circle {
+        width: 200px;
+        height: 200px;
+        font-size: 48px;
+        border-width: 8px;
+    }
+
+    .circle-amount {
+        font-size: 18px;
+    }
+}
