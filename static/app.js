@@ -5,14 +5,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const navbarTogglerMobile = document.querySelector(".navbar-content .navbar-toggler");
     
     navbarToggler.addEventListener("click", function () {
-        blurBackground.classList.toggle("show-blur");
-        fullScreenNavbar.classList.toggle("show-navbar");
-        document.body.style.overflow = "hidden";
+        toggleFullScreenNavbar();
     });
     
     navbarTogglerMobile.addEventListener("click", function () {
-        blurBackground.classList.remove("show-blur");
-        fullScreenNavbar.classList.remove("show-navbar");
-        document.body.style.overflow = "auto";
+        toggleFullScreenNavbar();
     });
+    
+    function toggleFullScreenNavbar() {
+        blurBackground.classList.toggle("show-blur");
+        fullScreenNavbar.classList.toggle("show-navbar");
+        document.body.style.overflow = fullScreenNavbar.classList.contains("show-navbar") ? "hidden" : "auto";
+    }
 });
