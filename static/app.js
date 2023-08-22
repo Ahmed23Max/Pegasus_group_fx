@@ -1,7 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
             const blurBackground = document.querySelector(".blur-background");
             const fullScreenNavbar = document.querySelector(".full-screen-navbar");
             const navbarToggler = document.querySelector(".navbar-toggler");
+            const navbarTogglerMobile = document.querySelector(".navbar-content .navbar-toggler");
             
             navbarToggler.addEventListener("click", function () {
                 blurBackground.classList.toggle("show-blur");
@@ -9,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.body.style.overflow = "hidden";
             });
             
-            blurBackground.addEventListener("click", function () {
+            navbarTogglerMobile.addEventListener("click", function () {
                 blurBackground.classList.remove("show-blur");
                 fullScreenNavbar.classList.remove("show-navbar");
                 document.body.style.overflow = "auto";
