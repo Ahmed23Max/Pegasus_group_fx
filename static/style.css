@@ -83,11 +83,12 @@ footer p {
     color: #FFFF;
     text-align: center;
     font-size: 2rem;
-    height: auto; /* Remove fixed height */
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* Center align content */
+    align-items: center;
+    margin-top: 60px; /* Push content down to make space for navbar */
 }
 
 /* Smooth Scrolling */
@@ -189,10 +190,10 @@ body {
 @media (max-width: 991px) {
     .navbar-collapse {
         position: fixed;
-        top: 0;
+        top: 60px; /* Adjusted top position to align with the navbar */
         left: -100%;
         width: 100%;
-        height: auto; /* Change to auto */
+        height: 100vh; /* Set to full viewport height */
         background-color: #040606;
         transition: left 0.3s ease-in-out;
         z-index: 1000;
@@ -205,20 +206,12 @@ body {
     .navbar-nav {
         flex-direction: column;
         align-items: flex-start;
-        margin-top: 60px; /* Push content down to make space for navbar */
+        margin-top: 0; /* Remove margin-top */
     }
 
-    .navbar-nav .nav-item {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .navbar-toggler {
-        display: block;
-        margin-left: auto;
-        margin-right: 15px;
+    .content {
+        margin-top: 60px; /* Add margin to content to avoid overlap with navbar */
+        padding-bottom: 100px; /* Add padding to avoid overlap with footer */
     }
 }
 
