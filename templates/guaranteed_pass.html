@@ -4,36 +4,36 @@
 
 {% block content %}
 <div class="container">
-    <h1>Guaranteed Funding Packages</h1>
-    <p>Choose a funding package that fits your trading goals and take your trading journey to the next level.</p>
+    <h1 class="text-center">Guaranteed Funding Packages</h1>
+    <p class="text-center">Choose a funding package that fits your trading goals and take your trading journey to the next level.</p>
 </div>
-<div class="d-flex justify-content-center circle-group">
+<div class="d-flex justify-content-center circle-group flex-wrap"> <!-- Added 'flex-wrap' for mobile layout -->
     <div class="circle-container">
-        <a href="{{ url_for('funding_25000') }}" class="circle bounce">
+        <a href="{{ url_for('funding_25000') }}" class="circle">
             <span class="circle-amount">£25,000</span>
         </a>
-        <a href="{{ url_for('funding_50000') }}" class="circle bounce">
+        <a href="{{ url_for('funding_50000') }}" class="circle">
             <span class="circle-amount">£50,000</span>
         </a>
-        <a href="{{ url_for('funding_100000') }}" class="circle bounce">
+        <a href="{{ url_for('funding_100000') }}" class="circle">
             <span class="circle-amount">£100,000</span>
         </a>
-        <a href="{{ url_for('funding_200000') }}" class="circle bounce">
+        <a href="{{ url_for('funding_200000') }}" class="circle">
             <span class="circle-amount">£200,000</span>
         </a>
     </div>
     
     <div class="circle-container">
-        <a href="{{ url_for('funding_300000') }}" class="circle bounce">
+        <a href="{{ url_for('funding_300000') }}" class="circle">
             <span class="circle-amount">£300,000</span>
         </a>
-        <a href="{{ url_for('funding_400000') }}" class="circle bounce">
+        <a href="{{ url_for('funding_400000') }}" class="circle">
             <span class="circle-amount">£400,000</span>
         </a>
-        <a href="{{ url_for('funding_550000') }}" class="circle bounce">
+        <a href="{{ url_for('funding_550000') }}" class="circle">
             <span class="circle-amount">£550,000</span>
         </a>
-        <a href="{{ url_for('funding_650000') }}" class="circle bounce">
+        <a href="{{ url_for('funding_650000') }}" class="circle">
             <span class="circle-amount">£650,000</span>
         </a>
     </div>
