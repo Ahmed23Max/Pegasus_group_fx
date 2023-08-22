@@ -10,3 +10,8 @@
     z-index: 1000; /* Ensure it's on top of everything */
     display: none; /* Initially hidden */
 }
+
+/* Disable scrolling on body when overlay is active */
+.no-scroll {
+    overflow: hidden;
+}
