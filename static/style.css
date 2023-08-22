@@ -221,4 +221,7 @@ body {
     }
 }
 
+.img-small {
+    max-width: 50%;
+}
 
