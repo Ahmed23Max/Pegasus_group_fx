@@ -3,10 +3,6 @@ nav, footer {
     background-color: #040606;
 }
 
-.home-section:nth-child(2n) {
-    background-color: #040606;
-    color: white;
-}
 
 .navbar-nav {
     display: flex;
@@ -17,6 +13,10 @@ nav, footer {
 .navbar-nav .nav-item {
     margin: 0;
     padding: 0;
+}
+
+.navbar {
+    background-color: black;
 }
 
 .navbar-nav .nav-link {
@@ -184,6 +184,7 @@ html {
 /* Font Styles */
 body {
     font-family: 'Montserrat', sans-serif;
+    background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
 }
 
 /* Mobile Navbar Styles */
@@ -217,4 +218,115 @@ body {
 
 .img-small {
     max-width: 50%;
+}
+
+/* Add this CSS to your existing stylesheet or in a <style> tag within the HTML */
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom:100%; /* Adjust aspect ratio as needed */
+    overflow: hidden;
+}
+
+.instagram-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.video-container:hover .instagram-video {
+    opacity: 1;
+}
+
+.instagram-video:hover {
+    pointer-events: auto; /* Enable interaction on hover */
+}
+
+/* Add this CSS to your existing stylesheet or in a <style> tag */
+.carousel-inner {
+    min-height: 200px; /* Adjust this value to your desired minimum height */
+}
+
+.carousel-item {
+
+    overflow: hidden;
+    min-height: 100%;
+}
+
+.carousel-item h1,
+.carousel-item h2,
+.carousel-item h3,
+.carousel-item p {
+    margin: 0;
+    padding: 1em;
+}
+
+
+/* Add this CSS to your existing stylesheet or in a <style> tag */
+.intro-section {
+    position: relative;
+    padding: 5rem 0; /* Adjust padding as needed */
+    color: #ffffff; /* Text color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
+}
+
+.intro-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+.intro-content {
+    width: 80%; /* Adjust the width of the content portion */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.intro-text, .intro-image {
+    flex: 1;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.intro-text h3 {
+    font-size: 3rem; /* Adjust font size as needed */
+    margin-bottom: 1rem;
+}
+
+.intro-text p {
+    font-size: 1.5rem; /* Adjust font size as needed */
+    margin: 0;
+}
+
+.intro-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.home-section {
+    background-color: #040606;
+}
+
+.about {
+    font-size: 60px;
+}
+
+.lead {
+    font-size: 30px;
 }
