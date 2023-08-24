@@ -1,8 +1,43 @@
-/* Navbar and Footer Styles */
-nav, footer {
-    background-color: #040606;
+/* Fonts and Body */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
+    background: #042b2e;
+    color: white;
+    margin: 0;
+    animation: fadeIn ease 1s;
+    animation-fill-mode: forwards;
 }
 
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Navigation */
+.navbar, footer {
+    background-color: #040606;
+}
 
 .navbar-nav {
     display: flex;
@@ -48,36 +83,131 @@ nav, footer {
     color: #0088CC; /* Telegram */
 }
 
-/* Body Styles */
-body {
-    background: #042b2e;
-    color: white;
-    margin: 0;
-    animation: fadeIn ease 1s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
+/* Mobile Navbar */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        position: fixed;
+        top: 60px; /* Adjusted top position to align with the navbar */
+        left: -100%;
+        width: 100%;
+        height: 100vh; /* Set to full viewport height */
+        background-color: #040606;
+        transition: left 0.3s ease-in-out;
+        z-index: 1000;
     }
-    100% {
-        opacity: 1;
+
+    .navbar-collapse.show {
+        left: 0;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 0; /* Remove margin-top */
+    }
+
+    .content {
+        margin-top: 60px; /* Add margin to content to avoid overlap with navbar */
+        padding-bottom: 100px; /* Add padding to avoid overlap with footer */
     }
 }
 
-/* Footer Styles */
-footer {
-    background-color: #040606;
-    color: white;
-    padding: 20px 0;
+/* Video Container */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* Adjust aspect ratio as needed */
+    overflow: hidden;
 }
 
-footer p {
+.instagram-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.video-container:hover .instagram-video {
+    opacity: 1;
+}
+
+.instagram-video:hover {
+    pointer-events: auto; /* Enable interaction on hover */
+}
+
+/* Carousel */
+.carousel-inner {
+    min-height: 200px; /* Adjust this value to your desired minimum height */
+}
+
+.carousel-item {
+    overflow: hidden;
+    min-height: 100%;
+}
+
+.carousel-item h1,
+.carousel-item h2,
+.carousel-item h3,
+.carousel-item p {
+    margin: 0;
+    padding: 1em;
+}
+
+/* Intro Section */
+.intro-section {
+    position: relative;
+    padding: 5rem 0; /* Adjust padding as needed */
+    color: #ffffff; /* Text color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
+}
+
+.intro-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.intro-content {
+    width: 80%; /* Adjust the width of the content portion */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.intro-text, .intro-image {
+    flex: 1;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.intro-text h3 {
+    font-size: 3rem; /* Adjust font size as needed */
+    margin-bottom: 1rem;
+}
+
+.intro-text p {
+    font-size: 1.5rem; /* Adjust font size as needed */
     margin: 0;
 }
 
-/* About Section Styles */
+.intro-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* About Section */
 .about-section {
     padding: 50px 0;
     color: #FFFF;
@@ -89,11 +219,6 @@ footer p {
     justify-content: center;
     align-items: center;
     margin-top: 60px; /* Push content down to make space for navbar */
-}
-
-/* Smooth Scrolling */
-html {
-    scroll-behavior: smooth;
 }
 
 /* Other Styles */
@@ -166,215 +291,24 @@ html {
     text-decoration: none;
 }
 
-@keyframes bounce {
-    0% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-20px);
-    }
-    60% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-/* Font Styles */
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
-}
-
-/* Mobile Navbar Styles */
-@media (max-width: 991px) {
-    .navbar-collapse {
-        position: fixed;
-        top: 60px; /* Adjusted top position to align with the navbar */
-        left: -100%;
-        width: 100%;
-        height: 100vh; /* Set to full viewport height */
-        background-color: #040606;
-        transition: left 0.3s ease-in-out;
-        z-index: 1000;
-    }
-
-    .navbar-collapse.show {
-        left: 0;
-    }
-
-    .navbar-nav {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 0; /* Remove margin-top */
-    }
-
-    .content {
-        margin-top: 60px; /* Add margin to content to avoid overlap with navbar */
-        padding-bottom: 100px; /* Add padding to avoid overlap with footer */
-    }
-}
-
-.img-small {
-    max-width: 50%;
-}
-
-/* Add this CSS to your existing stylesheet or in a <style> tag within the HTML */
-
-.video-container {
-    position: relative;
-    width: 100%;
-    padding-bottom:100%; /* Adjust aspect ratio as needed */
-    overflow: hidden;
-}
-
-.instagram-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    opacity: 0.8;
-    transition: opacity 0.3s;
-}
-
-.video-container:hover .instagram-video {
-    opacity: 1;
-}
-
-.instagram-video:hover {
-    pointer-events: auto; /* Enable interaction on hover */
-}
-
-/* Add this CSS to your existing stylesheet or in a <style> tag */
-.carousel-inner {
-    min-height: 200px; /* Adjust this value to your desired minimum height */
-}
-
-.carousel-item {
-
-    overflow: hidden;
-    min-height: 100%;
-}
-
-.carousel-item h1,
-.carousel-item h2,
-.carousel-item h3,
-.carousel-item p {
-    margin: 0;
-    padding: 1em;
-}
-
-
-/* Add this CSS to your existing stylesheet or in a <style> tag */
-.intro-section {
-    position: relative;
-    padding: 5rem 0; /* Adjust padding as needed */
-    color: #ffffff; /* Text color */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
-}
-
-.intro-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-}
-
-.intro-content {
-    width: 80%; /* Adjust the width of the content portion */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-.intro-text, .intro-image {
-    flex: 1;
-    padding: 2rem;
-    box-sizing: border-box;
-}
-
-.intro-text h3 {
-    font-size: 3rem; /* Adjust font size as needed */
-    margin-bottom: 1rem;
-}
-
-.intro-text p {
-    font-size: 1.5rem; /* Adjust font size as needed */
-    margin: 0;
-}
-
-.intro-image img {
-    max-width: 100%;
-    height: auto;
-}
-
-.home-section {
+/* Footer Styles */
+footer {
     background-color: #040606;
+    color: white;
+    padding: 20px 0;
 }
 
-.about {
-    font-size: 60px;
-}
-
-.lead {
-    font-size: 30px;
+footer p {
+    margin: 0;
 }
 
 /* Responsive styles */
-    .container {
-        max-width: 100%;
-        padding: 0 15px;
-    }
-    .lead {
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-
-/* Mobile Navbar Styles */
-@media (max-width: 991px) {
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-    }
-
-    .navbar-collapse {
-        position: fixed;
-        top: 60px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 60px); /* Subtract the height of the navbar */
-        background-color: #040606;
-        transition: left 0.3s ease-in-out;
-        z-index: 1000;
-    }
-
-    .navbar-collapse.show {
-        left: 0;
-    }
-
-    .navbar-nav {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 0;
-    }
-
-    .content-wrapper {
-        margin-top: 60px;
-        padding-bottom: 100px;
-    }
+.container {
+    max-width: 100%;
+    padding: 0 15px;
 }
 
+.lead {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
