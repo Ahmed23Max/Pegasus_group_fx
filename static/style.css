@@ -321,22 +321,4 @@ footer p {
     margin-bottom: 20px;
 }
 
-/* Hide the X icon initially */
-.navbar-close-icon {
-    display: none;
-}
-
-/* Style the X icon (customize as needed) */
-.navbar-close-icon {
-    font-size: 24px;
-    color: #ffffff;
-}
-/* Adjust styling when active */
-.navbar-toggler.active .navbar-toggler-icon {
-    display: none;
-}
-
-.navbar-toggler.active .navbar-close-icon {
-    display: block;
-}
 
