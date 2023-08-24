@@ -83,7 +83,17 @@ body {
 }
 
 /* Mobile Navbar */
+/* Mobile Navbar Styles */
 @media (max-width: 991px) {
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: black;
+        z-index: 1000;
+    }
+
     .navbar-collapse {
         position: fixed;
         top: 60px; /* Adjusted top position to align with the navbar */
@@ -92,7 +102,7 @@ body {
         height: 100vh; /* Set to full viewport height */
         background-color: #040606;
         transition: left 0.3s ease-in-out;
-        z-index: 1000;
+        z-index: 999;
     }
 
     .navbar-collapse.show {
