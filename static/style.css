@@ -175,6 +175,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
 }
 
 .intro-content {
@@ -201,10 +202,18 @@ body {
     margin: 0;
 }
 
+.intro-image {
+    flex: 1;
+    padding: 2rem;
+    box-sizing: border-box;
+    text-align: center;
+}
+
 .intro-image img {
-    max-width: 100%;
+    max-width: 50%; /* Image size is half of the text content */
     height: auto;
 }
+
 
 /* About Section */
 .about-section {
