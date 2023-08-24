@@ -10,14 +10,3 @@ $(document).ready(function () {
         $("body").removeClass("no-scroll");
     });
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-    const navbarToggler = document.querySelector(".navbar-toggler");
-    const navbarCloseIcon = document.querySelector(".navbar-close-icon");
-
-    navbarToggler.addEventListener("click", function () {
-        navbarToggler.classList.toggle("active");
-        navbarCloseIcon.classList.toggle("active");
-    });
-});
-
