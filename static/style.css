@@ -6,7 +6,9 @@ body {
     margin: 0;
     animation: fadeIn ease 1s;
     animation-fill-mode: forwards;
+    position: relative; /* Add this line to set position for the pseudo-element */
 }
+
 
 /* Animations */
 @keyframes fadeIn {
@@ -34,8 +36,11 @@ body {
 }
 
 /* Navigation */
-.navbar, footer {
+.navbar,
+footer {
     background-color: #040606;
+    position: relative; /* Add this line to create stacking context */
+    z-index: 1; /* Ensure the navbar and footer appear above the diagonal lines */
 }
 
 .navbar-nav {
@@ -175,7 +180,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
 }
 
 .intro-content {
@@ -227,6 +231,16 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 60px; /* Push content down to make space for navbar */
+}
+
+.about-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.about-section p {
+    font-size: 1.7rem;
+    font-weight: 400;
 }
 
 /* Other Styles */
@@ -314,6 +328,8 @@ footer p {
 .container {
     max-width: 100%;
     padding: 0 15px;
+    position: relative; /* Add this line to create stacking context */
+    z-index: 2; /* Ensure the container content appears above the diagonal lines */
 }
 
 .lead {
@@ -321,4 +337,10 @@ footer p {
     margin-bottom: 20px;
 }
 
+.centered-left {
+    text-align: left;
+    margin: 0 auto;
+    max-width: 1500px; /* Adjust the maximum width as needed */
+    line-height: 3rem;
+}
 
