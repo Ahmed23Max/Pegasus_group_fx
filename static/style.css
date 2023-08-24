@@ -340,3 +340,41 @@ body {
         font-size: 18px;
         margin-bottom: 20px;
     }
+
+/* Mobile Navbar Styles */
+@media (max-width: 991px) {
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 60px); /* Subtract the height of the navbar */
+        background-color: #040606;
+        transition: left 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .navbar-collapse.show {
+        left: 0;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 0;
+    }
+
+    .content-wrapper {
+        margin-top: 60px;
+        padding-bottom: 100px;
+    }
+}
+
