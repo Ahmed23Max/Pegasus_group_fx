@@ -167,25 +167,15 @@ body {
     background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
 }
 
-.intro-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 .intro-content {
-    width: 80%; /* Adjust the width of the content portion */
+    width: 100%; /* Full width */
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    position: relative;
-    z-index: 1;
 }
 
-.intro-text, .intro-image {
+.intro-text {
     flex: 1;
     padding: 2rem;
     box-sizing: border-box;
