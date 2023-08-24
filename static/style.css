@@ -256,62 +256,7 @@ footer {
     margin: 20px 0;
 }
 
-/* Circle Styles */
-.circle {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    cursor: pointer;
-    animation: bounce 1s ease;
-    transition: transform 0.2s;
-    background-color: #042b2e;
-    color: white;
-    font-size: 100px;
-    font-weight: bold;
-    text-align: center;
-    border: 10px solid transparent;
-    border-image: linear-gradient(to bottom right, #e3f9fa, #18c4e0, #040606, #07555c, #0a748d, #042b2e, #053748, #108e56);
-    border-image-slice: 1;
-}
 
-.circle-text {
-    font-size: 24px;
-    color: white;
-}
-
-.circle-content {
-    text-align: center;
-}
-
-.circle-amount {
-    font-size: 24px;
-    color: #FFFF;
-    font-weight: bold;
-    margin: 0;
-}
-
-.circle-link {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.circle-link:hover {
-    transform: scale(1.05);
-}
-
-.circle-group {
-    gap: 300px;
-}
-
-.circle-container a {
-    text-decoration: none;
-}
 
 /* Footer Styles */
 footer {
@@ -344,3 +289,33 @@ footer p {
     line-height: 3rem;
 }
 
+/* Your funding styles */
+
+.card_carousel {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .title-card {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .carousel-card {
+    background-color: darkblue;
+    color: turquoise;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .carousel-inner {
+    text-align: center;
+  }
+
+  .carousel-control-prev, .carousel-control-next {
+    width: auto;
+  }

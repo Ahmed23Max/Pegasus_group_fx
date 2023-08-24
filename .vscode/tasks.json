@@ -12,6 +12,23 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "Kill Flask Terminal",
+            "type": "shell",
+            "windows": {
+                "command": "taskkill",
+                "args": ["/F", "/IM", "python.exe"]
+            },
+            "linux": {
+                "command": "pkill",
+                "args": ["-f", "python"]
+            },
+            "osx": {
+                "command": "pkill",
+                "args": ["-f", "python"]
+            },
+            "problemMatcher": []
         }
     ]
 }
