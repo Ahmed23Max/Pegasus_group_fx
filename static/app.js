@@ -13,6 +13,7 @@ $(document).ready(function () {
 
 
 
+
 const cardCarousel = document.querySelector('.card-carousel');
   const cards = document.querySelectorAll('.card');
   const description = document.querySelector('.description');
@@ -64,4 +65,32 @@ const cardCarousel = document.querySelector('.card-carousel');
   // Initialize the UI
   updateUI();
 
+
+
+
+    const stripe = Stripe('YOUR_STRIPE_PUBLIC_KEY');
+    const form = document.getElementById('payment-form');
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const { client_secret } = await fetch('/process_payment', {
+            method: 'POST',
+            body: new URLSearchParams(new FormData(form))
+        }).then(response => response.json());
+
+        const { error } = await stripe.confirmCardPayment(client_secret, {
+            payment_method: {
+                card: elements.getElement('card'),
+                billing_details: {
+                    email: document.getElementById('email').value
+                }
+            }
+        });
+
+        if (error) {
+            // Display error to the user
+        } else {
+            // Payment successful, show a thank you message or redirect
+        }
+    });
 
