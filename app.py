@@ -1,9 +1,5 @@
-from flask import Flask, render_template, request, jsonify
-import stripe
-import os
+from flask import Flask, render_template, jsonify
 
-# Initialize Stripe with your secret key
-stripe.api_key = 'YOUR_STRIPE_SECRET_KEY'
 
 app = Flask(__name__)
 
@@ -57,21 +53,6 @@ def funding_650000():
 @app.route('/FAQ')
 def FAQ():
     return render_template('FAQ.html')
-
-@app.route('/process_payment', methods=['POST'])
-def process_payment():
-    amount = int(request.form['amount'])
-    email = request.form['email']
-
-    # Create a payment intent
-    payment_intent = stripe.PaymentIntent.create(
-        amount=amount,
-        currency='gbp',  # Change to your preferred currency
-        receipt_email=email,
-    )
-
-    return jsonify(client_secret=payment_intent.client_secret)
-
 
 
 if __name__ == '__main__':
