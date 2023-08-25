@@ -7,63 +7,134 @@
     <h1 class="title-card">Guaranteed Funding Options:</h1>
     <div id="fundingCarousel" class="carousel slide">
         <div class="carousel-inner">
+
+            <!-- £25,000 funding -->
             <div class="carousel-item active">
                 <div class="carousel-card">
                     <h2>£25,000</h2>
                     <p>Description for £25,000 option.</p>
-                    <a href="{{ url_for('funding_25000') }}" class="btn btn-primary select-button">Select</a>
+                    <form id="payment-form-25000" action="{{ url_for('process_payment_25000') }}" method="post">
+                        <input type="hidden" name="amount" value="25000">
+                        <div class="form-group">
+                            <label for="email-25000">Email Address</label>
+                            <input type="email" class="form-control" id="email-25000" name="email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary select-button">Select and Pay</button>
+                    </form>
                 </div>
             </div>
+
+            <!-- £50,000 funding -->
             <div class="carousel-item">
                 <div class="carousel-card">
                     <h2>£50,000</h2>
                     <p>Description for £50,000 option.</p>
-                    <a href="{{ url_for('funding_50000') }}" class="btn btn-primary select-button">Select</a>
+                    <form id="payment-form-50000" action="{{ url_for('process_payment_50000') }}" method="post">
+                        <input type="hidden" name="amount" value="50000">
+                        <div class="form-group">
+                            <label for="email-50000">Email Address</label>
+                            <input type="email" class="form-control" id="email-50000" name="email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary select-button">Select and Pay</button>
+                    </form>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£100,000</h2>
-                    <p>Description for £100,000 option.</p>
-                    <a href="{{ url_for('funding_100000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
+           <!-- £100,000 funding -->
+<div class="carousel-item">
+    <div class="carousel-card">
+        <h2>£100,000</h2>
+        <p>Description for £100,000 option.</p>
+        <form id="payment-form-100000" action="{{ url_for('process_payment_100000') }}" method="post">
+            <input type="hidden" name="amount" value="100000">
+            <div class="form-group">
+                <label for="email-100000">Email Address</label>
+                <input type="email" class="form-control" id="email-100000" name="email" required>
             </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£200,000</h2>
-                    <p>Description for £200,000 option.</p>
-                    <a href="{{ url_for('funding_200000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
+            <button type="submit" class="btn btn-primary select-button">Select and Pay</button>
+        </form>
+    </div>
+</div>
+
+<!-- £200,000 funding -->
+<div class="carousel-item">
+    <div class="carousel-card">
+        <h2>£200,000</h2>
+        <p>Description for £200,000 option.</p>
+        <form id="payment-form-200000" action="{{ url_for('process_payment_200000') }}" method="post">
+            <input type="hidden" name="amount" value="200000">
+            <div class="form-group">
+                <label for="email-200000">Email Address</label>
+                <input type="email" class="form-control" id="email-200000" name="email" required>
             </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£300,000</h2>
-                    <p>Description for £300,000 option.</p>
-                    <a href="{{ url_for('funding_300000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
+            <button type="submit" class="btn btn-primary select-button">Select and Pay</button>
+        </form>
+    </div>
+</div>
+
+<!-- £300,000 funding -->
+<div class="carousel-item">
+    <div class="carousel-card">
+        <h2>£300,000</h2>
+        <p>Description for £300,000 option.</p>
+        <form id="payment-form-300000" action="{{ url_for('process_payment_300000') }}" method="post">
+            <input type="hidden" name="amount" value="300000">
+            <div class="form-group">
+                <label for="email-300000">Email Address</label>
+                <input type="email" class="form-control" id="email-300000" name="email" required>
             </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£400,000</h2>
-                    <p>Description for £400,000 option.</p>
-                    <a href="{{ url_for('funding_400000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
+            <button type="submit" class="btn btn-primary select-button">Select and Pay</button>
+        </form>
+    </div>
+</div>
+
+<!-- £400,000 funding -->
+<div class="carousel-item">
+    <div class="carousel-card">
+        <h2>£400,000</h2>
+        <p>Description for £400,000 option.</p>
+        <form id="payment-form-400000" action="{{ url_for('process_payment_400000') }}" method="post">
+            <input type="hidden" name="amount" value="400000">
+            <div class="form-group">
+                <label for="email-400000">Email Address</label>
+                <input type="email" class="form-control" id="email-400000" name="email" required>
             </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£550,000</h2>
-                    <p>Description for £550,000 option.</p>
-                    <a href="{{ url_for('funding_550000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
+            <button type="submit" class="btn btn-primary select-button">Select and Pay</button>
+        </form>
+    </div>
+</div>
+
+<!-- £550,000 funding -->
+<div class="carousel-item">
+    <div class="carousel-card">
+        <h2>£550,000</h2>
+        <p>Description for £550,000 option.</p>
+        <form id="payment-form-550000" action="{{ url_for('process_payment_550000') }}" method="post">
+            <input type="hidden" name="amount" value="550000">
+            <div class="form-group">
+                <label for="email-550000">Email Address</label>
+                <input type="email" class="form-control" id="email-550000" name="email" required>
             </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£650,000</h2>
-                    <p>Description for £650,000 option.</p>
-                    <a href="{{ url_for('funding_650000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
+            <button type="submit" class="btn btn-primary select-button">Select and Pay</button>
+        </form>
+    </div>
+</div>
+
+<!-- £650,000 funding -->
+<div class="carousel-item">
+    <div class="carousel-card">
+        <h2>£650,000</h2>
+        <p>Description for £650,000 option.</p>
+        <form id="payment-form-650000" action="{{ url_for('process_payment_650000') }}" method="post">
+            <input type="hidden" name="amount" value="650000">
+            <div class="form-group">
+                <label for="email-650000">Email Address</label>
+                <input type="email" class="form-control" id="email-650000" name="email" required>
             </div>
-        </div>
+            <button type="submit" class="btn btn-primary select-button">Select and Pay</button>
+        </form>
+    </div>
+</div>
+
         <button class="carousel-control-prev" type="button" data-bs-target="#fundingCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
