@@ -63,3 +63,13 @@ const cardCarousel = document.querySelector('.card-carousel');
 
   // Initialize the UI
   updateUI();
+
+
+// JavaScript for custom hamburger icon behavior
+document.querySelector('.custom-toggler').addEventListener('click', function() {
+    this.classList.toggle('collapsed');
+    this.classList.toggle('cross');
+
+    // Toggle the collapse class for the navbar
+    document.querySelector('.navbar-collapse').classList.toggle('show');
+});
