@@ -319,3 +319,8 @@ footer p {
   .carousel-control-prev, .carousel-control-next {
     width: auto;
   }
+
+.content-wrapper {
+    padding-top: 80px; /* Adjust this value to ensure content is below the navbar */
+    padding-bottom: 40px; /* Adjust this value to ensure content is above the footer */
+}
