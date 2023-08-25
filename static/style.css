@@ -87,6 +87,23 @@ footer {
     color: #0088CC; /* Telegram */
 }
 
+/* Hamburger Icon */
+.navbar-toggler-icon {
+    background-color: turquoise; /* Change this to the desired color */
+    border: none; /* Remove the border */
+    width: 24px; /* Adjust the width as needed */
+    height: 3px; /* Adjust the height as needed */
+}
+
+/* Center the hamburger icon */
+.navbar-toggler {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+
 /* Mobile Navbar */
 /* Mobile Navbar Styles */
 @media (max-width: 991px) {
