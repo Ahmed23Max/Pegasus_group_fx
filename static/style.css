@@ -36,7 +36,11 @@ body {
 }
 
 /* Navigation */
-.navbar,
+.navbar {
+    background-color: rgba(4, 6, 6, 0.5); /* Here, 0.5 is the alpha value for transparency */
+    position: relative; /* Add this line to create stacking context */
+    z-index: 1; /* Ensure the navbar and footer appear above the diagonal lines */
+}
 footer {
     background-color: #040606;
     position: relative; /* Add this line to create stacking context */
