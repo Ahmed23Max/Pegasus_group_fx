@@ -58,10 +58,6 @@ footer {
     padding: 0;
 }
 
-.navbar {
-    background-color: black;
-}
-
 .navbar-nav .nav-link {
     text-decoration: none;
     color: #ffff;
@@ -99,7 +95,7 @@ footer {
         top: 0;
         left: 0;
         width: 100%;
-        background-color: black;
+        background-color: rgba(4, 6, 6, 0.5); /* Here, 0.5 is the alpha value for transparency */
         z-index: 1000;
     }
 
