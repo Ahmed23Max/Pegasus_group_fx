@@ -326,3 +326,8 @@ footer p {
     padding-top: 80px; /* Adjust this value to ensure content is below the navbar */
     padding-bottom: 40px; /* Adjust this value to ensure content is above the footer */
 }
+ .telegram {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+ }
