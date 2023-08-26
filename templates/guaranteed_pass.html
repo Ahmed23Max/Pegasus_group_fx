@@ -3,75 +3,57 @@
 {% block title %}Guaranteed Funding{% endblock %}
 
 {% block content %}
-<div class="card_carousel">
-    <h1 class="title-card">Guaranteed Funding Options:</h1>
-    <div id="fundingCarousel" class="carousel slide">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="carousel-card">
-                    <h2>£25,000</h2>
-                    <p>Description for £25,000 option.</p>
-                    <a href="{{ url_for('funding_25000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
+<div class="content-wrapper">
+    <div class="cards">
+        <div class="first-line">
+            <div class="card">
+                <h2 class="card-amount">£25,000</h2>
+                <p class="card-description">Basic funding option for small projects.</p>
+                <button class="select-button">Select</button>
             </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£50,000</h2>
-                    <p>Description for £50,000 option.</p>
-                    <a href="{{ url_for('funding_50000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
+            <div class="card">
+                <h2 class="card-amount">£50,000</h2>
+                <p class="card-description">Intermediate funding for expanding businesses.</p>
+                <button class="select-button">Select</button>
             </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£100,000</h2>
-                    <p>Description for £100,000 option.</p>
-                    <a href="{{ url_for('funding_100000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
+            <div class="card">
+                <h2 class="card-amount">£100,000</h2>
+                <p class="card-description">Significant funding for established ventures.</p>
+                <button class="select-button">Select</button>
             </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£200,000</h2>
-                    <p>Description for £200,000 option.</p>
-                    <a href="{{ url_for('funding_200000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£300,000</h2>
-                    <p>Description for £300,000 option.</p>
-                    <a href="{{ url_for('funding_300000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£400,000</h2>
-                    <p>Description for £400,000 option.</p>
-                    <a href="{{ url_for('funding_400000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£550,000</h2>
-                    <p>Description for £550,000 option.</p>
-                    <a href="{{ url_for('funding_550000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£650,000</h2>
-                    <p>Description for £650,000 option.</p>
-                    <a href="{{ url_for('funding_650000') }}" class="btn btn-primary select-button">Select</a>
-                </div>
+            <div class="card">
+                <h2 class="card-amount">£200,000</h2>
+                <p class="card-description">Substantial funding for ambitious projects.</p>
+                <button class="select-button">Select</button>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#fundingCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#fundingCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <div class="second-line">
+            <div class="card">
+                <h2 class="card-amount">£300,000</h2>
+                <p class="card-description">Advanced funding for large-scale initiatives.</p>
+                <button class="select-button">Select</button>
+            </div>
+            <div class="card">
+                <h2 class="card-amount">£400,000</h2>
+                <p class="card-description">Premium funding for high-impact endeavors.</p>
+                <button class="select-button">Select</button>
+            </div>
+            <div class="card">
+                <h2 class="card-amount">£550,000</h2>
+                <p class="card-description">Elite funding for groundbreaking ventures.</p>
+                <button class="select-button">Select</button>
+            </div>
+            <div class="card">
+                <h2 class="card-amount">£650,000</h2>
+                <p class="card-description">Ultimate funding for exceptional projects.</p>
+                <button class="select-button">Select</button>
+            </div>
+        </div>
     </div>
 </div>
+<footer>
+    <div class="container text-center">
+        <p>&copy; 2023 Pegasus Group FX. All rights reserved.</p>
+    </div>
+</footer>
 {% endblock %}

@@ -37,14 +37,12 @@ body {
 
 /* Navigation */
 .navbar {
-    background-color: rgba(36, 33, 36, 0.3); /* Here, 0.5 is the alpha value for transparency */
-    position: relative; /* Add this line to create stacking context */
-    z-index: 1; /* Ensure the navbar and footer appear above the diagonal lines */
-}
-footer {
-    background-color: #040606;
-    position: relative; /* Add this line to create stacking context */
-    z-index: 1; /* Ensure the navbar and footer appear above the diagonal lines */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(4, 6, 6, 0.5);
+    z-index: 1000; /* Adjust the z-index as needed */
 }
 
 .navbar-nav {
@@ -87,7 +85,13 @@ footer {
     color: #0088CC; /* Telegram */
 }
 
-
+footer {
+    background-color: #040606;
+    position: absolute; /* Change position to absolute */
+    bottom: 0; /* Anchor the footer at the bottom */
+    width: 100%; /* Occupy the full width */
+    left: 0; /* Ensure the footer aligns with the left side */
+}
 
 /* Mobile Navbar */
 /* Mobile Navbar Styles */
@@ -123,7 +127,7 @@ footer {
     }
 
     .content {
-        margin-top: 60px; /* Add margin to content to avoid overlap with navbar */
+        margin-top: 60px; /* Add margin to avoid overlap with navbar */
         padding-bottom: 100px; /* Add padding to avoid overlap with footer */
     }
 }
@@ -260,16 +264,6 @@ footer {
 
 
 
-/* Footer Styles */
-footer {
-    background-color: #040606;
-    color: white;
-    padding: 20px 0;
-}
-
-footer p {
-    margin: 0;
-}
 
 /* Responsive styles */
 .container {
@@ -307,8 +301,8 @@ footer p {
   }
 
   .carousel-card {
-    background-color: darkblue;
-    color: turquoise;
+    background-image: linear-gradient(to right top, #18c4e0, #22909b, #235f5f, #19322f, #000302);
+    color: white;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
@@ -331,3 +325,100 @@ footer p {
     justify-content: center;
     align-items: center; 
  }
+
+ /* Add this to your existing CSS */
+.navbar-nav .nav-link.basket-icon {
+    color: #ffffff;
+    font-size: 1.5rem; /* Adjust font size as needed */
+}
+
+.nav-link.basket-icon :hover {
+    color : red;
+}
+
+.carousel-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 20px; /* Add some space between carousel and buttons */
+    margin-bottom: 20px; /* Add some space at the bottom */
+}
+
+/* style.css */
+
+/* Add padding on the sides */
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Center the content vertically */
+.cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* Adjust as needed */
+}
+
+/* Style for the cards */
+.card {
+    width: 100%;
+    max-width: 350px; /* Adjust as needed */
+    margin: 10px;
+    padding: 50px;
+    border-radius: 10px;
+    background-image: linear-gradient(to right top, #18c4e0, #22909b, #235f5f, #19322f, #000302);
+    color: white;
+    text-align: center;
+}
+
+/* Add spacing between lines */
+.first-line,
+.second-line {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+/* Style for the select button */
+.select-button {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.select-button:hover {
+    background-color: white;
+    color: #000302;
+}
+
+/* Media query for adjusting card layout on smaller screens */
+@media (max-width: 768px) {
+    .cards {
+        align-items: flex-start;
+    }
+
+    .first-line,
+    .second-line {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+}
+/* style.css */
+
+/* Existing styles */
+
+/* Add padding to the card description */
+.card-description {
+    padding-top: 10px; /* Adjust as needed */
+    padding-bottom: 10px; /* Adjust as needed */
+}

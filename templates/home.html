@@ -61,6 +61,74 @@
         </div>
     </div>
 </section>
+<section class="funding-section mb-4 p-2  animate__animated animate__fadeIn">
+<div class="card_carousel">
+    <h1 class="title-card">Guaranteed Funding Options:</h1>
+    <div id="fundingCarousel" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="carousel-card">
+                    <h2>£25,000</h2>
+                    <p>Description for £25,000 option.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-card">
+                    <h2>£50,000</h2>
+                    <p>Description for £50,000 option.</p>
+                </div>
+            </div>
+            <div class="carousel-item"
+                <div class="carousel-card">
+                    <h2>£100,000</h2>
+                    <p>Description for £100,000 option.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-card">
+                    <h2>£200,000</h2>
+                    <p>Description for £200,000 option.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-card">
+                    <h2>£300,000</h2>
+                    <p>Description for £300,000 option.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-card">
+                    <h2>£400,000</h2>
+                    <p>Description for £400,000 option.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-card">
+                    <h2>£550,000</h2>
+                    <p>Description for £550,000 option.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-card">
+                    <h2>£650,000</h2>
+                    <p>Description for £650,000 option.</p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-button-container">
+            <button class="carousel-control-prev" type="button" data-bs-target="#fundingCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <a href="{{ url_for('guaranteed_pass') }}" class="btn btn-dark select-button">Check-out our funding options</a>
+            <button class="carousel-control-next" type="button" data-bs-target="#fundingCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+</section>
 <section class="home-section mb-4 p-2  animate__animated animate__fadeIn">
     <div class="container">
         <div class="row">
@@ -87,10 +155,3 @@
 </section>
 {% endblock %}
 
-{% block footer %}
-<footer>
-    <div class="container text-center  animate__animated animate__fadeIn">
-        <p>&copy; 2023 Pegasus Forex Group. All rights reserved.</p>
-    </div>
-</footer>
-{% endblock %}
