@@ -85,15 +85,6 @@ body {
     color: #0088CC; /* Telegram */
 }
 
-footer {
-    background-color: #040606;
-    position: absolute; /* Change position to absolute */
-    bottom: 0; /* Anchor the footer at the bottom */
-    width: 100%; /* Occupy the full width */
-    left: 0; /* Ensure the footer aligns with the left side */
-}
-
-/* Mobile Navbar */
 /* Mobile Navbar Styles */
 @media (max-width: 991px) {
     .navbar {
@@ -416,9 +407,55 @@ footer {
 /* style.css */
 
 /* Existing styles */
-
+ 
 /* Add padding to the card description */
 .card-description {
     padding-top: 10px; /* Adjust as needed */
     padding-bottom: 10px; /* Adjust as needed */
+}
+
+.card a{
+    text-decoration: none
+    ;
+}
+
+/* Card styles for different gradient colors */
+.card.card-1 {
+    background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
+    color: white;
+}
+
+.card.card-2 {
+    background-image: linear-gradient(to right top, #18c4e0, #22909b, #235f5f, #19322f, #000302);
+    color: white;
+}
+
+.card.card-3 {
+    background-image: linear-gradient(to right top, #3a7bd5, #3a6073);
+    color: white;
+}
+
+.card.card-4 {
+    background-image: linear-gradient(to right top, #360033, #0b8793);
+    color: white;
+}
+
+.card.card-5 {
+    background-image: linear-gradient(to right top, #fd746c, #ff9068);
+    color: white;
+}
+
+.card.card-6 {
+    background-image: linear-gradient(to right top, #fe8c00, #f83600);
+    color: white;
+}
+
+.card.card-7 {
+    background-image: linear-gradient(to right top, #ff9966, #ff5e62);
+    color: white;
+}
+
+.card.card-8 {
+    background-image: linear-gradient(to right top, #dd3e54, #6be585);
+    color: white;
 }

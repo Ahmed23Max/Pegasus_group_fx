@@ -1,9 +1,10 @@
-from flask import Flask, render_template, jsonify
-
+from flask import Flask, request, session, redirect, url_for, render_template, flash
+import psycopg2
+import psycopg2.extras
+import re
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-
-
 
 @app.route('/')
 def index():
@@ -24,6 +25,10 @@ def FAQ():
 @app.route('/basket')
 def basket():
     return render_template('basket.html')
+
+@app.route('/checkout')
+def checkout():
+    return render_template('checkout.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

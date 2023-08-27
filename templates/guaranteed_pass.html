@@ -3,57 +3,54 @@
 {% block title %}Guaranteed Funding{% endblock %}
 
 {% block content %}
-<div class="content-wrapper">
+<section class="pass-section animate__animated animate__fadeIn">
+<div class="container content-wrapper">
     <div class="cards">
         <div class="first-line">
-            <div class="card">
+            <div class="card card-1">
                 <h2 class="card-amount">£25,000</h2>
                 <p class="card-description">Basic funding option for small projects.</p>
-                <button class="select-button">Select</button>
+                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
             </div>
-            <div class="card">
+            <div class="card card-2">
                 <h2 class="card-amount">£50,000</h2>
                 <p class="card-description">Intermediate funding for expanding businesses.</p>
-                <button class="select-button">Select</button>
+                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
             </div>
-            <div class="card">
+            <div class="card card-3">
                 <h2 class="card-amount">£100,000</h2>
                 <p class="card-description">Significant funding for established ventures.</p>
-                <button class="select-button">Select</button>
+                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
             </div>
-            <div class="card">
+            <div class="card card-4">
                 <h2 class="card-amount">£200,000</h2>
                 <p class="card-description">Substantial funding for ambitious projects.</p>
-                <button class="select-button">Select</button>
+                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
             </div>
         </div>
         <div class="second-line">
-            <div class="card">
+            <div class="card card-5">
                 <h2 class="card-amount">£300,000</h2>
                 <p class="card-description">Advanced funding for large-scale initiatives.</p>
-                <button class="select-button">Select</button>
+                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
             </div>
-            <div class="card">
+            <div class="card card-6">
                 <h2 class="card-amount">£400,000</h2>
                 <p class="card-description">Premium funding for high-impact endeavors.</p>
-                <button class="select-button">Select</button>
+                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
             </div>
-            <div class="card">
+            <div class="card card-7">
                 <h2 class="card-amount">£550,000</h2>
                 <p class="card-description">Elite funding for groundbreaking ventures.</p>
-                <button class="select-button">Select</button>
+                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
             </div>
-            <div class="card">
+            <div class="card card-8">
                 <h2 class="card-amount">£650,000</h2>
                 <p class="card-description">Ultimate funding for exceptional projects.</p>
-                <button class="select-button">Select</button>
+                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
             </div>
         </div>
     </div>
 </div>
-<footer>
-    <div class="container text-center">
-        <p>&copy; 2023 Pegasus Group FX. All rights reserved.</p>
-    </div>
-</footer>
+</section>
 {% endblock %}
