@@ -349,8 +349,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50vh; /* Adjust as needed */
+    padding: 20px; /* Adjust as needed */
 }
+
 
 /* Style for the cards */
 .card {
@@ -410,10 +411,8 @@ body {
  
 /* Add padding to the card description */
 .card-description {
-    padding-top: 10px; /* Adjust as needed */
-    padding-bottom: 10px; /* Adjust as needed */
+    padding: 10px 0; /* Adjust as needed */
 }
-
 .card a{
     text-decoration: none
     ;
@@ -458,4 +457,14 @@ body {
 .card.card-8 {
     background-image: linear-gradient(to right top, #dd3e54, #6be585);
     color: white;
+}
+
+.card-description {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px 0; /* Adjust padding as needed */
+    height: 80px; /* Adjust the height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
