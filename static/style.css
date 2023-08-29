@@ -468,13 +468,25 @@ body {
     justify-content: center;
     align-items: center;
 }
+/* Center content */
 .checkout {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    box-sizing: border-box;
+    text-align: center;
 }
 
+/* Remove default margin for h1 */
+.checkout-title {
+    margin-top: 0;
+}
+
+/* Add margin below text */
+.checkout-text {
+    margin-bottom: 20px;
+}
+
+/* Card styles */
 .form-checkout {
     border: 1px solid #ccc;
     padding: 20px;
@@ -486,6 +498,7 @@ body {
     margin: 20px 0;
 }
 
+/* Form styles */
 .form-box {
     border: 1px solid #ccc;
     padding: 20px;
@@ -499,7 +512,18 @@ body {
     margin-bottom: 20px;
 }
 
-#pay-button {
+/* Button styles */
+.btn-login {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-signup {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-pay {
     background-color: #A8EB12;
     color: black;
     font-weight: bolder;
@@ -508,10 +532,12 @@ body {
     cursor: pointer;
 }
 
-#pay-button:disabled {
+.btn-pay:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
+/* Flex container for buttons */
 .button-container {
     display: flex;
     flex-direction: row;
