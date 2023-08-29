@@ -500,8 +500,9 @@ body {
 }
 
 #pay-button {
-    background-color: #007bff;
-    color: white;
+    background-color: #A8EB12;
+    color: black;
+    font-weight: bolder;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
@@ -510,4 +511,10 @@ body {
 #pay-button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }

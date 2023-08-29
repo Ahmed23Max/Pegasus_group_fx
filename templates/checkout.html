@@ -2,45 +2,42 @@
 {% block title %}Checkout{% endblock %}
 {% block content %}
     <div class="container checkout">
-        <div class="card form-checkout">
+        <div class="card form-checkout button-container">
             <button id="login-button" class="btn btn-primary">Login</button>
             <button id="signup-button" class="btn btn-primary">Sign Up</button>
         </div>
-        <hr>
         <div id="login-form" class="form-box">
             <h2>Login</h2>
             <form>
                 <div class="form-group">
                     <label for="login-username">Username:</label>
-                    <input type="text" id="login-username" class="form-control" required>
+                    <input type="text" id="login-username" class="form-control" placeholder="Username" required>
                 </div>
                 <div class="form-group">
                     <label for="login-password">Password:</label>
-                    <input type="password" id="login-password" class="form-control" required>
+                    <input type="password" id="login-password" class="form-control" placeholder="Password" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
         </div>
-
         <div id="signup-form" class="form-box">
             <h2>Sign Up</h2>
             <form>
                 <div class="form-group">
                     <label for="signup-username">Username:</label>
-                    <input type="text" id="signup-username" class="form-control" required>
+                    <input type="text" id="signup-username" class="form-control" placeholder="Username" required>
                 </div>
                 <div class="form-group">
                     <label for="signup-email">Email:</label>
-                    <input type="email" id="signup-email" class="form-control" required>
+                    <input type="email" id="signup-email" class="form-control" placeholder="Email" required>
                 </div>
                 <div class="form-group">
                     <label for="signup-password">Password:</label>
-                    <input type="password" id="signup-password" class="form-control" required>
+                    <input type="password" id="signup-password" class="form-control" placeholder="Password" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
         </div>
-        <hr>
         <div id="payment-box" class="payment-box">
             <h2>Payment</h2>
             <div id="payment-form">
@@ -58,7 +55,71 @@
                 </div>
             </div>
         </div>
-        <hr>
         <button id="pay-button" class="btn btn-success" >PAY</button>
     </div>
+
+    <script>
+        const loginButton = document.getElementById('login-button');
+const signupButton = document.getElementById('signup-button');
+const loginForm = document.getElementById('login-form');
+const signupForm = document.getElementById('signup-form');
+const paymentBox = document.getElementById('payment-box');
+const payButton = document.getElementById('pay-button');
+
+loginButton.addEventListener('click', () => {
+    loginForm.style.display = 'block';
+    signupForm.style.display = 'none';
+    paymentBox.style.display = 'none';
+});
+
+signupButton.addEventListener('click', () => {
+    signupForm.style.display = 'block';
+    loginForm.style.display = 'none';
+    paymentBox.style.display = 'none';
+});
+
+loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    paymentBox.style.display = 'block';
+});
+
+signupForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const signupEmail = document.getElementById('signup-email');
+    const errorDiv = document.getElementById('signup-error');
+
+    if (signupEmail.value === "") {
+        errorDiv.textContent = "Please enter your email address.";
+        return;
+    }
+    errorDiv.textContent = "";
+    paymentBox.style.display = 'block';
+});
+
+payButton.addEventListener('click', async () => {
+    try {
+        await simulatePaymentProcessing();
+        alert('Payment successful!');
+    } catch (error) {
+        alert('Payment failed. Please try again.');
+    }
+});
+
+async function simulatePaymentProcessing() {
+    // Simulate payment processing delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    // Simulate successful payment
+    // Replace this with actual payment processing logic
+}
+
+window.addEventListener('load', () => {
+    // Check for initial form validation
+    paymentBox.dispatchEvent(new Event('input'));
+});
+
+// Initial state: Hide all forms and payment box
+loginForm.style.display = 'none';
+signupForm.style.display = 'none';
+paymentBox.style.display = 'none';
+    </script>
 {% endblock %}
