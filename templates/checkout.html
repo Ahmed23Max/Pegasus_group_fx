@@ -1,5 +1,64 @@
 {% extends 'layout.html' %}
 {% block title %}Checkout{% endblock %}
 {% block content %}
+    <div class="container checkout">
+        <div class="card form-checkout">
+            <button id="login-button" class="btn btn-primary">Login</button>
+            <button id="signup-button" class="btn btn-primary">Sign Up</button>
+        </div>
+        <hr>
+        <div id="login-form" class="form-box">
+            <h2>Login</h2>
+            <form>
+                <div class="form-group">
+                    <label for="login-username">Username:</label>
+                    <input type="text" id="login-username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
 
+        <div id="signup-form" class="form-box">
+            <h2>Sign Up</h2>
+            <form>
+                <div class="form-group">
+                    <label for="signup-username">Username:</label>
+                    <input type="text" id="signup-username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email:</label>
+                    <input type="email" id="signup-email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+        </div>
+        <hr>
+        <div id="payment-box" class="payment-box">
+            <h2>Payment</h2>
+            <div id="payment-form">
+                <div class="form-group">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiration">Expiration Date:</label>
+                    <input type="text" id="expiration" class="form-control" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" class="form-control" placeholder="123" required>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <button id="pay-button" class="btn btn-success" >PAY</button>
+    </div>
 {% endblock %}
