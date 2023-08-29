@@ -468,5 +468,46 @@ body {
     justify-content: center;
     align-items: center;
 }
+.checkout {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
+.form-checkout {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
 
+.line {
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.form-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    display: none;
+}
+
+.payment-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    display: none;
+    margin-bottom: 20px;
+}
+
+#pay-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#pay-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
