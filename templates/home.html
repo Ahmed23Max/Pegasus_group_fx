@@ -129,6 +129,50 @@
     </div>
 </div>
 </section>
+<div class="testimonial-container">
+    <div class="scrolling-testimonials">
+        <div class="testimonial">
+            <p>"Great platform! I've learned so much."</p>
+            <p>- John Doe</p>
+        </div>
+        <div class="testimonial">
+            <p>"Pegasus Forex Group changed my life!"</p>
+            <p>- Jane Smith</p>
+        </div>
+        <div class="testimonial">
+            <p>"Highly recommended for beginners."</p>
+            <p>- Mark Johnson</p>
+        </div>
+        <div class="testimonial">
+            <p>"Excellent mentors and strategies."</p>
+            <p>- Sarah Brown</p>
+        </div>
+        <div class="testimonial">
+            <p>"Best decision I ever made."</p>
+            <p>- Michael Wilson</p>
+        </div>
+        <div class="testimonial">
+            <p>"Incredible community of traders."</p>
+            <p>- Emily Davis</p>
+        </div>
+        <div class="testimonial">
+            <p>"Transformed my trading skills."</p>
+            <p>- Robert Clark</p>
+        </div>
+        <div class="testimonial">
+            <p>"The support here is amazing."</p>
+            <p>- Lisa Turner</p>
+        </div>
+        <div class="testimonial">
+            <p>"Joining Pegasus Forex Group was a game-changer."</p>
+            <p>- Chris Martin</p>
+        </div>
+        <div class="testimonial">
+            <p>"I'm finally on the path to financial freedom!"</p>
+            <p>- Laura Garcia</p>
+        </div>
+    </div>
+</div>
 <section class="home-section mb-4 p-2  animate__animated animate__fadeIn">
     <div class="container">
         <div class="row">
@@ -153,5 +197,27 @@
         </div>
     </div>
 </section>
+
+<script> 
+    const scrollingTestimonials = document.querySelector('.scrolling-testimonials');
+
+    // Duplicate testimonials for scrolling effect
+    scrollingTestimonials.innerHTML += scrollingTestimonials.innerHTML;
+    
+    // Scroll the testimonials
+    let scrollAmount = 0;
+    const scrollSpeed = 2;
+    
+    function scrollTestimonials() {
+        if (scrollAmount >= scrollingTestimonials.scrollWidth / 2) {
+            scrollAmount = 0;
+        } else {
+            scrollAmount += scrollSpeed;
+        }
+        scrollingTestimonials.style.transform = `translateX(-${scrollAmount}px)`;
+    }
+    
+    setInterval(scrollTestimonials, 30);
+</script>
 {% endblock %}
 
