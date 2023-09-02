@@ -18,7 +18,9 @@ db_config = {
 # Route to serve the checkout page
 @app.route('/checkout')
 def checkout():
-    return render_template('checkout.html')
+    selected_amount = request.args.get('amount', type=int)
+    selected_description = request.args.get('description')
+    return render_template('checkout.html', selected_amount=selected_amount,selected_description = selected_description )
 
 # Login route
 @app.route('/login', methods=['POST'])

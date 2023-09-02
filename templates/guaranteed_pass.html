@@ -10,47 +10,53 @@
             <div class="card card-1">
                 <h2 class="card-amount">£25,000</h2>
                 <p class="card-description">Basic funding option for small projects.</p>
-                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
+                <a href="{{ url_for('checkout', amount=25000, description="Basic funding option for small projects.") }}" class="select-button">Select</a>
             </div>
             <div class="card card-2">
                 <h2 class="card-amount">£50,000</h2>
                 <p class="card-description">Intermediate funding for expanding businesses.</p>
-                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
+                <a href="{{ url_for('checkout', amount=50000, description="Intermediate funding for expanding businesses.") }}" class="select-button">Select</a>
             </div>
             <div class="card card-3">
                 <h2 class="card-amount">£100,000</h2>
                 <p class="card-description">Significant funding for established ventures.</p>
-                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
+                <a href="{{ url_for('checkout', amount=100000, description="Significant funding for established ventures.") }}" class="select-button">Select</a>
             </div>
             <div class="card card-4">
                 <h2 class="card-amount">£200,000</h2>
                 <p class="card-description">Substantial funding for ambitious projects.</p>
-                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
+                <a href="{{ url_for('checkout', amount=200000, description="Substantial funding for ambitious projects.") }}" class="select-button">Select</a>
             </div>
         </div>
         <div class="second-line">
             <div class="card card-5">
                 <h2 class="card-amount">£300,000</h2>
                 <p class="card-description">Advanced funding for large-scale initiatives.</p>
-                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
+                <a href="{{ url_for('checkout', amount=300000, description="Advanced funding for large-scale initiatives.") }}" class="select-button">Select</a>
             </div>
             <div class="card card-6">
                 <h2 class="card-amount">£400,000</h2>
                 <p class="card-description">Premium funding for high-impact endeavors.</p>
-                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
+                <a href="{{ url_for('checkout', amount=400000, description="Premium funding for high-impact endeavors.") }}" class="select-button">Select</a>
             </div>
             <div class="card card-7">
                 <h2 class="card-amount">£550,000</h2>
                 <p class="card-description">Elite funding for groundbreaking ventures.</p>
-                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
+                <a href="{{ url_for('checkout', amount=550000, description="Elite funding for groundbreaking ventures.") }}" class="select-button">Select</a>
             </div>
             <div class="card card-8">
                 <h2 class="card-amount">£650,000</h2>
                 <p class="card-description">Ultimate funding for exceptional projects.</p>
-                <a href="{{ url_for('checkout') }}" class="select-button">Select</a>
+                <a href="{{ url_for('checkout', amount=650000, description="Ultimate funding for exceptional projects.") }}" class="select-button">Select</a>
             </div>
         </div>
     </div>
 </div>
+<script>
+    // JavaScript function to capture the selected card amount and description, and redirect to checkout
+    function selectCard(amount, description) {
+        window.location.href = `/checkout?amount=${amount}&description=${encodeURIComponent(description)}`;
+    }
+ </script>
 </section>
 {% endblock %}

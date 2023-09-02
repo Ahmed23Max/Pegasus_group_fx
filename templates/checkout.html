@@ -2,15 +2,19 @@
 {% block title %}Checkout{% endblock %}
 {% block content %}
 <div class="container checkout">
+    <div class="selected-card">
+        <h2>Selected Plan:</h2>
+        <p>Amount: £{{ selected_amount }}</p>
+        <p>Description: {{ selected_description }}</p>
+    </div>
     <h1 class="checkout-title">Checkout</h1>
     <div class="checkout-text">
         <p>1. To purchase this plan and use its benefits in the future, log in to your account or sign up.</p>
     </div>
-    <div class="card form-checkout button-container">
+    <div class="form-checkout"> <!-- Remove the "card" class -->
         <button id="login-button" class="btn btn-login">Login</button>
         <button id="signup-button" class="btn btn-signup">Sign Up</button>
     </div>
-    <div class="line"></div>
     <div id="login-form" class="form-box">
         <h2>Login</h2>
         <form id="login-form">
