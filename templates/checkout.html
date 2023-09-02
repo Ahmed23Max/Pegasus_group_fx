@@ -1,130 +1,210 @@
 {% extends 'layout.html' %}
 {% block title %}Checkout{% endblock %}
 {% block content %}
-    <div class="container checkout">
-        <h1 class="checkout-title">Checkout</h1>
-        <div class="checkout-text">
-            <p>1. To purchase this plan and use its benefits in the future, log in to your account or sign up.</p>
-        </div>
-        <div class="card form-checkout button-container">
-            <button id="login-button" class="btn btn-login">Login</button>
-            <button id="signup-button" class="btn btn-signup">Sign Up</button>
-        </div>
-        <div class="line"></div>
-        <div id="login-form" class="form-box">
-            <h2>Login</h2>
-            <form>
-                <div class="form-group">
-                    <label for="login-username">Username:</label>
-                    <input type="text" id="login-username" class="form-control" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Password:</label>
-                    <input type="password" id="login-password" class="form-control" placeholder="Password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
-        </div>
-        <div id="signup-form" class="form-box">
-            <h2>Sign Up</h2>
-            <form>
-                <div class="form-group">
-                    <label for="signup-username">Username:</label>
-                    <input type="text" id="signup-username" class="form-control" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <label for="signup-email">Email:</label>
-                    <input type="email" id="signup-email" class="form-control" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <label for="signup-password">Password:</label>
-                    <input type="password" id="signup-password" class="form-control" placeholder="Password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Sign Up</button>
-            </form>
-        </div>
-        <div id="payment-box" class="payment-box">
-            <h2>Payment</h2>
-            <div id="payment-form">
-                <div class="form-group">
-                    <label for="card-number">Card Number:</label>
-                    <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
-                </div>
-                <div class="form-group">
-                    <label for="expiration">Expiration Date:</label>
-                    <input type="text" id="expiration" class="form-control" placeholder="MM/YY" required>
-                </div>
-                <div class="form-group">
-                    <label for="cvv">CVV:</label>
-                    <input type="text" id="cvv" class="form-control" placeholder="123" required>
-                </div>
+<div class="container checkout">
+    <h1 class="checkout-title">Checkout</h1>
+    <div class="checkout-text">
+        <p>1. To purchase this plan and use its benefits in the future, log in to your account or sign up.</p>
+    </div>
+    <div class="card form-checkout button-container">
+        <button id="login-button" class="btn btn-login">Login</button>
+        <button id="signup-button" class="btn btn-signup">Sign Up</button>
+    </div>
+    <div class="line"></div>
+    <div id="login-form" class="form-box">
+        <h2>Login</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="login-username">Username:</label>
+                <input type="text" id="login-username" class="form-control" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" class="form-control" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+    <div id="signup-form" class="form-box">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" class="form-control" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" class="form-control" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+    </div>
+    <div id="payment-box" class="payment-box">
+        <h2>Payment</h2>
+        <div id="payment-form">
+            <div class="form-group">
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
+            </div>
+            <div class="form-group">
+                <label for="expiration">Expiration Date:</label>
+                <input type="text" id="expiration" class="form-control" placeholder="MM/YY" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" class="form-control" placeholder="123" required>
             </div>
         </div>
-        <button id="pay-button" class="btn btn-pay" disabled>PAY</button>
     </div>
+    <button id="pay-button" class="btn btn-pay" disabled>PAY</button>
+</div>
 
-    <script>
-        const loginButton = document.getElementById('login-button');
-        const signupButton = document.getElementById('signup-button');
-        const loginForm = document.getElementById('login-form');
-        const signupForm = document.getElementById('signup-form');
-        const paymentBox = document.getElementById('payment-box');
-        const payButton = document.getElementById('pay-button');
+<script>
+    const loginButton = document.getElementById('login-button');
+    const signupButton = document.getElementById('signup-button');
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+    const paymentBox = document.getElementById('payment-box');
+    const payButton = document.getElementById('pay-button');
 
-        loginButton.addEventListener('click', () => {
+    // Add input event listeners to payment form fields
+    const cardNumberInput = document.getElementById('card-number');
+    const expirationInput = document.getElementById('expiration');
+    const cvvInput = document.getElementById('cvv');
+
+    cardNumberInput.addEventListener('input', validatePaymentForm);
+    expirationInput.addEventListener('input', validatePaymentForm);
+    cvvInput.addEventListener('input', validatePaymentForm);
+
+    function validatePaymentForm() {
+        const cardNumber = cardNumberInput.value;
+        const expiration = expirationInput.value;
+        const cvv = cvvInput.value;
+
+        // Add validation logic here, e.g., check if card number, expiration, and CVV are valid
+
+        // For example, enable the pay button if all fields are non-empty
+        if (cardNumber && expiration && cvv) {
+            payButton.disabled = false;
+        } else {
+            payButton.disabled = true;
+        }
+    }
+
+    loginButton.addEventListener('click', () => {
+        toggleForm('login');
+    });
+
+    signupButton.addEventListener('click', () => {
+        toggleForm('signup');
+    });
+
+    loginForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const loginUsername = document.getElementById('login-username').value;
+        const loginPassword = document.getElementById('login-password').value;
+
+        // Send a POST request to the login route in app.py
+        const response = await fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username: loginUsername,
+                password: loginPassword,
+            }),
+        });
+
+        if (response.ok) {
+            alert('Login successful!');
+            paymentBox.style.display = 'block'; // Show the payment form
+            // Optionally, you can redirect to another page here
+        } else {
+            alert('Login failed. Please try again.');
+        }
+    });
+
+    // Add the following code to prevent the form submission from closing the payment box
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent form submission
+    });
+
+    // Add the following code to prevent the form submission from closing the payment box
+    signupForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent form submission
+    });
+
+    signupForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const signupUsername = document.getElementById('signup-username').value;
+        const signupEmail = document.getElementById('signup-email').value;
+        const signupPassword = document.getElementById('signup-password').value;
+
+        // Send a POST request to the signup route in app.py
+        const response = await fetch("/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username: signupUsername,
+                email: signupEmail,
+                password: signupPassword,
+            }),
+        });
+
+        if (response.ok) {
+            alert('Registration successful! You can now log in.');
+            document.getElementById('signup-username').value = '';
+            document.getElementById('signup-email').value = '';
+            document.getElementById('signup-password').value = '';
+            toggleForm('login'); // Switch to the login form after successful signup
+        } else {
+            alert('Registration failed. Please try again.');
+        }
+    });
+
+    function toggleForm(formType) {
+        if (formType === 'login') {
             loginForm.style.display = 'block';
             signupForm.style.display = 'none';
             paymentBox.style.display = 'none';
-        });
-
-        signupButton.addEventListener('click', () => {
+        } else if (formType === 'signup') {
             signupForm.style.display = 'block';
             loginForm.style.display = 'none';
             paymentBox.style.display = 'none';
-        });
-
-        loginForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            paymentBox.style.display = 'block';
-        });
-
-        signupForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const signupEmail = document.getElementById('signup-email');
-            const errorDiv = document.getElementById('signup-error');
-
-            if (signupEmail.value === "") {
-                errorDiv.textContent = "Please enter your email address.";
-                return;
-            }
-            errorDiv.textContent = "";
-            paymentBox.style.display = 'block';
-        });
-
-        payButton.addEventListener('click', async () => {
-            try {
-                await simulatePaymentProcessing();
-                alert('Payment successful!');
-            } catch (error) {
-                alert('Payment failed. Please try again.');
-            }
-        });
-
-        async function simulatePaymentProcessing() {
-            // Simulate payment processing delay
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            // Simulate successful payment
-            // Replace this with actual payment processing logic
         }
+    }
 
-        window.addEventListener('load', () => {
-            // Check for initial form validation
-            paymentBox.dispatchEvent(new Event('input'));
-        });
+    payButton.addEventListener('click', async () => {
+        try {
+            await simulatePaymentProcessing();
+            alert('Payment successful!');
+        } catch (error) {
+            alert('Payment failed. Please try again.');
+        }
+    });
 
-        // Initial state: Hide all forms and payment box
-        loginForm.style.display = 'none';
-        signupForm.style.display = 'none';
-        paymentBox.style.display = 'none';
-    </script>
+    async function simulatePaymentProcessing() {
+        // Simulate payment processing delay
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        // Simulate successful payment
+        // Replace this with actual payment processing logic
+    }
+
+    window.addEventListener('load', () => {
+        // Check for initial form validation
+        toggleForm('login'); // Initially show the login form
+    });
+</script>
+
+
+
+    
+    
 {% endblock %}
