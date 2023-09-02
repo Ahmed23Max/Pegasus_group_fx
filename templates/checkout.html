@@ -22,7 +22,7 @@
                 <label for="login-password">Password:</label>
                 <input type="password" id="login-password" class="form-control" placeholder="Password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary pt-2">Login</button>
         </form>
     </div>
     <div id="signup-form" class="form-box">
@@ -40,7 +40,7 @@
                 <label for="signup-password">Password:</label>
                 <input type="password" id="signup-password" class="form-control" placeholder="Password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <button type="submit" class="btn btn-primary pt-2">Sign Up</button>
         </form>
     </div>
     <div id="payment-box" class="payment-box">
@@ -59,8 +59,9 @@
                 <input type="text" id="cvv" class="form-control" placeholder="123" required>
             </div>
         </div>
+        <button id="pay-button" class="btn btn-pay pt-2" disabled>PAY</button>
     </div>
-    <button id="pay-button" class="btn btn-pay" disabled>PAY</button>
+    
 </div>
 
 <script>
@@ -71,36 +72,21 @@
     const paymentBox = document.getElementById('payment-box');
     const payButton = document.getElementById('pay-button');
 
-    // Add input event listeners to payment form fields
-    const cardNumberInput = document.getElementById('card-number');
-    const expirationInput = document.getElementById('expiration');
-    const cvvInput = document.getElementById('cvv');
-
-    cardNumberInput.addEventListener('input', validatePaymentForm);
-    expirationInput.addEventListener('input', validatePaymentForm);
-    cvvInput.addEventListener('input', validatePaymentForm);
-
-    function validatePaymentForm() {
-        const cardNumber = cardNumberInput.value;
-        const expiration = expirationInput.value;
-        const cvv = cvvInput.value;
-
-        // Add validation logic here, e.g., check if card number, expiration, and CVV are valid
-
-        // For example, enable the pay button if all fields are non-empty
-        if (cardNumber && expiration && cvv) {
-            payButton.disabled = false;
-        } else {
-            payButton.disabled = true;
-        }
-    }
+    // Initially hide the signup form, login form, and payment box
+    signupForm.style.display = 'none';
+    loginForm.style.display = 'none';
+    paymentBox.style.display = 'none';
 
     loginButton.addEventListener('click', () => {
-        toggleForm('login');
+        loginForm.style.display = 'block';
+        signupForm.style.display = 'none';
+        paymentBox.style.display = 'none';
     });
 
     signupButton.addEventListener('click', () => {
-        toggleForm('signup');
+        signupForm.style.display = 'block';
+        loginForm.style.display = 'none';
+        paymentBox.style.display = 'none';
     });
 
     loginForm.addEventListener('submit', async (event) => {
@@ -108,35 +94,29 @@
         const loginUsername = document.getElementById('login-username').value;
         const loginPassword = document.getElementById('login-password').value;
 
-        // Send a POST request to the login route in app.py
-        const response = await fetch("/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                username: loginUsername,
-                password: loginPassword,
-            }),
-        });
+        try {
+            const response = await fetch("/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: loginUsername,
+                    password: loginPassword,
+                }),
+            });
 
-        if (response.ok) {
-            alert('Login successful!');
-            paymentBox.style.display = 'block'; // Show the payment form
-            // Optionally, you can redirect to another page here
-        } else {
-            alert('Login failed. Please try again.');
+            if (response.ok) {
+                alert('Login successful!');
+                paymentBox.style.display = 'block';
+                // Optionally, you can redirect to another page here
+            } else {
+                alert('Login failed. Please try again.');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred. Please try again.');
         }
-    });
-
-    // Add the following code to prevent the form submission from closing the payment box
-    loginForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent form submission
-    });
-
-    // Add the following code to prevent the form submission from closing the payment box
-    signupForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent form submission
     });
 
     signupForm.addEventListener('submit', async (event) => {
@@ -145,41 +125,33 @@
         const signupEmail = document.getElementById('signup-email').value;
         const signupPassword = document.getElementById('signup-password').value;
 
-        // Send a POST request to the signup route in app.py
-        const response = await fetch("/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                username: signupUsername,
-                email: signupEmail,
-                password: signupPassword,
-            }),
-        });
+        try {
+            const response = await fetch("/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: signupUsername,
+                    email: signupEmail,
+                    password: signupPassword,
+                }),
+            });
 
-        if (response.ok) {
-            alert('Registration successful! You can now log in.');
-            document.getElementById('signup-username').value = '';
-            document.getElementById('signup-email').value = '';
-            document.getElementById('signup-password').value = '';
-            toggleForm('login'); // Switch to the login form after successful signup
-        } else {
-            alert('Registration failed. Please try again.');
+            if (response.ok) {
+                alert('Registration successful! You can now log in.');
+                loginForm.style.display = 'block'; // Show the login form after successful registration
+                signupForm.style.display = 'none'; // Hide the signup form
+                paymentBox.style.display = 'none'; // Hide the payment box
+                // Optionally, you can clear the signup form fields here
+            } else {
+                alert('Registration failed. Please try again.');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred. Please try again.');
         }
     });
-
-    function toggleForm(formType) {
-        if (formType === 'login') {
-            loginForm.style.display = 'block';
-            signupForm.style.display = 'none';
-            paymentBox.style.display = 'none';
-        } else if (formType === 'signup') {
-            signupForm.style.display = 'block';
-            loginForm.style.display = 'none';
-            paymentBox.style.display = 'none';
-        }
-    }
 
     payButton.addEventListener('click', async () => {
         try {
@@ -199,9 +171,15 @@
 
     window.addEventListener('load', () => {
         // Check for initial form validation
-        toggleForm('login'); // Initially show the login form
+        paymentBox.dispatchEvent(new Event('input'));
     });
+
+    // Initial state: Hide all forms and payment box
+    loginForm.style.display = 'none';
+    signupForm.style.display = 'none';
+    paymentBox.style.display = 'none';
 </script>
+
 
 
 
