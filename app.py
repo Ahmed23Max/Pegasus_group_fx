@@ -98,9 +98,7 @@ def guaranteed_pass():
 def FAQ():
     return render_template('FAQ.html')
 
-@app.route('/basket')
-def basket():
-    return render_template('basket.html')
+
 
 
 

@@ -68,4 +68,8 @@ const cardCarousel = document.querySelector('.card-carousel');
 
 
  
-  
+  // JavaScript function to capture the selected card amount and description, and redirect to checkout
+  function selectCard(amount, description) {
+    window.location.href = `/checkout?amount=${amount}&description=${encodeURIComponent(description)}`;
+}
+
