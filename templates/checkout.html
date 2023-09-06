@@ -11,9 +11,11 @@
     <div class="checkout-text">
         <p>1. To purchase this plan and use its benefits in the future, log in to your account or sign up.</p>
     </div>
-    <div class="form-checkout"> <!-- Remove the "card" class -->
+    <div class="form-checkout">
+        <!-- Remove the "card" class -->
         <button id="login-button" class="btn btn-login">Login</button>
         <button id="signup-button" class="btn btn-signup">Sign Up</button>
+        
     </div>
     <div id="login-form" class="form-box">
         <h2>Login</h2>
@@ -26,7 +28,7 @@
                 <label for="login-password">Password:</label>
                 <input type="password" id="login-password" class="form-control" placeholder="Password" required>
             </div>
-            <button type="submit" class="btn btn-primary pt-2">Login</button>
+            <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
     <div id="signup-form" class="form-box">
@@ -48,175 +50,230 @@
         </form>
     </div>
     <div id="payment-box" class="payment-box">
-    <h2>Payment</h2>
-    <div id="payment-form">
-        <div class="form-group">
-            <label for="card-number">Card Number:</label>
-            <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
+        <h2>Payment</h2>
+        <div id="payment-method-toggle" class="payment-method-toggle">
+            <label for="payment-method">Payment Method:</label>
+            <button id="card-button" class="btn btn-payment-method selected">Card <i class="fas fa-credit-card"></i></button>
+            <button id="paypal-button" class="btn btn-payment-method">PayPal <i class="fab fa-paypal"></i></button>
         </div>
-        <div class="form-group">
-            <label for="expiration">Expiration Date:</label>
-            <input type="text" id="expiration" class="form-control" placeholder="MM/YY" required>
+        <div id="payment-form">
+            <!-- Card Payment Form -->
+            <div class="credit-card-payment">
+                <div class="form-group">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiration">Expiration Date:</label>
+                    <input type="text" id="expiration" class="form-control" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" class="form-control" placeholder="123" required>
+                </div>
+            </div>
+            <!-- PayPal Payment Form (with display:none;) -->
+            <div class="paypal-payment" style="display:none;">
+                <!-- Include PayPal's JavaScript SDK -->
+                <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID"></script>
+                <!-- Create the PayPal button -->
+                <div id="paypal-button-container"></div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" class="form-control" placeholder="123" required>
-        </div>
-        <!-- PayPal button code goes here -->
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="YOUR_PAYPAL_BUSINESS_EMAIL">
-            <input type="hidden" name="item_name" value="Product Name">
-            <input type="hidden" name="amount" value="10.00">
-            <input type="hidden" name="currency_code" value="USD">
-            <input type="hidden" name="return" value="YOUR_RETURN_URL">
-            <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-        </form>
-        <!-- End of PayPal button code -->
+        <button id="pay-button" class="btn btn-pay pt-2" disabled>PAY</button>
     </div>
-    <button id="pay-button" class="btn btn-pay pt-2" disabled>PAY</button>
-</div>
-    
 </div>
 
 <script>
-    const loginButton = document.getElementById('login-button');
-    const signupButton = document.getElementById('signup-button');
-    const loginForm = document.getElementById('login-form');
-    const signupForm = document.getElementById('signup-form');
-    const paymentBox = document.getElementById('payment-box');
-    const payButton = document.getElementById('pay-button');
+    // Select the login, signup, and payment elements
+const loginButton = document.getElementById('login-button');
+const signupButton = document.getElementById('signup-button');
+const loginForm = document.getElementById('login-form');
+const signupForm = document.getElementById('signup-form');
+const paymentBox = document.getElementById('payment-box');
+const payButton = document.getElementById('pay-button');
 
-    const cardNumberInput = document.getElementById('card-number');
-    const expirationInput = document.getElementById('expiration');
-    const cvvInput = document.getElementById('cvv');
+// Select the card payment form fields
+const cardNumberInput = document.getElementById('card-number');
+const expirationInput = document.getElementById('expiration');
+const cvvInput = document.getElementById('cvv');
 
-    // Initially hide the signup form, login form, and payment box
-    signupForm.style.display = 'none';
-    loginForm.style.display = 'none';
-    paymentBox.style.display = 'none';
+// Function to toggle between payment methods
+const paymentMethodToggle = document.getElementById('payment-method');
+const creditCardPayment = document.querySelector('.credit-card-payment');
+const paypalPayment = document.querySelector('.paypal-payment');
 
-    loginButton.addEventListener('click', () => {
-        loginForm.style.display = 'block';
-        signupForm.style.display = 'none';
-        paymentBox.style.display = 'none';
-    });
+// Initially, set the default payment method to credit card
+paymentMethodToggle.addEventListener('change', () => {
+    const selectedPaymentMethod = paymentMethodToggle.value;
 
-    signupButton.addEventListener('click', () => {
-        signupForm.style.display = 'block';
-        loginForm.style.display = 'none';
-        paymentBox.style.display = 'none';
-    });
-
-    loginForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const loginUsername = document.getElementById('login-username').value;
-        const loginPassword = document.getElementById('login-password').value;
-
-        try {
-            const response = await fetch("/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    username: loginUsername,
-                    password: loginPassword,
-                }),
-            });
-
-            if (response.ok) {
-                alert('Login successful!');
-                paymentBox.style.display = 'block';
-                // Optionally, you can redirect to another page here
-            } else {
-                alert('Login failed. Please try again.');
-            }
-        } catch (error) {
-            console.error(error);
-            alert('An error occurred. Please try again.');
-        }
-    });
-
-    signupForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const signupUsername = document.getElementById('signup-username').value;
-        const signupEmail = document.getElementById('signup-email').value;
-        const signupPassword = document.getElementById('signup-password').value;
-
-        try {
-            const response = await fetch("/signup", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    username: signupUsername,
-                    email: signupEmail,
-                    password: signupPassword,
-                }),
-            });
-
-            if (response.ok) {
-                alert('Registration successful! You can now log in.');
-                loginForm.style.display = 'block'; // Show the login form after successful registration
-                signupForm.style.display = 'none'; // Hide the signup form
-                paymentBox.style.display = 'none'; // Hide the payment box
-                // Optionally, you can clear the signup form fields here
-            } else {
-                alert('Registration failed. Please try again.');
-            }
-        } catch (error) {
-            console.error(error);
-            alert('An error occurred. Please try again.');
-        }
-    });
-
-    payButton.addEventListener('click', async () => {
-        try {
-            await simulatePaymentProcessing();
-            alert('Payment successful!');
-        } catch (error) {
-            alert('Payment failed. Please try again.');
-        }
-    });
-
-    // Function to simulate payment processing
-    async function simulatePaymentProcessing() {
-        // Simulate payment processing delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        // Simulate successful payment
-        // Replace this with actual payment processing logic
+    if (selectedPaymentMethod === 'card') {
+        creditCardPayment.style.display = 'block';
+        paypalPayment.style.display = 'none';
+    } else if (selectedPaymentMethod === 'paypal') {
+        creditCardPayment.style.display = 'none';
+        paypalPayment.style.display = 'block';
+        initializePayPalButton(); // Initialize the PayPal button when selecting PayPal as the payment method
     }
+});
 
-    // Function to check if all required fields are filled and enable the pay button
-    function checkPaymentFormValidity() {
-        const cardNumberValue = cardNumberInput.value.trim();
-        const expirationValue = expirationInput.value.trim();
-        const cvvValue = cvvInput.value.trim();
+// Function to simulate payment processing
+async function simulatePaymentProcessing() {
+    // Simulate payment processing delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    // Simulate successful payment
+    // Replace this with actual payment processing logic
+}
 
-        const isCardNumberValid = cardNumberValue.length === 16; // You may need to adjust this validation logic
-        const isExpirationValid = expirationValue.match(/^\d{2}\/\d{2}$/);
-        const isCvvValid = cvvValue.length === 3; // You may need to adjust this validation logic
+// Function to check if all required fields are filled and enable the pay button
+function checkPaymentFormValidity() {
+    const cardNumberValue = cardNumberInput.value.trim();
+    const expirationValue = expirationInput.value.trim();
+    const cvvValue = cvvInput.value.trim();
 
-        const isFormValid = isCardNumberValid && isExpirationValid && isCvvValid;
-        payButton.disabled = !isFormValid;
-    }
+    const isCardNumberValid = cardNumberValue.length === 16; // You may need to adjust this validation logic
+    const isExpirationValid = expirationValue.match(/^\d{2}\/\d{2}$/);
+    const isCvvValid = cvvValue.length === 3; // You may need to adjust this validation logic
 
-    // Listen for input changes in the payment form fields
-    cardNumberInput.addEventListener('input', checkPaymentFormValidity);
-    expirationInput.addEventListener('input', checkPaymentFormValidity);
-    cvvInput.addEventListener('input', checkPaymentFormValidity);
+    const isFormValid = isCardNumberValid && isExpirationValid && isCvvValid;
+    payButton.disabled = !isFormValid;
+}
 
-    window.addEventListener('load', () => {
-        // Check for initial form validation
-        checkPaymentFormValidity();
-    });
+// Listen for input changes in the payment form fields
+cardNumberInput.addEventListener('input', checkPaymentFormValidity);
+expirationInput.addEventListener('input', checkPaymentFormValidity);
+cvvInput.addEventListener('input', checkPaymentFormValidity);
 
-    // Initial state: Hide all forms and payment box
-    loginForm.style.display = 'none';
+// Trigger form validation on page load
+window.addEventListener('load', () => {
+    checkPaymentFormValidity();
+});
+
+// Event listener for the login button
+loginButton.addEventListener('click', () => {
+    loginForm.style.display = 'block';
     signupForm.style.display = 'none';
     paymentBox.style.display = 'none';
+});
+
+// Event listener for the signup button
+signupButton.addEventListener('click', () => {
+    signupForm.style.display = 'block';
+    loginForm.style.display = 'none';
+    paymentBox.style.display = 'none';
+});
+
+// Event listener for the login form submission
+loginForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const loginUsername = document.getElementById('login-username').value;
+    const loginPassword = document.getElementById('login-password').value;
+
+    try {
+        const response = await fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username: loginUsername,
+                password: loginPassword,
+            }),
+        });
+
+        if (response.ok) {
+            alert('Login successful!');
+            paymentBox.style.display = 'block';
+            // Optionally, you can redirect to another page here
+        } else {
+            alert('Login failed. Please try again.');
+        }
+    } catch (error) {
+        console.error(error);
+        alert('An error occurred. Please try again.');
+    }
+});
+
+// Event listener for the signup form submission
+signupForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const signupUsername = document.getElementById('signup-username').value;
+    const signupEmail = document.getElementById('signup-email').value;
+    const signupPassword = document.getElementById('signup-password').value;
+
+    try {
+        const response = await fetch("/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username: signupUsername,
+                email: signupEmail,
+                password: signupPassword,
+            }),
+        });
+
+        if (response.ok) {
+            alert('Registration successful! You can now log in.');
+            loginForm.style.display = 'block'; // Show the login form after successful registration
+            signupForm.style.display = 'none'; // Hide the signup form
+            paymentBox.style.display = 'none'; // Hide the payment box
+            // Optionally, you can clear the signup form fields here
+        } else {
+            alert('Registration failed. Please try again.');
+        }
+    } catch (error) {
+        console.error(error);
+        alert('An error occurred. Please try again.');
+    }
+});
+
+// Function to initialize PayPal button
+function initializePayPalButton() {
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            // Add your PayPal payment details here
+            return actions.order.create({
+                purchase_units: [
+                    {
+                        amount: {
+                            value: '10.00' // Replace with the amount you want to charge
+                        }
+                    }
+                ]
+            });
+        },
+        onApprove: function(data, actions) {
+            // Capture the PayPal transaction and handle the payment confirmation
+            return actions.order.capture().then(function(details) {
+                alert('Payment successful! Transaction ID: ' + details.id);
+                // Optionally, you can redirect or perform other actions here
+            });
+        },
+        onError: function(err) {
+            alert('Payment failed. Please try again or choose another payment method.');
+        }
+    }).render('paypal-button-container');
+}
+
+// Load the PayPal JavaScript SDK with your client ID
+paypal_sdk_url = "https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID";
+// Asyncronously load the PayPal SDK
+(function (d, s, id) {
+    var js, scriptTag = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = paypal_sdk_url;
+    scriptTag.parentNode.insertBefore(js, scriptTag);
+}(document, "script", "paypal-jssdk"));
+
+// Initial state: Hide all forms and payment box
+loginForm.style.display = 'none';
+signupForm.style.display = 'none';
+paymentBox.style.display = 'none';
+togglePaymentMethod('card'); // Initialize with Card as the default payment method
+
 </script>
 
 
