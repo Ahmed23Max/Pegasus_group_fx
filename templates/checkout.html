@@ -76,6 +76,10 @@
     const paymentBox = document.getElementById('payment-box');
     const payButton = document.getElementById('pay-button');
 
+    const cardNumberInput = document.getElementById('card-number');
+    const expirationInput = document.getElementById('expiration');
+    const cvvInput = document.getElementById('cvv');
+
     // Initially hide the signup form, login form, and payment box
     signupForm.style.display = 'none';
     loginForm.style.display = 'none';
@@ -166,6 +170,7 @@
         }
     });
 
+    // Function to simulate payment processing
     async function simulatePaymentProcessing() {
         // Simulate payment processing delay
         await new Promise(resolve => setTimeout(resolve, 1500));
@@ -173,9 +178,28 @@
         // Replace this with actual payment processing logic
     }
 
+    // Function to check if all required fields are filled and enable the pay button
+    function checkPaymentFormValidity() {
+        const cardNumberValue = cardNumberInput.value.trim();
+        const expirationValue = expirationInput.value.trim();
+        const cvvValue = cvvInput.value.trim();
+
+        const isCardNumberValid = cardNumberValue.length === 16; // You may need to adjust this validation logic
+        const isExpirationValid = expirationValue.match(/^\d{2}\/\d{2}$/);
+        const isCvvValid = cvvValue.length === 3; // You may need to adjust this validation logic
+
+        const isFormValid = isCardNumberValid && isExpirationValid && isCvvValid;
+        payButton.disabled = !isFormValid;
+    }
+
+    // Listen for input changes in the payment form fields
+    cardNumberInput.addEventListener('input', checkPaymentFormValidity);
+    expirationInput.addEventListener('input', checkPaymentFormValidity);
+    cvvInput.addEventListener('input', checkPaymentFormValidity);
+
     window.addEventListener('load', () => {
         // Check for initial form validation
-        paymentBox.dispatchEvent(new Event('input'));
+        checkPaymentFormValidity();
     });
 
     // Initial state: Hide all forms and payment box
@@ -183,6 +207,7 @@
     signupForm.style.display = 'none';
     paymentBox.style.display = 'none';
 </script>
+
 
 
 
