@@ -182,32 +182,6 @@
     loginForm.style.display = 'none';
     signupForm.style.display = 'none';
     paymentBox.style.display = 'none';
-
-    // Select the card input fields and the pay button
-const cardNumberInput = document.getElementById('card-number');
-const expirationInput = document.getElementById('expiration');
-const cvvInput = document.getElementById('cvv');
-const payButton = document.getElementById('pay-button');
-
-// Function to check if all card fields are filled
-function checkCardFields() {
-    const cardNumber = cardNumberInput.value.trim();
-    const expiration = expirationInput.value.trim();
-    const cvv = cvvInput.value.trim();
-
-    // Enable the pay button if all fields are filled
-    if (cardNumber !== '' && expiration !== '' && cvv !== '') {
-        payButton.disabled = false;
-    } else {
-        payButton.disabled = true;
-    }
-}
-
-// Add event listeners to the card input fields
-cardNumberInput.addEventListener('input', checkCardFields);
-expirationInput.addEventListener('input', checkCardFields);
-cvvInput.addEventListener('input', checkCardFields);
-
 </script>
 
 
