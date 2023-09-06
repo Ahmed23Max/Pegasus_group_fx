@@ -47,23 +47,44 @@
             <button type="submit" class="btn btn-primary pt-2">Sign Up</button>
         </form>
     </div>
-    <div id="payment-box" class="payment-box">
+        <div id="payment-box" class="payment-box">
         <h2>Payment</h2>
-        <div id="payment-form">
-            <div class="form-group">
-                <label for="card-number">Card Number:</label>
-                <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
+        <!-- Payment options -->
+        <div class="payment-options">
+            <!-- Card Payment -->
+            <div class="payment-option">
+                <div class="payment-icon">
+                    <img src="card-icon.png" alt="Card Icon" />
+                </div>
+                <button id="card-payment-button" class="btn btn-pay">Pay with Card</button>
             </div>
-            <div class="form-group">
-                <label for="expiration">Expiration Date:</label>
-                <input type="text" id="expiration" class="form-control" placeholder="MM/YY" required>
+            <!-- Stripe Payment -->
+            <div class="payment-option">
+                <div class="payment-icon">
+                    <img src="stripe-icon.png" alt="Stripe Icon" />
+                </div>
+                <button id="stripe-payment-button" class="btn btn-pay">Pay with Stripe</button>
             </div>
-            <div class="form-group">
-                <label for="cvv">CVV:</label>
-                <input type="text" id="cvv" class="form-control" placeholder="123" required>
+            <!-- PayPal Payment -->
+            <div class="payment-option">
+                <div class="payment-icon">
+                    <img src="paypal-icon.png" alt="PayPal Icon" />
+                </div>
+                <button id="paypal-payment-button" class="btn btn-pay">Pay with PayPal</button>
             </div>
         </div>
-        <button id="pay-button" class="btn btn-pay pt-2" disabled>PAY</button>
+        <!-- Card Payment Form -->
+        <div id="card-payment-form" class="payment-form">
+            <!-- Card payment form content -->
+        </div>
+        <!-- Stripe Payment Form -->
+        <div id="stripe-payment-form" class="payment-form">
+            <!-- Stripe payment form content -->
+        </div>
+        <!-- PayPal Payment Form -->
+        <div id="paypal-payment-form" class="payment-form">
+            <!-- PayPal payment form content -->
+        </div>
     </div>
     
 </div>
@@ -182,6 +203,37 @@
     loginForm.style.display = 'none';
     signupForm.style.display = 'none';
     paymentBox.style.display = 'none';
+
+    const cardPaymentButton = document.getElementById('card-payment-button');
+    const stripePaymentButton = document.getElementById('stripe-payment-button');
+    const paypalPaymentButton = document.getElementById('paypal-payment-button');
+
+    const cardPaymentForm = document.getElementById('card-payment-form');
+    const stripePaymentForm = document.getElementById('stripe-payment-form');
+    const paypalPaymentForm = document.getElementById('paypal-payment-form');
+
+    // Initially hide payment forms
+    cardPaymentForm.style.display = 'none';
+    stripePaymentForm.style.display = 'none';
+    paypalPaymentForm.style.display = 'none';
+
+    cardPaymentButton.addEventListener('click', () => {
+        cardPaymentForm.style.display = 'block';
+        stripePaymentForm.style.display = 'none';
+        paypalPaymentForm.style.display = 'none';
+    });
+
+    stripePaymentButton.addEventListener('click', () => {
+        cardPaymentForm.style.display = 'none';
+        stripePaymentForm.style.display = 'block';
+        paypalPaymentForm.style.display = 'none';
+    });
+
+    paypalPaymentButton.addEventListener('click', () => {
+        cardPaymentForm.style.display = 'none';
+        stripePaymentForm.style.display = 'none';
+        paypalPaymentForm.style.display = 'block';
+    });
 </script>
 
 
