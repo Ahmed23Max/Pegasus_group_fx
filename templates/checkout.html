@@ -51,17 +51,17 @@
         <h2>Payment</h2>
         <div id="payment-form">
             <div class="form-group">
-                <label for="card-number">Card Number:</label>
-                <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
-            </div>
-            <div class="form-group">
-                <label for="expiration">Expiration Date:</label>
-                <input type="text" id="expiration" class="form-control" placeholder="MM/YY" required>
-            </div>
-            <div class="form-group">
-                <label for="cvv">CVV:</label>
-                <input type="text" id="cvv" class="form-control" placeholder="123" required>
-            </div>
+    <label for="card-number">Card Number:</label>
+    <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
+</div>
+<div class="form-group">
+    <label for="expiration">Expiration Date:</label>
+    <input type="text" id="expiration" class="form-control" placeholder="MM/YY" required>
+</div>
+<div class="form-group">
+    <label for="cvv">CVV:</label>
+    <input type="text" id="cvv" class="form-control" placeholder="123" required>
+</div>
         </div>
         <button id="pay-button" class="btn btn-pay pt-2" disabled>PAY</button>
     </div>
@@ -182,6 +182,32 @@
     loginForm.style.display = 'none';
     signupForm.style.display = 'none';
     paymentBox.style.display = 'none';
+
+    // Select the card input fields and the pay button
+const cardNumberInput = document.getElementById('card-number');
+const expirationInput = document.getElementById('expiration');
+const cvvInput = document.getElementById('cvv');
+const payButton = document.getElementById('pay-button');
+
+// Function to check if all card fields are filled
+function checkCardFields() {
+    const cardNumber = cardNumberInput.value.trim();
+    const expiration = expirationInput.value.trim();
+    const cvv = cvvInput.value.trim();
+
+    // Enable the pay button if all fields are filled
+    if (cardNumber !== '' && expiration !== '' && cvv !== '') {
+        payButton.disabled = false;
+    } else {
+        payButton.disabled = true;
+    }
+}
+
+// Add event listeners to the card input fields
+cardNumberInput.addEventListener('input', checkCardFields);
+expirationInput.addEventListener('input', checkCardFields);
+cvvInput.addEventListener('input', checkCardFields);
+
 </script>
 
 
