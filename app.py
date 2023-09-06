@@ -98,46 +98,5 @@ def guaranteed_pass():
 def FAQ():
     return render_template('FAQ.html')
 
-# Payment route
-@app.route('/payment', methods=['POST'])
-def payment():
-    if request.method == 'POST':
-        payment_method = request.json.get('payment_method')
-        selected_amount = request.json.get('amount')
-
-        try:
-            if payment_method == 'card':
-                # Handle card payment with Stripe
-                # You can use the Stripe API to create a payment intent and complete the payment.
-                # Replace the following lines with actual Stripe payment logic.
-                intent = stripe.PaymentIntent.create(
-                    amount=selected_amount,
-                    currency='usd',
-                )
-                # You can return the client_secret to the front end for Stripe.js to complete the payment.
-
-                return jsonify({"client_secret": intent.client_secret}), 200
-
-            elif payment_method == 'stripe':
-                # Handle Stripe payment (if needed)
-                # Implement Stripe-specific payment logic here.
-
-                return jsonify({"message": "Stripe payment processed successfully"}), 200
-
-            elif payment_method == 'paypal':
-                # Handle PayPal payment (if needed)
-                # Implement PayPal-specific payment logic here.
-
-                return jsonify({"message": "PayPal payment processed successfully"}), 200
-
-            else:
-                return jsonify({"message": "Invalid payment method"}), 400
-
-        except Exception as e:
-            return jsonify({"message": "Payment processing failed. Please try again."}), 500
-
-
-
-
 if __name__ == '__main__':
     app.run(debug=True)
