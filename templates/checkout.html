@@ -63,29 +63,9 @@
                 <input type="text" id="cvv" class="form-control" placeholder="123" required>
             </div>
         </div>
-        <div class="payment-options">
-            <h2>Select Payment Method:</h2>
-            <div class="payment-method">
-                <label for="card">
-                    <input type="radio" name="payment-method" id="card" value="card" checked>
-                    <img src="card_icon.png" alt="Card Icon"> Credit Card
-                </label>
-            </div>
-            <div class="payment-method">
-                <label for="stripe">
-                    <input type="radio" name="payment-method" id="stripe" value="stripe">
-                    <img src="stripe_icon.png" alt="Stripe Icon"> Stripe
-                </label>
-            </div>
-            <div class="payment-method">
-                <label for="paypal">
-                    <input type="radio" name="payment-method" id="paypal" value="paypal">
-                    <img src="paypal_icon.png" alt="PayPal Icon"> PayPal
-                </label>
-            </div>
-        </div>
         <button id="pay-button" class="btn btn-pay pt-2" disabled>PAY</button>
     </div>
+    
 </div>
 
 <script>
@@ -202,45 +182,6 @@
     loginForm.style.display = 'none';
     signupForm.style.display = 'none';
     paymentBox.style.display = 'none';
-
-    document.getElementById('pay-button').addEventListener('click', async () => {
-    const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
-    const selectedAmount = document.getElementById('selected-amount').value;
-
-    try {
-        const response = await fetch("/payment", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                payment_method: paymentMethod,
-                amount: selectedAmount,
-            }),
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            if (paymentMethod === 'card') {
-                // Handle card payment using Stripe.js
-                const stripe = Stripe('YOUR_STRIPE_PUBLIC_KEY'); // Replace with your Stripe public key
-                const { error } = await stripe.confirmCardPayment(data.client_secret);
-                if (error) {
-                    alert('Card payment failed. Please try again.');
-                } else {
-                    alert('Card payment successful!');
-                }
-            } else {
-                alert(`${paymentMethod} payment successful!`);
-            }
-        } else {
-            alert(`${paymentMethod} payment failed. Please try again.`);
-        }
-    } catch (error) {
-        console.error(error);
-        alert('An error occurred. Please try again.');
-    }
-});
 </script>
 
 
