@@ -41,7 +41,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(4, 6, 6, 0.5);
+    background-color: #050203;
     z-index: 1000; /* Adjust the z-index as needed */
 }
 
@@ -64,6 +64,11 @@ body {
     display: flex;
     align-items: center;
 }
+
+.navbar-nav .nav-link.main.pass:hover {
+    color: #dd3e54;
+}
+
 
 .navbar-nav .nav-link.main:hover {
     color: #18c4e0; /* Instagram */
@@ -92,7 +97,7 @@ body {
         top: 0;
         left: 0;
         width: 100%;
-        background-color: rgba(4, 6, 6, 0.5); /* Here, 0.5 is the alpha value for transparency */
+        background-color: #050203; /* Here, 0.5 is the alpha value for transparency */
         z-index: 1000;
     }
 
@@ -122,7 +127,13 @@ body {
         padding-bottom: 100px; /* Add padding to avoid overlap with footer */
     }
 }
+footer {
+    background-color: #050203;
+}
 
+.footer .row {
+    gap: 20px;
+}
 
 /* Video Container */
 .video-container {
@@ -425,39 +436,40 @@ body {
 }
 
 .card.card-2 {
-    background-image: linear-gradient(to right top, #18c4e0, #22909b, #235f5f, #19322f, #000302);
+    background-image: linear-gradient(to right top, #dd3e54, #6be585);
     color: white;
 }
 
 .card.card-3 {
-    background-image: linear-gradient(to right top, #3a7bd5, #3a6073);
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
     color: white;
 }
 
 .card.card-4 {
-    background-image: linear-gradient(to right top, #360033, #0b8793);
-    color: white;
-}
-
-.card.card-5 {
-    background-image: linear-gradient(to right top, #fd746c, #ff9068);
-    color: white;
-}
-
-.card.card-6 {
     background-image: linear-gradient(to right top, #fe8c00, #f83600);
     color: white;
 }
 
-.card.card-7 {
-    background-image: linear-gradient(to right top, #ff9966, #ff5e62);
+.card-1 {
+    background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
     color: white;
 }
 
-.card.card-8 {
+.card-2 {
     background-image: linear-gradient(to right top, #dd3e54, #6be585);
     color: white;
 }
+
+.card-3 {
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    color: white;
+}
+
+.card-4 {
+    background-image: linear-gradient(to right top, #fe8c00, #f83600);
+    color: white;
+}
+
 
 .card-description {
     text-transform: uppercase;

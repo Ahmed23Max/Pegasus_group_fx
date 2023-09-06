@@ -15,6 +15,11 @@
 
 <section class="home-section mb-4 p-2  animate__animated animate__fadeIn">
     <div class="container">
+        <div>
+            <img src="static/1.jpeg" alt="Logo" style="max-height: 60px;">
+            <img src="static/2.jpeg" alt="Logo" style="max-height: 60px;">
+            <img src="static/3.jpeg" alt="Logo" style="max-height: 60px;">
+        </div>
         <div id="carouselSections" class="carousel slide" data-bs-ride="carousel">
             <a class="carousel-control-prev" href="#carouselSections" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -61,74 +66,54 @@
         </div>
     </div>
 </section>
-<section class="funding-section mb-4 p-2  animate__animated animate__fadeIn">
-<div class="card_carousel">
-    <h1 class="title-card">Guaranteed Funding Options:</h1>
-    <div id="fundingCarousel" class="carousel slide">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="carousel-card">
-                    <h2>£25,000</h2>
-                    <p>Description for £25,000 option.</p>
+<section class="funding-section mb-4 p-2 animate__animated animate__fadeIn">
+    <div class="card_carousel">
+        <h1 class="title-card">Guaranteed Funding Options:</h1>
+        <div id="fundingCarousel" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-card card-1">
+                        <h2>£25,000</h2>
+                        <p class="card-description">Basic funding option for small projects.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-card card-2">
+                        <h2>£50,000</h2>
+                        <p class="card-description">Intermediate funding for expanding businesses.</p>
+                    </div>
+                </div>
+                <div class="carousel-item"> <!-- Missing closing angle bracket -->
+                    <div class="carousel-card card-3">
+                        <h2>£100,000</h2>
+                        <p class="card-description">Elite funding for groundbreaking ventures.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-card card-4">
+                        <h2>£200,000</h2>
+                        <p class="card-description">Ultimate funding for exceptional projects.</p>
+                    </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£50,000</h2>
-                    <p>Description for £50,000 option.</p>
-                </div>
+            <div class="carousel-button-container">
+                <button class="carousel-control-prev" type="button" data-bs-target="#fundingCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <a href="{{ url_for('guaranteed_pass') }}" class="btn btn-dark select-button">Check-out our funding
+                    options</a>
+                <button class="carousel-control-next" type="button" data-bs-target="#fundingCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            <div class="carousel-item"
-                <div class="carousel-card">
-                    <h2>£100,000</h2>
-                    <p>Description for £100,000 option.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£200,000</h2>
-                    <p>Description for £200,000 option.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£300,000</h2>
-                    <p>Description for £300,000 option.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£400,000</h2>
-                    <p>Description for £400,000 option.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£550,000</h2>
-                    <p>Description for £550,000 option.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-card">
-                    <h2>£650,000</h2>
-                    <p>Description for £650,000 option.</p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-button-container">
-            <button class="carousel-control-prev" type="button" data-bs-target="#fundingCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <a href="{{ url_for('guaranteed_pass') }}" class="btn btn-dark select-button">Check-out our funding options</a>
-            <button class="carousel-control-next" type="button" data-bs-target="#fundingCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
     </div>
-</div>
 </section>
+
 <div class="testimonial-container">
     <div class="scrolling-testimonials">
         <div class="testimonial">
@@ -199,6 +184,7 @@
 </section>
 
 <script> 
+    
     const scrollingTestimonials = document.querySelector('.scrolling-testimonials');
 
     // Duplicate testimonials for scrolling effect
