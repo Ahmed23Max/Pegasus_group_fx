@@ -3,9 +3,13 @@ import psycopg2
 import psycopg2.extras
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
+import stripe
+
 
 app = Flask(__name__)
 app.secret_key = 'In9$]~3raxeG%L"7toNZwnuS:0D$?aq%{8+^R}(~<Xh3*P}.nmB4|fixQVwQ]:B'  # Replace with a strong secret key
+
+
 
 # Your database configuration
 db_config = {
@@ -15,12 +19,29 @@ db_config = {
     'host': 'dpg-cjlngg8cfp5c739tetpg-a.oregon-postgres.render.com'
 }
 
+stripe.api_key = 'YOUR_STRIPE_SECRET_KEY'  # Replace with your actual Stripe secret key
+
 # Route to serve the checkout page
 @app.route('/checkout')
 def checkout():
     selected_amount = request.args.get('amount', type=int)
     selected_description = request.args.get('description')
     return render_template('checkout.html', selected_amount=selected_amount,selected_description = selected_description )
+
+@app.route('/create-payment-intent', methods=['POST'])
+def create_payment_intent():
+    if request.method == 'POST':
+        data = request.get_json()
+        amount = data.get('amount')  # The amount in cents, e.g., 1000 for $10.00
+        
+        try:
+            intent = stripe.PaymentIntent.create(
+                amount=amount,
+                currency='usd',  # Replace with your desired currency
+            )
+            return jsonify({"clientSecret": intent.client_secret}), 200
+        except stripe.error.StripeError as e:
+            return jsonify({"message": "An error occurred while creating the payment intent."}), 500
 
 # Login route
 @app.route('/login', methods=['POST'])

@@ -1,42 +1,11 @@
-// Select the login, signup, and payment elements
+// users.js
+
+// Select the login and signup elements
 const loginButton = document.getElementById('login-button');
 const signupButton = document.getElementById('signup-button');
 const loginForm = document.getElementById('login-form');
 const signupForm = document.getElementById('signup-form');
 const paymentBox = document.getElementById('payment-box');
-const payButton = document.getElementById('pay-button');
-
-
-
-// Function to toggle between payment methods
-const paymentMethodToggle = document.getElementById('payment-method-toggle');
-const paypalPayment = document.querySelector('.paypal-payment');
-
-// Initially, set the default payment method to credit card
-paymentMethodToggle.addEventListener('change', () => {
-    const selectedPaymentMethod = paymentMethodToggle.value;
-
-    if (selectedPaymentMethod === 'paypal') {
-        creditCardPayment.style.display = 'none';
-        paypalPayment.style.display = 'block';
-        initializePayPalButton(); // Initialize the PayPal button when selecting PayPal as the payment method
-    }
-});
-
-// Function to simulate payment processing
-async function simulatePaymentProcessing() {
-    // Simulate payment processing delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    // Simulate successful payment
-    // Replace this with actual payment processing logic
-}
-
-
-
-// Trigger form validation on page load
-window.addEventListener('load', () => {
-    checkPaymentFormValidity();
-});
 
 // Event listener for the login button
 loginButton.addEventListener('click', () => {
@@ -117,37 +86,3 @@ signupForm.addEventListener('submit', async (event) => {
         alert('An error occurred. Please try again.');
     }
 });
-
-// Function to initialize PayPal button
-function initializePayPalButton() {
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            // Add your PayPal payment details here
-            return actions.order.create({
-                purchase_units: [
-                    {
-                        amount: {
-                            value: '10.00' // Replace with the amount you want to charge
-                        }
-                    }
-                ]
-            });
-        },
-        onApprove: function(data, actions) {
-            // Capture the PayPal transaction and handle the payment confirmation
-            return actions.order.capture().then(function(details) {
-                alert('Payment successful! Transaction ID: ' + details.id);
-                // Optionally, you can redirect or perform other actions here
-            });
-        },
-        onError: function(err) {
-            alert('Payment failed. Please try again or choose another payment method.');
-        }
-    }).render('paypal-button-container');
-}
-
-// Initial state: Hide all forms and payment box
-loginForm.style.display = 'none';
-signupForm.style.display = 'none';
-paymentBox.style.display = 'none';
-initializePayPalButton();
