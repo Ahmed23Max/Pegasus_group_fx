@@ -99,7 +99,7 @@ const expirationInput = document.getElementById('expiration');
 const cvvInput = document.getElementById('cvv');
 
 // Function to toggle between payment methods
-const paymentMethodToggle = document.getElementById('payment-method');
+const paymentMethodToggle = document.getElementById('payment-method-toggle');
 const creditCardPayment = document.querySelector('.credit-card-payment');
 const paypalPayment = document.querySelector('.paypal-payment');
 
@@ -257,22 +257,12 @@ function initializePayPalButton() {
     }).render('paypal-button-container');
 }
 
-// Load the PayPal JavaScript SDK with your client ID
-paypal_sdk_url = "https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID";
-// Asyncronously load the PayPal SDK
-(function (d, s, id) {
-    var js, scriptTag = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = paypal_sdk_url;
-    scriptTag.parentNode.insertBefore(js, scriptTag);
-}(document, "script", "paypal-jssdk"));
-
 // Initial state: Hide all forms and payment box
 loginForm.style.display = 'none';
 signupForm.style.display = 'none';
 paymentBox.style.display = 'none';
-togglePaymentMethod('card'); // Initialize with Card as the default payment method
+initializePayPalButton();
+
 
 </script>
 
