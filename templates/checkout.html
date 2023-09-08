@@ -12,8 +12,10 @@
         <p>1. To purchase this plan and use its benefits in the future, log in to your account or sign up.</p>
     </div>
     <div class="form-checkout">
+        <!-- Remove the "card" class -->
         <button id="login-button" class="btn btn-login">Login</button>
         <button id="signup-button" class="btn btn-signup">Sign Up</button>
+        
     </div>
     <div id="login-form" class="form-box">
         <h2>Login</h2>
@@ -51,24 +53,24 @@
         <h2>Payment</h2>
         <div id="payment-method-toggle" class="payment-method-toggle">
             <label for="payment-method">Payment Method:</label>
-            <button id="stripe-button" class="btn btn-payment-method btn-stripe">Stripe <i class="fab fa-stripe-s"></i></button>
+            <button id="card-button" class="btn btn-payment-method selected btn-card">Card <i class="fas fa-credit-card"></i></button>
             <button id="paypal-button" class="btn btn-payment-method btn-paypal">PayPal <i class="fab fa-paypal"></i></button>
         </div>
         <div id="payment-form">
-            <!-- Stripe Payment Form -->
-            <div class="stripe-payment" style="display:none;">
-                <form id="stripe-payment-form">
-                    <!-- Include Stripe.js SDK -->
-                    <script src="https://js.stripe.com/v3/"></script>
-                    <div class="form-group">
-                        <label for="card-element">Card Information:</label>
-                        <div id="card-element" class="form-control">
-                            <!-- A Stripe Element will be inserted here. -->
-                        </div>
-                        <!-- Used to display form errors. -->
-                        <div id="card-errors" role="alert"></div>
-                    </div>
-                </form>
+            <!-- Card Payment Form -->
+            <div class="credit-card-payment">
+                <div class="form-group">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiration">Expiration Date:</label>
+                    <input type="text" id="expiration" class="form-control" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" class="form-control" placeholder="123" required>
+                </div>
             </div>
             <!-- PayPal Payment Form (with display:none;) -->
             <div class="paypal-payment" style="display:none;">
@@ -83,4 +85,6 @@
 </div>
 
 <script src="static/ck.js"></script>
+   
+    
 {% endblock %}
