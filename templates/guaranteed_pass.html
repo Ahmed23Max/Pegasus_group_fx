@@ -10,25 +10,34 @@
             <div class="card card-1">
                 <h2 class="card-amount">£25,000</h2>
                 <p class="card-description">Basic funding option for small projects.</p>
-                <a href="{{ url_for('checkout', amount=25000, description="Basic funding option for small projects.") }}" class="select-button">Select</a>
+                <button id="basicButton" class="btn btn-stripe">Stripe</button>
             </div>
             <div class="card card-2">
                 <h2 class="card-amount">£50,000</h2>
                 <p class="card-description">Intermediate funding for expanding businesses.</p>
-                <a href="{{ url_for('checkout', amount=50000, description="Intermediate funding for expanding businesses.") }}" class="select-button">Select</a>
+                <button id="intermediateButton" class="btn btn-stripe">Stripe</button>
             </div>
             <div class="card card-3">
                 <h2 class="card-amount">£100,000</h2>
                 <p class="card-description">Elite funding for groundbreaking ventures.</p>
-                <a href="{{ url_for('checkout', amount=100000, description="Significant funding for established ventures.") }}" class="select-button">Select</a>
+                <button id="eliteButton" class="btn btn-stripe">Stripe</button>
             </div>
             <div class="card card-4">
                 <h2 class="card-amount">£200,000</h2>
                 <p class="card-description">Ultimate funding for exceptional projects.</p>
-                <a href="{{ url_for('checkout', amount=200000, description="Substantial funding for ambitious projects.") }}" class="select-button">Select</a>
+                <button id="ultimateButton" class="btn btn-stripe">Stripe</button>
             </div>
         </div>
     </div>
 </div>
 </section>
+<script src="https://js.stripe.com/v3/"></script> <!-- Include Stripe's JavaScript SDK -->
+<script>
+    const checkout_public_key = '{{checkout_public_key}}'
+    const checkout_session_basic_id = '{{checkout_session_basic_id}}'; // Updated session ID variables
+    const checkout_session_intermediate_id = '{{checkout_session_intermediate_id}}'; // Updated session ID variables
+    const checkout_session_elite_id = '{{checkout_session_elite_id}}'; // Updated session ID variables
+    const checkout_session_ultimate_id = '{{checkout_session_ultimate_id}}'; // Updated session ID variables
+</script>
+<script src="static/pay.js"></script>
 {% endblock %}

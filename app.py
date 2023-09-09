@@ -23,21 +23,7 @@ app.config['STRIPE_SECRET_KEY']= 'sk_test_51NfpBYL5fKqjqr4bdI5TLSqA4pQXSXqKIy7rH
 stripe.api_key = app.config['STRIPE_SECRET_KEY']
 
 # Route to serve the checkout page
-@app.route('/checkout')
-def checkout():
-    session = stripe.checkout.Session.create(
-        payment_method_types=['card'],
-        line_items=[{
-            'price': 'price_1NoOGCL5fKqjqr4bIlHGer5D',
-            'quantity':1,
-        }],
-        mode='payment',
-        success_url='http://localhost:5000/success',
-        cancel_url='http://localhost:5000/cancel'
-    )
-    selected_amount = request.args.get('amount', type=int)
-    selected_description = request.args.get('description')
-    return render_template('checkout.html', selected_amount=selected_amount,selected_description = selected_description, checkout_session_id=session['id'],checkout_public_key=app.config['STRIPE_PUBLIC_KEY'] )
+
 
 # Login route
 @app.route('/login', methods=['POST'])
@@ -111,7 +97,54 @@ def about_us():
 
 @app.route('/guaranteed-pass')
 def guaranteed_pass():
-    return render_template('guaranteed_pass.html')
+    session_basic = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[{
+            'price': 'price_1NoP1zL5fKqjqr4bIDXv8EjT',
+            'quantity': 1,
+        }],
+        mode='payment',
+        success_url='http://localhost:5000/success',
+        cancel_url='http://localhost:5000/cancel'
+    )
+    session_intermediate = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[{
+            'price': 'price_1NoOGCL5fKqjqr4bIlHGer5D',
+            'quantity': 1,
+        }],
+        mode='payment',
+        success_url='http://localhost:5000/success',
+        cancel_url='http://localhost:5000/cancel'
+    )
+    session_elite = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[{
+            'price': 'price_1NoP42L5fKqjqr4bxKpnA7rY',
+            'quantity': 1,
+        }],
+        mode='payment',
+        success_url='http://localhost:5000/success',
+        cancel_url='http://localhost:5000/cancel'
+    )
+    session_ultimate = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[{
+            'price': 'price_1NoP4eL5fKqjqr4baxCYNkLs',
+            'quantity': 1,
+        }],
+        mode='payment',
+        success_url='http://localhost:5000/success',
+        cancel_url='http://localhost:5000/cancel'
+    )
+    
+    return render_template('guaranteed_pass.html', 
+                           checkout_session_basic_id=session_basic['id'],
+                           checkout_session_intermediate_id=session_intermediate['id'],
+                           checkout_session_elite_id=session_elite['id'],
+                           checkout_session_ultimate_id=session_ultimate['id'],
+                           checkout_public_key=app.config['STRIPE_PUBLIC_KEY'])
+
 
 @app.route('/FAQ')
 def FAQ():
