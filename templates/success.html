@@ -1,8 +1,12 @@
 {% extends 'layout.html' %}
-{% block title %}Succes{% endblock %}
+{% block title %}Success{% endblock %}
 {% block content %}
-
-BRAVO
-
-
+  <div class="success-container">
+    <div class="success-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <h1 class="success-text">Success!</h1>
+    <p>Your action was completed successfully.</p>
+    <a href="/" class="btn">Back to Home</a>
+  </div>
 {% endblock %}

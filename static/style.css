@@ -602,3 +602,89 @@ footer {
   .btn-stripe:hover {
     background-color: #FF7700; /* Change color on hover if desired */
   }
+
+/* Updated CSS for a bigger, centered, and green "Success" text */
+.success-container {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .success-icon {
+    color: #28a745; /* Green color for the success icon */
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .success-text {
+    font-size: 36px; /* Bigger font size for "Success" text */
+    color: #28a745; /* Green color for "Success" text */
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745; /* Green color for the button */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #218838; /* Darker green color on hover */
+  }
+  
+
+  /* CSS for the cancel page with red styling */
+.cancel-container {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cancel-icon {
+    color: #dc3545; /* Red color for the cancel icon */
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .cancel-text {
+    font-size: 36px; /* Bigger font size for "Cancel" text */
+    color: #dc3545; /* Red color for "Cancel" text */
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .cancel-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #dc3545; /* Red color for the button */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #c82333; /* Darker red color on hover */
+  }
+  
