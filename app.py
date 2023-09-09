@@ -1,10 +1,8 @@
-from flask import Flask, request, session, redirect, url_for, render_template, flash, jsonify
+from flask import Flask, request, session, redirect, url_for, render_template, flash, jsonify,session
 import psycopg2
 import psycopg2.extras
-import re
 from werkzeug.security import generate_password_hash, check_password_hash
 import stripe
-
 
 app = Flask(__name__)
 app.secret_key = 'In9$]~3raxeG%L"7toNZwnuS:0D$?aq%{8+^R}(~<Xh3*P}.nmB4|fixQVwQ]:B'  # Replace with a strong secret key
@@ -19,29 +17,27 @@ db_config = {
     'host': 'dpg-cjlngg8cfp5c739tetpg-a.oregon-postgres.render.com'
 }
 
-stripe.api_key = 'YOUR_STRIPE_SECRET_KEY'  # Replace with your actual Stripe secret key
+app.config['STRIPE_PUBLIC_KEY']= 'pk_test_51NfpBYL5fKqjqr4brHAttz9zTiXePX1pNh1nez4pbDTasqu8YrFy8otnJsfbyqqs5au4C5Nyq3EHVyGERFG7lUr300ZfXuqwzy'
+app.config['STRIPE_SECRET_KEY']= 'sk_test_51NfpBYL5fKqjqr4bdI5TLSqA4pQXSXqKIy7rHkzcEt689S2Lv6BPkUB7JLU3xHp4nVAiQvFrE0K8iwYGnXwtO7mm00ZvVxJV9c'
+
+stripe.api_key = app.config['STRIPE_SECRET_KEY']
 
 # Route to serve the checkout page
 @app.route('/checkout')
 def checkout():
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[{
+            'price': 'price_1NoOGCL5fKqjqr4bIlHGer5D',
+            'quantity':1,
+        }],
+        mode='payment',
+        success_url='http://localhost:5000/success',
+        cancel_url='http://localhost:5000/cancel'
+    )
     selected_amount = request.args.get('amount', type=int)
     selected_description = request.args.get('description')
-    return render_template('checkout.html', selected_amount=selected_amount,selected_description = selected_description )
-
-@app.route('/create-payment-intent', methods=['POST'])
-def create_payment_intent():
-    if request.method == 'POST':
-        data = request.get_json()
-        amount = data.get('amount')  # The amount in cents, e.g., 1000 for $10.00
-        
-        try:
-            intent = stripe.PaymentIntent.create(
-                amount=amount,
-                currency='usd',  # Replace with your desired currency
-            )
-            return jsonify({"clientSecret": intent.client_secret}), 200
-        except stripe.error.StripeError as e:
-            return jsonify({"message": "An error occurred while creating the payment intent."}), 500
+    return render_template('checkout.html', selected_amount=selected_amount,selected_description = selected_description, checkout_session_id=session['id'],checkout_public_key=app.config['STRIPE_PUBLIC_KEY'] )
 
 # Login route
 @app.route('/login', methods=['POST'])
@@ -95,11 +91,13 @@ def signup():
         finally:
             conn.close()
 
+
+
 # Logout route
 @app.route('/logout')
 def logout():
     session.pop('user_id', None)
-    flash('You have been logged out.', 'success')
+    flash('You  have been logged out.', 'success')
     return redirect(url_for('checkout'))  # Redirect to the /checkout page
 
 
@@ -118,6 +116,17 @@ def guaranteed_pass():
 @app.route('/FAQ')
 def FAQ():
     return render_template('FAQ.html')
+
+@app.route('/success')
+def success():
+    # Render your success template or return a success message
+    return render_template('success.html')
+
+@app.route('/cancel')
+def cancel():
+    # Render your cancel template or return a cancel message
+    return render_template('cancel.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

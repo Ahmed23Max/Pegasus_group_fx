@@ -50,49 +50,18 @@
         </form>
     </div>
     <div id="payment-box" class="payment-box">
-        <h2>Payment</h2>
-        <div id="payment-method-toggle" class="payment-method-toggle">
-            <label for="payment-method">Payment Method:</label>
-            <button id="stripe-button" class="btn btn-payment-method btn-stripe">Stripe <i class="fab fa-stripe"></i></button>
-            <button id="paypal-button" class="btn btn-payment-method btn-paypal">PayPal <i class="fab fa-paypal"></i></button>
-        </div>
-    
-        <!-- Place the card element container here -->
-        <div id="card-element-container">
-            <!-- The Stripe card element will be mounted here. -->
-        </div>
-    
-        <div id="payment-form">
-            <!-- PayPal Payment Form (with display:none;) -->
-            <div class="paypal-payment" style="display:none;">
-                <!-- Include PayPal's JavaScript SDK -->
-                <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID"></script>
-                <!-- Create the PayPal button -->
-                <div id="paypal-button-container"></div>
-            </div>
-    
-            <!-- Stripe Payment Form (with display:none;) -->
-            <div class="stripe-payment" style="display:none;">
-                <form id="stripe-form">
-                    <div class="form-group">
-                        <label for="card-element">
-                            Credit or Debit Card
-                        </label>
-                        <div id="card-element">
-                            <!-- A Stripe Element will be inserted here. -->
-                        </div>
-    
-                        <!-- Used to display form errors. -->
-                        <div id="card-errors" role="alert"></div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Pay with Card</button>
-                </form>
-            </div>
+            <button id="stripe-button" class="btn btn-stripe">Pay with Stripe</button>
+            <button id="paypal-button" class="btn btn-paypal">Pay with PayPal</button>
         </div>
     </div>
 </div>
 
 <script src="https://js.stripe.com/v3/"></script> <!-- Include Stripe's JavaScript SDK -->
+<script>
+    const checkout_public_key = '{{checkout_public_key}}'
+    const checkout_session_id = '{{checkout_session_id}}'
+</script>
+<script src="https://www.paypal.com/sdk/js?client-id=ASxKBopfz6PdIrMB23mxF0ano3J_gIDmWn4aDAvaBNP4SoDB8Hlk4FkZm7a2vfmhdG1iBA8AlWtuw9j-"></script> <!-- Include PayPal SDK -->
 <script src="static/pay.js"></script>
 <script src="static/users.js"></script>
 {% endblock %}

@@ -581,12 +581,6 @@ footer {
     margin-top: 20px;
 }
 
-.btn-card {
-    background-color: #030201; /* Gray color */
-    color: #fff; /* Text color */
-    border: none;
-    /* Add any other styling you need */
-}
 
 .btn-paypal {
     background-color: #003087; /* PayPal's official color */
