@@ -137,8 +137,8 @@ def guaranteed_pass():
             'quantity': 1,
         }],
         mode='payment',
-        success_url='http://localhost:5000/success',
-        cancel_url='http://localhost:5000/cancel'
+        success_url='https://pegasus-group-fx.onrender.com/success',
+        cancel_url='https://pegasus-group-fx.onrender.com/cancel'
     )
     
     return render_template('guaranteed_pass.html', 
