@@ -11,14 +11,12 @@ const paymentBox = document.getElementById('payment-box');
 loginButton.addEventListener('click', () => {
     loginForm.style.display = 'block';
     signupForm.style.display = 'none';
-    paymentBox.style.display = 'none';
 });
 
 // Event listener for the signup button
 signupButton.addEventListener('click', () => {
     signupForm.style.display = 'block';
     loginForm.style.display = 'none';
-    paymentBox.style.display = 'none';
 });
 
 // Event listener for the login form submission
@@ -41,7 +39,6 @@ loginForm.addEventListener('submit', async (event) => {
 
         if (response.ok) {
             alert('Login successful!');
-            paymentBox.style.display = 'block';
             // Optionally, you can redirect to another page here
         } else {
             alert('Login failed. Please try again.');
@@ -76,7 +73,6 @@ signupForm.addEventListener('submit', async (event) => {
             alert('Registration successful! You can now log in.');
             loginForm.style.display = 'block'; // Show the login form after successful registration
             signupForm.style.display = 'none'; // Hide the signup form
-            paymentBox.style.display = 'none'; // Hide the payment box
             // Optionally, you can clear the signup form fields here
         } else {
             alert('Registration failed. Please try again.');

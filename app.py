@@ -127,6 +127,10 @@ def cancel():
     # Render your cancel template or return a cancel message
     return render_template('cancel.html')
 
+@app.route('/Account')
+def Account():
+    # Render your cancel template or return a cancel message
+    return render_template('account.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

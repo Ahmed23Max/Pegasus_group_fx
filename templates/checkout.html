@@ -11,47 +11,9 @@
     <div class="checkout-text">
         <p>1. To purchase this plan and use its benefits in the future, log in to your account or sign up.</p>
     </div>
-    <div class="form-checkout">
-        <!-- Remove the "card" class -->
-        <button id="login-button" class="btn btn-login">Login</button>
-        <button id="signup-button" class="btn btn-signup">Sign Up</button>
-        
-    </div>
-    <div id="login-form" class="form-box">
-        <h2>Login</h2>
-        <form id="login-form">
-            <div class="form-group">
-                <label for="login-username">Username:</label>
-                <input type="text" id="login-username" class="form-control" placeholder="Username" required>
-            </div>
-            <div class="form-group">
-                <label for="login-password">Password:</label>
-                <input type="password" id="login-password" class="form-control" placeholder="Password" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-    </div>
-    <div id="signup-form" class="form-box">
-        <h2>Sign Up</h2>
-        <form id="signup-form">
-            <div class="form-group">
-                <label for="signup-username">Username:</label>
-                <input type="text" id="signup-username" class="form-control" placeholder="Username" required>
-            </div>
-            <div class="form-group">
-                <label for="signup-email">Email:</label>
-                <input type="email" id="signup-email" class="form-control" placeholder="Email" required>
-            </div>
-            <div class="form-group">
-                <label for="signup-password">Password:</label>
-                <input type="password" id="signup-password" class="form-control" placeholder="Password" required>
-            </div>
-            <button type="submit" class="btn btn-primary pt-2">Sign Up</button>
-        </form>
-    </div>
-    <div id="payment-box" class="payment-box">
+    
+    <div id="payment" class="payment">
             <button id="stripe-button" class="btn btn-stripe">Pay with Stripe</button>
-            <button id="paypal-button" class="btn btn-paypal">Pay with PayPal</button>
         </div>
     </div>
 </div>
@@ -61,7 +23,6 @@
     const checkout_public_key = '{{checkout_public_key}}'
     const checkout_session_id = '{{checkout_session_id}}'
 </script>
-<script src="https://www.paypal.com/sdk/js?client-id=ASxKBopfz6PdIrMB23mxF0ano3J_gIDmWn4aDAvaBNP4SoDB8Hlk4FkZm7a2vfmhdG1iBA8AlWtuw9j-"></script> <!-- Include PayPal SDK -->
 <script src="static/pay.js"></script>
-<script src="static/users.js"></script>
+
 {% endblock %}
