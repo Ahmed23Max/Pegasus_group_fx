@@ -49,9 +49,18 @@
                     <li class="nav-item">
                         <a class="nav-link main" href="{{ url_for('FAQ') }}">FAQ</a>
                     </li>
+                    {% if session.user_id %}
                     <li class="nav-item">
-                        <a class="nav-link main" href="{{ url_for('Account') }}">Account</a>
+                        <a class="nav-link main" href="{{ url_for('Account') }}">{{ session.user_name }}</a>
                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link main" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                    </li>
+                 {% else %}
+                <li class="nav-item">
+                        <a class="nav-link main" href="{{ url_for('Account') }}">Account</a>
+                </li>
+                {% endif %}
                 </ul>
             </div>
         </div>

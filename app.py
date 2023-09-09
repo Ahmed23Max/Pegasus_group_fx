@@ -42,13 +42,16 @@ def login():
 
             if user and check_password_hash(user[2], password):
                 session['user_id'] = user[0]
-                return jsonify({"message": "Login successful!"}), 200
+                session['user_name'] = user[1]  # Store the user's name in the session
+                return redirect(url_for('index'))  # Redirect to the home page
             else:
                 return jsonify({"message": "Login failed. Please check your credentials."}), 401
         except psycopg2.Error as e:
             return jsonify({"message": "An error occurred. Please try again."}), 500
         finally:
             conn.close()
+
+
 
 # Signup route
 @app.route('/signup', methods=['POST'])
@@ -84,7 +87,7 @@ def signup():
 def logout():
     session.pop('user_id', None)
     flash('You  have been logged out.', 'success')
-    return redirect(url_for('checkout'))  # Redirect to the /checkout page
+    return redirect(url_for('Account'))  # Redirect to the /checkout page
 
 
 @app.route('/')
