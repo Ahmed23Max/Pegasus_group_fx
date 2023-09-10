@@ -107,8 +107,8 @@ def guaranteed_pass():
             'quantity': 1,
         }],
         mode='payment',
-        success_url='http://localhost:5000/success',
-        cancel_url='http://localhost:5000/cancel'
+        success_url='https://pegasus-group-fx.onrender.com/success',
+        cancel_url='https://pegasus-group-fx.onrender.com/cancel'
     )
     session_intermediate = stripe.checkout.Session.create(
         payment_method_types=['card'],
@@ -117,8 +117,8 @@ def guaranteed_pass():
             'quantity': 1,
         }],
         mode='payment',
-        success_url='http://localhost:5000/success',
-        cancel_url='http://localhost:5000/cancel'
+        success_url='https://pegasus-group-fx.onrender.com/success',
+        cancel_url='https://pegasus-group-fx.onrender.com/cancel'
     )
     session_elite = stripe.checkout.Session.create(
         payment_method_types=['card'],
@@ -127,8 +127,8 @@ def guaranteed_pass():
             'quantity': 1,
         }],
         mode='payment',
-        success_url='http://localhost:5000/success',
-        cancel_url='http://localhost:5000/cancel'
+        success_url='https://pegasus-group-fx.onrender.com/success',
+        cancel_url='https://pegasus-group-fx.onrender.com/cancel'
     )
     session_ultimate = stripe.checkout.Session.create(
         payment_method_types=['card'],
