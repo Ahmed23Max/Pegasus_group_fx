@@ -131,9 +131,7 @@ footer {
     background-color: #050203;
 }
 
-.footer .row {
-    gap: 20px;
-}
+
 
 /* Video Container */
 .video-container {
@@ -591,16 +589,20 @@ footer {
 
 
 
-/* Customize the Stripe payment button */
 .btn-stripe {
-    background-color: #FF9900; /* Replace with your company's color */
-    color: #fff; /* Text color */
+    background-color: white;
+    color: black;
     border: none;
-    /* Add other styles as needed */
+    padding: 10px 20px;
+    cursor: pointer;
   }
-  
+
   .btn-stripe:hover {
-    background-color: #FF7700; /* Change color on hover if desired */
+    background-color: green;
+  }
+
+  .loading-icon {
+    display: none;
   }
 
 /* Updated CSS for a bigger, centered, and green "Success" text */
@@ -688,3 +690,30 @@ footer {
     background-color: #c82333; /* Darker red color on hover */
   }
   
+#login,
+#sign-up{
+    margin-top: 10px;
+  }
+
+.modal-content {
+    background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.close {
+    font-size: 40px;
+    color: #333; /* Change the color to your preference */
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ff0000; /* Change the hover color to your preference */
+}

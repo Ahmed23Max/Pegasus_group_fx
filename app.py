@@ -87,7 +87,7 @@ def signup():
 def logout():
     session.pop('user_id', None)
     flash('You  have been logged out.', 'success')
-    return redirect(url_for('Account'))  # Redirect to the /checkout page
+    return redirect(url_for('index'))  # Redirect to the /checkout page
 
 
 @app.route('/')

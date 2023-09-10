@@ -39,7 +39,8 @@ loginForm.addEventListener('submit', async (event) => {
 
         if (response.ok) {
             alert('Login successful!');
-            // Optionally, you can redirect to another page here
+            // Reload the page after successful login
+            window.location.reload();
         } else {
             alert('Login failed. Please try again.');
         }

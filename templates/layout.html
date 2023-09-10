@@ -51,14 +51,14 @@
                     </li>
                     {% if session.user_id %}
                     <li class="nav-item">
-                        <a class="nav-link main" href="{{ url_for('Account') }}">{{ session.user_name }}</a>
+                        <a class="nav-link main" href="#">{{ session.user_name }}</a>
                     </li>
                      <li class="nav-item">
                         <a class="nav-link main" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
                     </li>
                  {% else %}
                 <li class="nav-item">
-                        <a class="nav-link main" href="{{ url_for('Account') }}">Account</a>
+                        <a class="nav-link main" href="#" data-toggle="modal" data-target="#accountModal">Account</a>
                 </li>
                 {% endif %}
                 </ul>
@@ -89,10 +89,64 @@
         </div>
     </footer>
     
+    <!-- Create the cascading modal -->
+    <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="accountModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="accountModalLabel">Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    <!-- Content of the cascading modal -->
+                    <div class="form-checkout">
+                        <!-- Remove the "card" class -->
+                        <button id="login-button" class="btn btn-login">Login</button>
+                        <button id="signup-button" class="btn btn-signup">Sign Up</button>
+                    </div>
+                    <div id="login-form" class="form-box">
+                        <h2>Login</h2>
+                        <form id="login-form">
+                            <div class="form-group">
+                                <label for="login-username">Username:</label>
+                                <input type="text" id="login-username" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password">Password:</label>
+                                <input type="password" id="login-password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="login">Login</button>
+                        </form>
+                    </div>
+                    <div id="signup-form" class="form-box">
+                        <h2>Sign Up</h2>
+                        <form id="signup-form">
+                            <div class="form-group">
+                                <label for="signup-username">Username:</label>
+                                <input type="text" id="signup-username" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-email">Email:</label>
+                                <input type="email" id="signup-email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-password">Password:</label>
+                                <input type="password" id="signup-password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="sign-up">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <script src="static/app.js"></script>
+    <script src="static/users.js"></script>
     <script src="extensions/mobile/bootstrap-table-mobile.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha384-0UAOgq8DZxg5sa4kSo3vPxZ/ziHddwxHSP0eqNxhxt2QFc+M2nNJFdj2B5msnblg" crossorigin="anonymous"></script>
-
 </body>
 </html>
