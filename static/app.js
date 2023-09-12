@@ -1,55 +1,18 @@
-$(document).ready(function () {
-    $(".navbar-toggler").click(function () {
-        $(".mobile-overlay").fadeToggle(); // Toggle the overlay
-        $("body").toggleClass("no-scroll"); // Prevent scrolling on background
-    });
-
-    // Close the overlay when clicking anywhere on it
-    $(".mobile-overlay").click(function () {
-        $(this).fadeOut();
-        $("body").removeClass("no-scroll");
-    });
-});
-
-function startLoading(buttonId) {
-    var button = document.getElementById(buttonId);
-    var loadingIcon = button.querySelector(".loading-icon");
-  
-    // Disable the button
-    button.disabled = true;
-  
-    // Change text to "Loading..."
-    button.innerHTML = "Loading";
-  
-    // Show loading icon
-    loadingIcon.style.display = "inline-block";
-  
-    // Simulate a loading delay (you can replace this with your actual loading code)
-    setTimeout(function() {
-      // Once the loading is complete, you can reset the button
-      button.disabled = false;
-      button.innerHTML = "Select";
-      loadingIcon.style.display = "none";
-    }, 500); // Replace 2000 with your desired loading time in milliseconds
-  }
-
-
-
-
-
-
- 
-  // JavaScript function to capture the selected card amount and description, and redirect to checkout
-  function selectCard(amount, description) {
-    window.location.href = `/checkout?amount=${amount}&description=${encodeURIComponent(description)}`;
-}
-
 // welcome.js
 
-// Wait for the welcoming animation to finish
-setTimeout(function () {
-    // Redirect to the homepage (replace 'home.html' with your homepage URL)
-    window.location.href = 'https://pegasus-group-fx.onrender.com/home';
-}, 5000); // 5000 milliseconds (5 seconds) delay before redirecting
+// Check if a flag is set in session storage
+if (!sessionStorage.getItem('visited_welcome_page')) {
+    // If not set, it means the user hasn't seen the welcoming page before
+    // Perform the animation and set the flag
+    setTimeout(function () {
+        // Redirect to the homepage (replace 'home.html' with your homepage URL)
+        window.location.href = 'home.html';
+    }, 5000); // 5000 milliseconds (5 seconds) delay before redirecting
 
-
+    // Set the flag in session storage to indicate that the user has visited the welcoming page
+    sessionStorage.setItem('visited_welcome_page', 'true');
+} else {
+    // If the flag is set, the user has already seen the welcoming page
+    // Redirect to the homepage immediately
+    window.location.href = 'home.html';
+}
