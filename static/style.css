@@ -717,3 +717,25 @@ footer {
 .close:hover {
     color: #ff0000; /* Change the hover color to your preference */
 }
+
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: fadeIn 3s ease-in-out; /* Animation for fading in */
+}
+
+.welcome-text {
+    text-align: center;
+}
+
+/* Keyframe animation for fading in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
