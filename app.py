@@ -7,7 +7,7 @@ import stripe
 app = Flask(__name__)
 app.secret_key = 'In9$]~3raxeG%L"7toNZwnuS:0D$?aq%{8+^R}(~<Xh3*P}.nmB4|fixQVwQ]:B'  # Replace with a strong secret key
 
-
+active_sessions = {}
 
 # Your database configuration
 db_config = {
