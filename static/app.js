@@ -49,7 +49,7 @@ function startLoading(buttonId) {
 // Wait for the welcoming animation to finish
 setTimeout(function () {
     // Redirect to the homepage (replace 'home.html' with your homepage URL)
-    window.location.href = 'home.html';
+    window.location.href = 'https://pegasus-group-fx.onrender.com/home';
 }, 5000); // 5000 milliseconds (5 seconds) delay before redirecting
 
 
