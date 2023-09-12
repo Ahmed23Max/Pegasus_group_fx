@@ -41,9 +41,19 @@ def login():
             user = cursor.fetchone()
 
             if user and check_password_hash(user[2], password):
-                session['user_id'] = user[0]
-                session['user_name'] = user[1]  # Store the user's name in the session
-                return redirect(url_for('index'))  # Redirect to the home page
+                # Generate a unique session ID
+                session_id = str(uuid.uuid4())
+
+                # Store user data in the active_sessions dictionary
+                active_sessions[session_id] = {
+                    'user_id': user[0],
+                    'user_name': user[1]
+                }
+
+                # Set the session ID as a cookie
+                response = jsonify({"message": "Login successful!"})
+                response.set_cookie('session_id', session_id)
+                return response
             else:
                 return jsonify({"message": "Login failed. Please check your credentials."}), 401
         except psycopg2.Error as e:
@@ -85,10 +95,13 @@ def signup():
 # Logout route
 @app.route('/logout')
 def logout():
-    session.pop('user_id', None)
-    flash('You  have been logged out.', 'success')
-    return redirect(url_for('index'))  # Redirect to the /checkout page
+    session_id = request.cookies.get('session_id')
+    if session_id:
+        # Remove the session data from the active_sessions dictionary
+        active_sessions.pop(session_id, None)
 
+    flash('You have been logged out.', 'success')
+    return redirect(url_for('index'))
 
 @app.route('/')
 def index():
