@@ -43,7 +43,7 @@ def login():
             if user and check_password_hash(user[2], password):
                 session['user_id'] = user[0]
                 session['user_name'] = user[1]  # Store the user's name in the session
-                return redirect(url_for('index'))  # Redirect to the home page
+                return redirect(url_for('home'))  # Redirect to the home page
             else:
                 return jsonify({"message": "Login failed. Please check your credentials."}), 401
         except psycopg2.Error as e:
@@ -87,11 +87,13 @@ def signup():
 def logout():
     session.pop('user_id', None)
     flash('You  have been logged out.', 'success')
-    return redirect(url_for('index'))  # Redirect to the /checkout page
-
+    return redirect(url_for('home'))  # Redirect to the /checkout page
 
 @app.route('/')
-def index():
+def welcome():
+    return render_template('welcome.html')
+@app.route('home')
+def home():
     return render_template('home.html')
 
 @app.route('/about_us')
