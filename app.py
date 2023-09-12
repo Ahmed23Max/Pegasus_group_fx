@@ -1,4 +1,4 @@
-from flask import Flask, request, session, redirect, url_for, render_template, flash, jsonify,session
+from flask import Flask, request, session, redirect, url_for, render_template, flash, jsonify
 import psycopg2
 import psycopg2.extras
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -18,8 +18,8 @@ db_config = {
     'host': 'dpg-cjlngg8cfp5c739tetpg-a.oregon-postgres.render.com'
 }
 
-app.config['STRIPE_PUBLIC_KEY']= 'pk_test_51NfpBYL5fKqjqr4brHAttz9zTiXePX1pNh1nez4pbDTasqu8YrFy8otnJsfbyqqs5au4C5Nyq3EHVyGERFG7lUr300ZfXuqwzy'
-app.config['STRIPE_SECRET_KEY']= 'sk_test_51NfpBYL5fKqjqr4bdI5TLSqA4pQXSXqKIy7rHkzcEt689S2Lv6BPkUB7JLU3xHp4nVAiQvFrE0K8iwYGnXwtO7mm00ZvVxJV9c'
+app.config['STRIPE_PUBLIC_KEY'] = 'pk_test_51NfpBYL5fKqjqr4brHAttz9zTiXePX1pNh1nez4pbDTasqu8YrFy8otnJsfbyqqs5au4C5Nyq3EHVyGERFG7lUr300ZfXuqwzy'
+app.config['STRIPE_SECRET_KEY'] = 'sk_test_51NfpBYL5fKqjqr4bdI5TLSqA4pQXSXqKIy7rHkzcEt689S2Lv6BPkUB7JLU3xHp4nVAiQvFrE0K8iwYGnXwtO7mm00ZvVxJV9c'
 
 stripe.api_key = app.config['STRIPE_SECRET_KEY']
 
@@ -51,6 +51,10 @@ def login():
                     'user_name': user[1]
                 }
 
+                # Store the user's ID and name in the session
+                session['user_id'] = user[0]
+                session['user_name'] = user[1]
+
                 # Set the session ID as a cookie
                 response = jsonify({"message": "Login successful!"})
                 response.set_cookie('session_id', session_id)
@@ -61,7 +65,6 @@ def login():
             return jsonify({"message": "An error occurred. Please try again."}), 500
         finally:
             conn.close()
-
 
 
 # Signup route
@@ -82,7 +85,7 @@ def signup():
 
             cursor.execute("INSERT INTO users (username, email, password) VALUES (%s, %s, %s)",
                            (username, email, hashed_password))
-            
+
             conn.commit()
             return jsonify({"message": "Registration successful! You can now log in."}), 200
         except psycopg2.Error as e:
@@ -92,8 +95,6 @@ def signup():
             conn.close()
 
 
-
-# Logout route
 @app.route('/logout')
 def logout():
     session_id = request.cookies.get('session_id')
@@ -101,16 +102,83 @@ def logout():
         # Remove the session data from the active_sessions dictionary
         active_sessions.pop(session_id, None)
 
+        # Clear the session data
+        session.clear()
+
     flash('You have been logged out.', 'success')
     return redirect(url_for('index'))
+
+
+# Profile route
+@app.route('/profile')
+def profile():
+    # Check if the user is logged in and has a valid session
+    if 'user_id' in session and 'user_name' in session:
+        user_name = session['user_name']
+        user_date_of_birth = session.get('user_date_of_birth', 'Not provided')
+        user_location = session.get('user_location', 'Not provided')
+        user_phone_number = session.get('user_phone_number', 'Not provided')
+        return render_template('profile.html', user_name=user_name, user_date_of_birth=user_date_of_birth,
+                               user_location=user_location, user_phone_number=user_phone_number)
+    else:
+        # Redirect to the login page or display an error message
+        return redirect(url_for('login'))
+
+
+
+# Add another route to handle profile updates
+@app.route('/update_profile', methods=['POST'])
+def update_profile():
+    # Check if the user is logged in and has a valid session
+    if 'user_id' in session and 'user_name' in session:
+        # Get the user's ID from the session
+        user_id = session['user_id']
+
+        # Get the profile information from the submitted form data
+        date_of_birth = request.form.get('date_of_birth')
+        location = request.form.get('location')
+        phone_number = request.form.get('phone_number')
+
+        try:
+            conn = psycopg2.connect(**db_config)
+            cursor = conn.cursor()
+
+            # Update the user's profile in the database
+            cursor.execute("UPDATE users SET date_of_birth = %s, location = %s, phone_number = %s WHERE id = %s",
+                           (date_of_birth, location, phone_number, user_id))
+
+            conn.commit()
+
+            # Update session variables with the new profile information
+            session['user_date_of_birth'] = date_of_birth
+            session['user_location'] = location
+            session['user_phone_number'] = phone_number
+
+            # Redirect to the profile page with a success message
+            flash('Profile updated successfully!', 'success')
+            return redirect(url_for('profile'))
+        except psycopg2.Error as e:
+            conn.rollback()
+            flash('Profile update failed. Please try again.', 'danger')
+            return redirect(url_for('profile'))
+        finally:
+            conn.close()
+    else:
+        # Redirect to the login page or display an error message
+        return redirect(url_for('login'))
+
+
+
 
 @app.route('/')
 def index():
     return render_template('home.html')
 
+
 @app.route('/about_us')
 def about_us():
     return render_template('about_us.html')
+
 
 @app.route('/guaranteed-pass')
 def guaranteed_pass():
@@ -154,8 +222,8 @@ def guaranteed_pass():
         success_url='https://pegasus-group-fx.onrender.com/success',
         cancel_url='https://pegasus-group-fx.onrender.com/cancel'
     )
-    
-    return render_template('guaranteed_pass.html', 
+
+    return render_template('guaranteed_pass.html',
                            checkout_session_basic_id=session_basic['id'],
                            checkout_session_intermediate_id=session_intermediate['id'],
                            checkout_session_elite_id=session_elite['id'],
@@ -167,20 +235,24 @@ def guaranteed_pass():
 def FAQ():
     return render_template('FAQ.html')
 
+
 @app.route('/success')
 def success():
     # Render your success template or return a success message
     return render_template('success.html')
+
 
 @app.route('/cancel')
 def cancel():
     # Render your cancel template or return a cancel message
     return render_template('cancel.html')
 
+
 @app.route('/Account')
 def Account():
     # Render your cancel template or return a cancel message
     return render_template('account.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

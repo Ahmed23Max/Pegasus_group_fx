@@ -40,19 +40,23 @@
                     <li class="nav-item">
                         <a class="nav-link main" href="{{ url_for('FAQ') }}">FAQ</a>
                     </li>
-                    {% if session.user_id %}
+                    {% if session.get('user_id') %}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ session.get('user_name') }}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="userDropdown">
+        <a class="dropdown-item" href="{{ url_for('profile') }}">Profile</a>
+        <a class="dropdown-item" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+    </div>
+</li>
+{% else %}
+<li class="nav-item">
+    <a class="nav-link main" href="#" data-toggle="modal" data-target="#accountModal">Account</a>
+</li>
+{% endif %}
+
                     <li class="nav-item">
-                        <a class="nav-link main" href="#">{{ session.user_name }}</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link main" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
-                    </li>
-                 {% else %}
-                <li class="nav-item">
-                        <a class="nav-link main" href="#" data-toggle="modal" data-target="#accountModal">Account</a>
-                </li>
-                {% endif %}
-                <li class="nav-item">
                     <a class="nav-link social-icon instagram" href="https://www.instagram.com/pegasusfxgroup/" target="_blank">
                         <i class="bi bi-instagram"><strong>  Stay Updated</strong></i>
                     </a>
