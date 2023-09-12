@@ -92,7 +92,7 @@ def logout():
 @app.route('/')
 def welcome():
     return render_template('welcome.html')
-@app.route('home')
+@app.route('/home')
 def home():
     return render_template('home.html')
 
