@@ -44,3 +44,12 @@ function startLoading(buttonId) {
     window.location.href = `/checkout?amount=${amount}&description=${encodeURIComponent(description)}`;
 }
 
+// welcome.js
+
+// Wait for the welcoming animation to finish
+setTimeout(function () {
+    // Redirect to the homepage (replace 'home.html' with your homepage URL)
+    window.location.href = 'home.html';
+}, 5000); // 5000 milliseconds (5 seconds) delay before redirecting
+
+
