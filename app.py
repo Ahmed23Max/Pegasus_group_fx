@@ -145,7 +145,7 @@ def profile():
     # Check if the user is logged in and has a valid session
     if 'user_id' in session and 'user_name' in session:
         user_name = session['user_name']
-        user_email = session.get('user_email')  # Fetch the user's email address from the session
+        user_email = session.get('user_email', 'Not provided')  # Fetch the user's email address from the session
         user_date_of_birth = session.get('user_date_of_birth', 'Not provided')
         user_location = session.get('user_location', 'Not provided')
         user_phone_number = session.get('user_phone_number', 'Not provided')
@@ -157,6 +157,7 @@ def profile():
     else:
         # Redirect to the login page or display an error message
         return redirect(url_for('login'))
+
 
 
 
