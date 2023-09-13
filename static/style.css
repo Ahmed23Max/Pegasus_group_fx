@@ -130,6 +130,9 @@ body {
 
 .custom-dropdown-menu {
     background-color: #050203;
+}
+
+.custom-dropdown-menu a{
     color:white;
 }
 
