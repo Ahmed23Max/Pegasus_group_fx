@@ -23,6 +23,36 @@ app.config['STRIPE_SECRET_KEY'] = 'sk_test_51NfpBYL5fKqjqr4bdI5TLSqA4pQXSXqKIy7r
 
 stripe.api_key = app.config['STRIPE_SECRET_KEY']
 
+# Add 27 more countries with flags to the dictionary
+countries_with_flags = {
+    "USA": "🇺🇸",
+    "Canada": "🇨🇦",
+    "United Kingdom": "🇬🇧",
+    "Germany": "🇩🇪",
+    "France": "🇫🇷",
+    "Australia": "🇦🇺",
+    "Japan": "🇯🇵",
+    "India": "🇮🇳",
+    "Brazil": "🇧🇷",
+    "Mexico": "🇲🇽",
+    "China": "🇨🇳",
+    "Russia": "🇷🇺",
+    "South Korea": "🇰🇷",
+    "Italy": "🇮🇹",
+    "Spain": "🇪🇸",
+    "Netherlands": "🇳🇱",
+    "Sweden": "🇸🇪",
+    "Norway": "🇳🇴",
+    "Denmark": "🇩🇰",
+    "Finland": "🇫🇮",
+    "Switzerland": "🇨🇭",
+    "Austria": "🇦🇹",
+    "Belgium": "🇧🇪",
+    "Greece": "🇬🇷",
+    "Portugal": "🇵🇹",
+    "Ireland": "🇮🇪",
+    "New Zealand": "🇳🇿",
+}
 # Route to serve the checkout page
 
 
