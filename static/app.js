@@ -18,8 +18,13 @@ function toggleEditForm() {
     const editForm = document.getElementById("editForm");
     const editButtons = document.getElementById("editButtons");
 
-    // Display the profile card and hide the edit form and buttons
-    card.style.display = "block";
-    editForm.style.display = "none";
-    editButtons.style.display = "none";
+    if (card.style.display === "none") {
+        card.style.display = "block";
+        editForm.style.display = "none";
+        editButtons.style.display = "none";
+    } else {
+        card.style.display = "none";
+        editForm.style.display = "block";
+        editButtons.style.display = "block";
+    }
 }
