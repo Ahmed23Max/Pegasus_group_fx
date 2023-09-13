@@ -2,32 +2,35 @@
 {% block title %}Profile{% endblock %}
 {% block content %}
 <h1>Welcome, {{ user_name }}!</h1>
-<h2>Your Profile</h2>
 
-<!-- Display user's profile information -->
-<div class="user-profile">
-    <p><strong>Username:</strong> {{ user_name }}</p>
-    <p><strong>Email:</strong> {{ user_email or "Not provided" }}</p>
-    <p><strong>Date of Birth:</strong> {{ user_date_of_birth or "Not provided" }}</p>
-    <p><strong>Location:</strong> {{ user_location or "Not provided" }}</p>
-    <p><strong>Phone Number:</strong> {{ user_phone_number or "Not provided" }}</p>
+<div class="card">
+    <div class="card-body">
+        <h2>Your Profile</h2>
+        <!-- Display user's profile information -->
+        <p><strong>Username:</strong> {{ user_name }}</p>
+        <p><strong>Email:</strong> {{ user_email or "Not provided" }}</p>
+        <p><strong>Date of Birth:</strong> <span id="dateOfBirth">{{ user_date_of_birth or "Not provided" }}</span> <button id="editDateOfBirth">Edit</button></p>
+        <p><strong>Location:</strong> <span id="location">{{ user_location or "Not provided" }}</span> <button id="editLocation">Edit</button></p>
+        <p><strong>Phone Number:</strong> <span id="phoneNumber">{{ user_phone_number or "Not provided" }}</span> <button id="editPhoneNumber">Edit</button></p>
+    </div>
 </div>
 
-<h2>Update Your Profile</h2>
+<div id="editForm" style="display: none;">
+    <h2>Update Your Profile</h2>
+    <form id="profileForm">
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" value="{{ user_date_of_birth }}"><br>
 
-<!-- Add a form to collect or update user profile information -->
-<form method="POST" action="/update_profile">
-    <!-- Add input fields for profile information -->
-    <label for="date_of_birth">Date of Birth:</label>
-    <input type="date" id="date_of_birth" name="date_of_birth" value="{{ user_date_of_birth }}"><br>
+        <label for="location">Location (Country):</label>
+        <input type="text" id="location" name="location" value="{{ user_location }}"><br>
 
-    <label for="location">Location (Country):</label>
-    <input type="text" id="location" name="location" value="{{ user_location }}"><br>
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="phone_number" value="{{ user_phone_number }}"><br>
 
-    <label for="phone_number">Phone Number:</label>
-    <input type="text" id="phone_number" name="phone_number" value="{{ user_phone_number }}"><br>
+        <button type="submit" id="saveChanges">Save Changes</button>
+        <button type="button" id="cancelEdit">Cancel</button>
+    </form>
+</div>
 
-    <!-- Add a submit button to update the profile -->
-    <input type="submit" value="Update Profile">
-</form>
+<script src="static/app.js"></script>
 {% endblock %}
