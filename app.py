@@ -82,13 +82,14 @@ def login():
                     'user_email': user[3]  # Set the user's email in the session
                 }
 
+                # Store the user's ID, name, and email in the session
+                session['user_id'] = user[0]
+                session['user_name'] = user[1]
+                session['user_email'] = user[3]  # Set the user's email in the session
+
                 # Set the session ID as a cookie
                 response = jsonify({"message": "Login successful!"})
                 response.set_cookie('session_id', session_id)
-
-                # Set the session email
-                session['user_email'] = user[3]
-
                 return response
             else:
                 return jsonify({"message": "Login failed. Please check your credentials."}), 401
@@ -156,7 +157,6 @@ def profile():
     else:
         # Redirect to the login page or display an error message
         return redirect(url_for('login'))
-
 
 
 
