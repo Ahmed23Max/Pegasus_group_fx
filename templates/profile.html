@@ -15,7 +15,7 @@
                     <strong>Date of Birth:</strong> <span id="dateOfBirth">{{ user_date_of_birth or "Not provided" }}</span>
                 </li>
                 <li class="list-group-item">
-                    <strong>Country:</strong> <span id="country">{{ user_country or "Not provided" }}</span>
+                    <strong>Location:</strong> <span id="location">{{ user_location or "Not provided" }}</span>
                 </li>
                 <li class="list-group-item">
                     <strong>Phone Number:</strong> <span id="phoneNumber">{{ user_phone_number or "Not provided" }}</span>
@@ -27,7 +27,6 @@
     <!-- Edit button -->
     <button id="editProfile" class="btn btn-primary mt-3">Edit</button>
 
-
     <div id="editForm" style="display: none;">
         <h2 class="mt-4">Update Your Profile</h2>
         <form id="profileForm" action="/update_profile" method="POST">
@@ -36,11 +35,10 @@
                 <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" value="{{ user_date_of_birth }}">
             </div>
             <div class="form-group">
-                <label for="country">Country:</label>
-                <select id="country" name="country" class="form-control">
-                    <option value="">Select a Country</option>
+                <label for="location">Location (Country):</label>
+                <select id="location" name="location" class="form-control">
                     {% for country, flag in countries_with_flags.items() %}
-                    <option value="{{ country }}">{{ flag }} {{ country }}</option>
+                        <option value="{{ country }}" {% if user_location == country %}selected{% endif %}>{{ flag }} {{ country }}</option>
                     {% endfor %}
                 </select>
             </div>
