@@ -1,38 +1,49 @@
 {% extends 'layout.html' %}
 {% block title %}Profile{% endblock %}
 {% block content %}
-<h1>Welcome, {{ user_name }}!</h1>
+<div class="container mt-4">
+    <h1>Welcome, {{ user_name }}!</h1>
 
-<div class="card">
-    <div class="card-body">
-        <h2>Your Profile</h2>
-        <!-- Display user's profile information -->
-        <p><strong>Username:</strong> {{ user_name }}</p>
-        <p><strong>Email:</strong> {{ user_email or "Not provided" }}</p>
-        <p><strong>Date of Birth:</strong> <span id="dateOfBirth">{{ user_date_of_birth or "Not provided" }}</span> <button id="editDateOfBirth">Edit</button></p>
-        <p><strong>Location:</strong> <span id="location">{{ user_location or "Not provided" }}</span> <button id="editLocation">Edit</button></p>
-        <p><strong>Phone Number:</strong> <span id="phoneNumber">{{ user_phone_number or "Not provided" }}</span> <button id="editPhoneNumber">Edit</button></p>
-        
-        <!-- Edit and Save Changes buttons -->
-        <div id="editButtons" style="display: none;">
-            <button type="button" id="saveChanges" class="btn btn-primary">Save Changes</button>
-            <button type="button" id="cancelEdit" class="btn btn-secondary">Cancel</button>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Your Profile</h2>
+            <!-- Display user's profile information -->
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Username:</strong> {{ user_name }}</li>
+                <li class="list-group-item"><strong>Email:</strong> {{ user_email or "Not provided" }}</li>
+                <li class="list-group-item">
+                    <strong>Date of Birth:</strong> <span id="dateOfBirth">{{ user_date_of_birth or "Not provided" }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>Location:</strong> <span id="location">{{ user_location or "Not provided" }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>Phone Number:</strong> <span id="phoneNumber">{{ user_phone_number or "Not provided" }}</span>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
 
-<div id="editForm" style="display: none;">
-    <h2>Update Your Profile</h2>
-    <form id="profileForm">
-        <label for="date_of_birth">Date of Birth:</label>
-        <input type="date" id="date_of_birth" name="date_of_birth" value="{{ user_date_of_birth }}"><br>
+    <!-- Edit button -->
+    <button id="editProfile" class="btn btn-primary mt-3">Edit Profile</button>
 
-        <label for="location">Location (Country):</label>
-        <input type="text" id="location" name="location" value="{{ user_location }}"><br>
-
-        <label for="phone_number">Phone Number:</label>
-        <input type="text" id="phone_number" name="phone_number" value="{{ user_phone_number }}"><br>
-    </form>
+    <div id="editForm" style="display: none;">
+        <h2 class="mt-4">Update Your Profile</h2>
+        <form id="profileForm">
+            <div class="form-group">
+                <label for="date_of_birth">Date of Birth:</label>
+                <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" value="{{ user_date_of_birth }}">
+            </div>
+            <div class="form-group">
+                <label for="location">Location (Country):</label>
+                <input type="text" id="location" name="location" class="form-control" value="{{ user_location }}">
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" id="phone_number" name="phone_number" class="form-control" value="{{ user_phone_number }}">
+            </div>
+        </form>
+    </div>
 </div>
 
 <script src="static/app.js"></script>
