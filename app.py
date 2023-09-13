@@ -144,17 +144,19 @@ def profile():
     # Check if the user is logged in and has a valid session
     if 'user_id' in session and 'user_name' in session:
         user_name = session['user_name']
+        user_email = session.get('user_email', 'Not provided')  # Fetch the user's email address from the session
         user_date_of_birth = session.get('user_date_of_birth', 'Not provided')
         user_location = session.get('user_location', 'Not provided')
         user_phone_number = session.get('user_phone_number', 'Not provided')
-        
+
         # Pass countries_with_flags to the template
-        return render_template('profile.html', user_name=user_name, user_date_of_birth=user_date_of_birth,
-                               user_location=user_location, user_phone_number=user_phone_number,
-                               countries_with_flags=countries_with_flags)
+        return render_template('profile.html', user_name=user_name, user_email=user_email,
+                               user_date_of_birth=user_date_of_birth, user_location=user_location,
+                               user_phone_number=user_phone_number, countries_with_flags=countries_with_flags)
     else:
         # Redirect to the login page or display an error message
         return redirect(url_for('login'))
+
 
 
 
