@@ -12,6 +12,12 @@
         <p><strong>Date of Birth:</strong> <span id="dateOfBirth">{{ user_date_of_birth or "Not provided" }}</span> <button id="editDateOfBirth">Edit</button></p>
         <p><strong>Location:</strong> <span id="location">{{ user_location or "Not provided" }}</span> <button id="editLocation">Edit</button></p>
         <p><strong>Phone Number:</strong> <span id="phoneNumber">{{ user_phone_number or "Not provided" }}</span> <button id="editPhoneNumber">Edit</button></p>
+        
+        <!-- Edit and Save Changes buttons -->
+        <div id="editButtons" style="display: none;">
+            <button type="button" id="saveChanges" class="btn btn-primary">Save Changes</button>
+            <button type="button" id="cancelEdit" class="btn btn-secondary">Cancel</button>
+        </div>
     </div>
 </div>
 
@@ -26,9 +32,6 @@
 
         <label for="phone_number">Phone Number:</label>
         <input type="text" id="phone_number" name="phone_number" value="{{ user_phone_number }}"><br>
-
-        <button type="submit" id="saveChanges">Save Changes</button>
-        <button type="button" id="cancelEdit">Cancel</button>
     </form>
 </div>
 
