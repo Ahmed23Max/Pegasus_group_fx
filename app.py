@@ -139,7 +139,6 @@ def logout():
     return redirect(url_for('index'))
 
 
-# Profile route
 @app.route('/profile')
 def profile():
     # Check if the user is logged in and has a valid session
@@ -148,8 +147,11 @@ def profile():
         user_date_of_birth = session.get('user_date_of_birth', 'Not provided')
         user_location = session.get('user_location', 'Not provided')
         user_phone_number = session.get('user_phone_number', 'Not provided')
+        
+        # Pass countries_with_flags to the template
         return render_template('profile.html', user_name=user_name, user_date_of_birth=user_date_of_birth,
-                               user_location=user_location, user_phone_number=user_phone_number)
+                               user_location=user_location, user_phone_number=user_phone_number,
+                               countries_with_flags=countries_with_flags)
     else:
         # Redirect to the login page or display an error message
         return redirect(url_for('login'))
