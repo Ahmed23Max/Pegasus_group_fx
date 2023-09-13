@@ -1,30 +1,36 @@
 // JavaScript to toggle between displaying profile and edit form
-document.getElementById("editProfile").addEventListener("click", function () {
-    toggleEditForm();
-});
+document.addEventListener("DOMContentLoaded", function () {
+    const editProfileButton = document.getElementById("editProfile");
+    const cancelEditButton = document.getElementById("cancelEdit");
+    const saveChangesButton = document.getElementById("saveChanges");
 
-document.getElementById("cancelEdit").addEventListener("click", function () {
-    toggleEditForm();
-});
+    editProfileButton.addEventListener("click", function () {
+        toggleEditForm();
+    });
 
-document.getElementById("saveChanges").addEventListener("click", function () {
-    // Perform AJAX request to update profile data
-    // Update the displayed data
-    toggleEditForm();
-});
+    cancelEditButton.addEventListener("click", function () {
+        toggleEditForm();
+    });
 
-function toggleEditForm() {
-    const card = document.querySelector(".card");
-    const editForm = document.getElementById("editForm");
-    const editButtons = document.getElementById("editButtons");
+    saveChangesButton.addEventListener("click", function () {
+        // Perform AJAX request to update profile data
+        // Update the displayed data
+        toggleEditForm();
+    });
 
-    if (card.style.display === "none") {
-        card.style.display = "block";
-        editForm.style.display = "none";
-        editButtons.style.display = "none";
-    } else {
-        card.style.display = "none";
-        editForm.style.display = "block";
-        editButtons.style.display = "block";
+    function toggleEditForm() {
+        const card = document.querySelector(".card");
+        const editForm = document.getElementById("editForm");
+        const editButtons = document.getElementById("editButtons");
+
+        if (card.style.display === "none" || card.style.display === "") {
+            card.style.display = "block";
+            editForm.style.display = "none";
+            editButtons.style.display = "none";
+        } else {
+            card.style.display = "none";
+            editForm.style.display = "block";
+            editButtons.style.display = "block";
+        }
     }
-}
+});
