@@ -68,7 +68,7 @@ def login():
             conn = psycopg2.connect(**db_config)
             cursor = conn.cursor()
 
-            cursor.execute("SELECT id, username, password FROM users WHERE username = %s", (username,))
+            cursor.execute("SELECT id, username, password, email FROM users WHERE username = %s", (username,))
             user = cursor.fetchone()
 
             if user and check_password_hash(user[2], password):
@@ -78,12 +78,14 @@ def login():
                 # Store user data in the active_sessions dictionary
                 active_sessions[session_id] = {
                     'user_id': user[0],
-                    'user_name': user[1]
+                    'user_name': user[1],
+                    'user_email': user[3]  # Set the user's email in the session
                 }
 
-                # Store the user's ID and name in the session
+                # Store the user's ID, name, and email in the session
                 session['user_id'] = user[0]
                 session['user_name'] = user[1]
+                session['user_email'] = user[3]  # Set the user's email in the session
 
                 # Set the session ID as a cookie
                 response = jsonify({"message": "Login successful!"})
@@ -95,7 +97,6 @@ def login():
             return jsonify({"message": "An error occurred. Please try again."}), 500
         finally:
             conn.close()
-
 
 # Signup route
 @app.route('/signup', methods=['POST'])
