@@ -15,7 +15,7 @@
                     <strong>Date of Birth:</strong> <span id="dateOfBirth">{{ user_date_of_birth or "Not provided" }}</span>
                 </li>
                 <li class="list-group-item">
-                    <strong>Location:</strong> <span id="location">{{ user_location or "Not provided" }}</span>
+                    <strong>Country:</strong> <span id="country">{{ user_country or "Not provided" }}</span>
                 </li>
                 <li class="list-group-item">
                     <strong>Phone Number:</strong> <span id="phoneNumber">{{ user_phone_number or "Not provided" }}</span>
@@ -36,8 +36,13 @@
                 <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" value="{{ user_date_of_birth }}">
             </div>
             <div class="form-group">
-                <label for="location">Location (Country):</label>
-                <input type="text" id="location" name="location" class="form-control" value="{{ user_location }}">
+                <label for="country">Country:</label>
+                <select id="country" name="country" class="form-control">
+                    <option value="">Select a Country</option>
+                    {% for country, flag in countries_with_flags.items() %}
+                    <option value="{{ country }}">{{ flag }} {{ country }}</option>
+                    {% endfor %}
+                </select>
             </div>
             <div class="form-group">
                 <label for="phone_number">Phone Number:</label>
