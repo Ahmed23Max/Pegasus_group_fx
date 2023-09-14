@@ -41,20 +41,6 @@ togglePasswordButtons.forEach((button) => {
     });
 });
 
-// Function to toggle password visibility
-function togglePasswordVisibility(inputElement, eyeIcon) {
-    const passwordInput = inputElement;
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        eyeIcon.classList.remove('bi-eye-slash');
-        eyeIcon.classList.add('bi-eye');
-    } else {
-        passwordInput.type = 'password';
-        eyeIcon.classList.remove('bi-eye');
-        eyeIcon.classList.add('bi-eye-slash');
-    }
-}
-
 // Event listener for the signup form submission
 signupForm.addEventListener('submit', async (event) => {
     event.preventDefault();
