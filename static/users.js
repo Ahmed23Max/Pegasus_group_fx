@@ -5,14 +5,35 @@ const loginForm = document.getElementById('login-form');
 const signupForm = document.getElementById('signup-form');
 
 // Function to toggle password visibility
+// Function to toggle password visibility
 function togglePasswordVisibility(inputElement, eyeIcon) {
     const passwordInput = inputElement;
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
+    const currentType = passwordInput.getAttribute('type');
+    
+    if (currentType === 'password') {
+        const textInput = document.createElement('input');
+        textInput.setAttribute('type', 'text');
+        textInput.setAttribute('id', passwordInput.getAttribute('id'));
+        textInput.setAttribute('class', passwordInput.getAttribute('class'));
+        textInput.setAttribute('placeholder', passwordInput.getAttribute('placeholder'));
+        textInput.setAttribute('value', passwordInput.value);
+        
+        // Replace the password input with the text input
+        passwordInput.parentNode.replaceChild(textInput, passwordInput);
+        
         eyeIcon.classList.remove('bi-eye-slash');
         eyeIcon.classList.add('bi-eye');
     } else {
-        passwordInput.type = 'password';
+        const passwordInput = document.createElement('input');
+        passwordInput.setAttribute('type', 'password');
+        passwordInput.setAttribute('id', inputElement.getAttribute('id'));
+        passwordInput.setAttribute('class', inputElement.getAttribute('class'));
+        passwordInput.setAttribute('placeholder', inputElement.getAttribute('placeholder'));
+        passwordInput.setAttribute('value', inputElement.value);
+        
+        // Replace the text input with the password input
+        inputElement.parentNode.replaceChild(passwordInput, inputElement);
+        
         eyeIcon.classList.remove('bi-eye');
         eyeIcon.classList.add('bi-eye-slash');
     }
