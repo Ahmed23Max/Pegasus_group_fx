@@ -3,12 +3,10 @@ const loginButton = document.getElementById('login-button');
 const signupButton = document.getElementById('signup-button');
 const loginForm = document.getElementById('login-form');
 const signupForm = document.getElementById('signup-form');
-const togglePasswordButtons = document.querySelectorAll('.btn-toggle-password');
 
 // Function to toggle password visibility
-function togglePasswordVisibility(inputElement, toggleButton) {
+function togglePasswordVisibility(inputElement, eyeIcon) {
     const passwordInput = inputElement;
-    const eyeIcon = toggleButton.querySelector('i');
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         eyeIcon.classList.remove('bi-eye-slash');
@@ -33,10 +31,13 @@ signupButton.addEventListener('click', () => {
 });
 
 // Event listener for the "Show Password" buttons
+const togglePasswordButtons = document.querySelectorAll('.btn-toggle-password');
 togglePasswordButtons.forEach((button) => {
+    const passwordInput = button.parentElement.querySelector('input[type="password"]');
+    const eyeIcon = button.querySelector('i');
+
     button.addEventListener('click', () => {
-        const passwordInput = button.parentElement.parentElement.querySelector('input[type="password"]');
-        togglePasswordVisibility(passwordInput, button);
+        togglePasswordVisibility(passwordInput, eyeIcon);
     });
 });
 
