@@ -761,3 +761,9 @@ footer {
     background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
     color: white; 
 }
+
+.btn-toggle-password {
+            background-color: black; /* Change this to your desired background color */
+            color: white; /* Change the text color if needed */
+            border: none; /* Remove border if needed */
+        }
