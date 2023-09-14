@@ -142,33 +142,51 @@ def logout():
 
 @app.route('/profile')
 def profile():
-    # Check if the user is logged in and has a valid session
     if 'user_id' in session and 'user_name' in session:
-        user_name = session['user_name']
-        user_email = session.get('user_email', 'Not provided')  # Fetch the user's email address from the session
-        user_date_of_birth = session.get('user_date_of_birth', 'Not provided')
-        user_location = session.get('user_location', 'Not provided')
-        user_phone_number = session.get('user_phone_number', 'Not provided')
+        user_id = session['user_id']
 
-        # Pass countries_with_flags to the template
-        return render_template('profile.html', user_name=user_name, user_email=user_email,
-                               user_date_of_birth=user_date_of_birth, user_location=user_location,
-                               user_phone_number=user_phone_number, countries_with_flags=countries_with_flags)
+        try:
+            conn = psycopg2.connect(**db_config)
+            cursor = conn.cursor()
+
+            # Retrieve the user's profile data from the database
+            cursor.execute("SELECT username, email, date_of_birth, location, phone_number FROM users WHERE id = %s", (user_id,))
+            user_data = cursor.fetchone()
+            
+            if user_data:
+                user_name = user_data[0]
+                user_email = user_data[1]
+                user_date_of_birth = user_data[2] or 'Not provided'
+                user_location = user_data[3] or 'Not provided'
+                user_phone_number = user_data[4] or 'Not provided'
+            else:
+                # Handle the case where user_data is None
+                user_name = session['user_name']
+                user_email = session.get('user_email', 'Not provided')
+                user_date_of_birth = session.get('user_date_of_birth', 'Not provided')
+                user_location = session.get('user_location', 'Not provided')
+                user_phone_number = session.get('user_phone_number', 'Not provided')
+
+            return render_template('profile.html', user_name=user_name, user_email=user_email,
+                                   user_date_of_birth=user_date_of_birth, user_location=user_location,
+                                   user_phone_number=user_phone_number, countries_with_flags=countries_with_flags)
+        except psycopg2.Error as e:
+            flash('An error occurred while retrieving your profile. Please try again.', 'danger')
+            return redirect(url_for('login'))
+        finally:
+            conn.close()
     else:
-        # Redirect to the login page or display an error message
         return redirect(url_for('login'))
 
 
 
 
-# Add another route to handle profile updates
+
 @app.route('/update_profile', methods=['POST'])
 def update_profile():
-    # Check if the user is logged in and has a valid session
     if 'user_id' in session and 'user_name' in session:
-        # Get the user's ID from the session
         user_id = session['user_id']
-
+        
         # Get the profile information from the submitted form data
         date_of_birth = request.form.get('date_of_birth')
         location = request.form.get('location')
@@ -189,7 +207,6 @@ def update_profile():
             session['user_location'] = location
             session['user_phone_number'] = phone_number
 
-            # Redirect to the profile page with a success message
             flash('Profile updated successfully!', 'success')
             return redirect(url_for('profile'))
         except psycopg2.Error as e:
@@ -199,7 +216,6 @@ def update_profile():
         finally:
             conn.close()
     else:
-        # Redirect to the login page or display an error message
         return redirect(url_for('login'))
 
 
