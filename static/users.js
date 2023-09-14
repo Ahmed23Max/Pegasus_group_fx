@@ -5,18 +5,6 @@ const loginForm = document.getElementById('login-form');
 const signupForm = document.getElementById('signup-form');
 const togglePasswordButtons = document.querySelectorAll('.btn-toggle-password');
 
-// Event listener for the login button
-loginButton.addEventListener('click', () => {
-    loginForm.style.display = 'block';
-    signupForm.style.display = 'none';
-});
-
-// Event listener for the signup button
-signupButton.addEventListener('click', () => {
-    signupForm.style.display = 'block';
-    loginForm.style.display = 'none';
-});
-
 // Function to toggle password visibility
 function togglePasswordVisibility(inputElement, toggleButton) {
     const passwordInput = inputElement;
@@ -31,6 +19,18 @@ function togglePasswordVisibility(inputElement, toggleButton) {
         eyeIcon.classList.add('bi-eye-slash');
     }
 }
+
+// Event listener for the login button
+loginButton.addEventListener('click', () => {
+    loginForm.style.display = 'block';
+    signupForm.style.display = 'none';
+});
+
+// Event listener for the signup button
+signupButton.addEventListener('click', () => {
+    signupForm.style.display = 'block';
+    loginForm.style.display = 'none';
+});
 
 // Event listener for the "Show Password" buttons
 togglePasswordButtons.forEach((button) => {
