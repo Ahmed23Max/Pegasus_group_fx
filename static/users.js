@@ -3,41 +3,7 @@ const loginButton = document.getElementById('login-button');
 const signupButton = document.getElementById('signup-button');
 const loginForm = document.getElementById('login-form');
 const signupForm = document.getElementById('signup-form');
-
-// Function to toggle password visibility
-// Function to toggle password visibility
-function togglePasswordVisibility(inputElement, eyeIcon) {
-    const passwordInput = inputElement;
-    const currentType = passwordInput.getAttribute('type');
-    
-    if (currentType === 'password') {
-        const textInput = document.createElement('input');
-        textInput.setAttribute('type', 'text');
-        textInput.setAttribute('id', passwordInput.getAttribute('id'));
-        textInput.setAttribute('class', passwordInput.getAttribute('class'));
-        textInput.setAttribute('placeholder', passwordInput.getAttribute('placeholder'));
-        textInput.setAttribute('value', passwordInput.value);
-        
-        // Replace the password input with the text input
-        passwordInput.parentNode.replaceChild(textInput, passwordInput);
-        
-        eyeIcon.classList.remove('bi-eye-slash');
-        eyeIcon.classList.add('bi-eye');
-    } else {
-        const passwordInput = document.createElement('input');
-        passwordInput.setAttribute('type', 'password');
-        passwordInput.setAttribute('id', inputElement.getAttribute('id'));
-        passwordInput.setAttribute('class', inputElement.getAttribute('class'));
-        passwordInput.setAttribute('placeholder', inputElement.getAttribute('placeholder'));
-        passwordInput.setAttribute('value', inputElement.value);
-        
-        // Replace the text input with the password input
-        inputElement.parentNode.replaceChild(passwordInput, inputElement);
-        
-        eyeIcon.classList.remove('bi-eye');
-        eyeIcon.classList.add('bi-eye-slash');
-    }
-}
+const togglePasswordButtons = document.querySelectorAll('.btn-toggle-password');
 
 // Event listener for the login button
 loginButton.addEventListener('click', () => {
@@ -51,14 +17,26 @@ signupButton.addEventListener('click', () => {
     loginForm.style.display = 'none';
 });
 
-// Event listener for the "Show Password" buttons
-const togglePasswordButtons = document.querySelectorAll('.btn-toggle-password');
-togglePasswordButtons.forEach((button) => {
-    const passwordInput = button.parentElement.querySelector('input[type="password"]');
-    const eyeIcon = button.querySelector('i'); // Target the i element inside the button
+// Function to toggle password visibility
+function togglePasswordVisibility(inputElement, toggleButton) {
+    const passwordInput = inputElement;
+    const eyeIcon = toggleButton.querySelector('i');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.classList.remove('bi-eye-slash');
+        eyeIcon.classList.add('bi-eye');
+    } else {
+        passwordInput.type = 'password';
+        eyeIcon.classList.remove('bi-eye');
+        eyeIcon.classList.add('bi-eye-slash');
+    }
+}
 
+// Event listener for the "Show Password" buttons
+togglePasswordButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        togglePasswordVisibility(passwordInput, eyeIcon);
+        const passwordInput = button.parentElement.parentElement.querySelector('input[type="password"]');
+        togglePasswordVisibility(passwordInput, button);
     });
 });
 
