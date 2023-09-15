@@ -4,3 +4,4 @@ psycopg2
 stripe
 reportlab
 uuid 
+secure-smtplib
