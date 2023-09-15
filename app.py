@@ -4,6 +4,9 @@ import psycopg2.extras
 from werkzeug.security import generate_password_hash, check_password_hash
 import stripe
 import uuid
+import smtplib
+from email.mime.text import MIMEText
+
 
 app = Flask(__name__)
 app.secret_key = 'In9$]~3raxeG%L"7toNZwnuS:0D$?aq%{8+^R}(~<Xh3*P}.nmB4|fixQVwQ]:B'  # Replace with a strong secret key
@@ -118,12 +121,17 @@ def signup():
                            (username, email, hashed_password))
 
             conn.commit()
+
+            # Send the welcome email to the user
+            send_welcome_email(email)
+
             return jsonify({"message": "Registration successful! You can now log in."}), 200
         except psycopg2.Error as e:
             conn.rollback()
             return jsonify({"message": "Registration failed. Please try again."}), 400
         finally:
             conn.close()
+
 
 
 @app.route('/logout')
@@ -303,6 +311,38 @@ def cancel():
 def Account():
     # Render your cancel template or return a cancel message
     return render_template('account.html')
+
+def send_welcome_email(email):
+    try:
+        smtp_server = 'smtp.gmail.com'
+        smtp_port = 587
+        smtp_username = 'memedmax@gmail.com'  # Replace with your Gmail email address
+        smtp_password = '24qU86MDsCwu'  # Replace with the generated App Password
+
+
+        # Create a connection to the SMTP server
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(smtp_username, smtp_password)
+
+        # Create the email content
+        subject = 'Welcome to Our Website'
+        message = 'Thank you for signing up! We are excited to have you as a member of our website.'
+
+        msg = MIMEText(message)
+        msg['Subject'] = subject
+        msg['From'] = 'your_email@example.com'  # Replace with your email address
+        msg['To'] = email
+
+        # Send the email
+        server.sendmail('your_email@example.com', [email], msg.as_string())
+
+        # Close the SMTP server connection
+        server.quit()
+    except Exception as e:
+        print(f"Error sending welcome email: {str(e)}")
+
+
 
 
 if __name__ == '__main__':
