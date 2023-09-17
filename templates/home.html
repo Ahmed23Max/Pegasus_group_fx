@@ -26,26 +26,38 @@
             </a>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="static/1.jpg" alt="Logo" style="max-height: 160px;">
-                    <p class="h5">Elevate Your Trading Journey with Pegasus Forex Group</p>
-                    <p class="h5">Step into a world of trading excellence with Pegasus Forex Group, where expertise meets mentorship. Our name embodies more than just trading; it signifies empowerment, growth, and the realization of your financial aspirations.</p>
+                    <div class="d-flex align-items-center">
+                        <img src="static/1.jpg" alt="Logo" style="max-width: 30%; height: auto;">
+                        <div class="carousel-text ml-3">
+                            <p class="h5">Elevate Your Trading Journey with Pegasus Forex Group</p>
+                            <p class="h5">Step into a world of trading excellence with Pegasus Forex Group, where expertise meets mentorship. Our name embodies more than just trading; it signifies empowerment, growth, and the realization of your financial aspirations.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <h2 class="text-center">Why Choose Pegasus Forex Group?</h2>
                 </div>
                 <div class="carousel-item">
-                    <img src="static/2.jpeg" alt="Logo" style="max-height: 160px;">
-                    <h3 class="text-center">🚀 Pegasus Forex Group's Insight</h3>
-                    <p class="text-center h5">Align yourself with Pegasus Forex Group, a collective of seasoned traders who are more than mentors – they're your partners in your pursuit of financial freedom.</p>
+                    <div class="d-flex align-items-center">
+                        <img src="static/2.jpeg" alt="Logo" style="max-width: 30%; height: auto;">
+                        <div class="carousel-text ml-3 text-center">
+                            <h3 class="text-center">🚀 Pegasus Forex Group's Insight</h3>
+                            <p class="text-center h5">Align yourself with Pegasus Forex Group, a collective of seasoned traders who are more than mentors – they're your partners in your pursuit of financial freedom.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <h3 class="text-center">📚 Experience the Ultimate Learning Curve</h3>
                     <p class="text-center h5">Benefit from the insights of industry-leading traders, boasting over 10 years of combined experience in the markets. Learn from those who have tread the path to trading mastery.</p>
                 </div>
                 <div class="carousel-item">
-                    <img src="static/3.jpeg" alt="Logo" style="max-height: 160px;">
-                    <h3 class="text-center">📈 Master Proven Strategies</h3>
-                    <p class="text-center h5">At Pegasus Forex Group, we're not just mentors; we're architects of unique trading strategies that instill confidence and foster a high-risk-to-reward approach. Trade smarter, not harder.</p>
+                    <div class="d-flex align-items-center">
+                        <img src="static/3.jpeg" alt="Logo" style="max-width: 30%; height: auto;">
+                        <div class="carousel-text ml-3 text-center">
+                            <h3 class="text-center">📈 Master Proven Strategies</h3>
+                            <p class="text-center h5">At Pegasus Forex Group, we're not just mentors; we're architects of unique trading strategies that instill confidence and foster a high-risk-to-reward approach. Trade smarter, not harder.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <h3 class="text-center">🌍 Join a Global Trading Community</h3>
@@ -181,28 +193,6 @@
     </div>
 </section>
 
-<script> 
-    
-    const scrollingTestimonials = document.querySelector('.scrolling-testimonials');
-
-    // Duplicate testimonials for scrolling effect
-    scrollingTestimonials.innerHTML += scrollingTestimonials.innerHTML;
-    
-    // Scroll the testimonials
-    let scrollAmount = 0;
-    const scrollSpeed = 2;
-    
-    function scrollTestimonials() {
-        if (scrollAmount >= scrollingTestimonials.scrollWidth / 2) {
-            scrollAmount = 0;
-        } else {
-            scrollAmount += scrollSpeed;
-        }
-        scrollingTestimonials.style.transform = `translateX(-${scrollAmount}px)`;
-    }
-    
-    setInterval(scrollTestimonials, 30);
-</script>
 <script src="static/app.js"></script>
 {% endblock %}
 

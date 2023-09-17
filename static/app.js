@@ -110,3 +110,22 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+const scrollingTestimonials = document.querySelector('.scrolling-testimonials');
+
+// Duplicate testimonials for scrolling effect
+scrollingTestimonials.innerHTML += scrollingTestimonials.innerHTML;
+
+// Scroll the testimonials
+let scrollAmount = 0;
+const scrollSpeed = 2;
+
+function scrollTestimonials() {
+    if (scrollAmount >= scrollingTestimonials.scrollWidth / 2) {
+        scrollAmount = 0;
+    } else {
+        scrollAmount += scrollSpeed;
+    }
+    scrollingTestimonials.style.transform = `translateX(-${scrollAmount}px)`;
+}
+
+setInterval(scrollTestimonials, 30);

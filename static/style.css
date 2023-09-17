@@ -380,7 +380,7 @@ footer {
 
 
 /* Style for the cards */
-.card {
+.card-funding {
     width: 100%;
     max-width: 350px; /* Adjust as needed */
     margin: 10px;
@@ -757,13 +757,109 @@ footer {
     }
 }
 
-.list-group-flush {
-    background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
-    color: white; 
-}
+
 
 .btn-toggle-password {
             background-color: black; /* Change this to your desired background color */
             color: white; /* Change the text color if needed */
             border: none; /* Remove border if needed */
-        }
+}
+
+.profile-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: linear-gradient(to right top, #4d4dff, #742bba, #70127d, #59094c, #390c27, #2c0d20, #200b18, #14060f, #1a0c1a, #1b1225, #161832, #001f3f);
+}
+
+/* Style the container */
+.profile-page {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Style the welcome message */
+.welcome {
+    font-size: 24px;
+    color: white;
+}
+
+/* Style the profile information list */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+li strong {
+    font-weight: bold;
+}
+
+/* Style the edit button */
+#editProfile {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Style the edit form */
+#editForm {
+    display: none;
+}
+
+/* Style the form labels */
+label {
+    font-weight: bold;
+}
+
+/* Style the form inputs */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the submit button */
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.carousel-item-with-image {
+    display: flex;
+    align-items: center;
+    min-height: 300px; /* Set a fixed height for carousel items */
+    justify-content: space-between;
+}
+
+/* Style for carousel images */
+.carousel-image {
+    flex: 1; /* Occupy 50% of the carousel item width */
+    padding: 0 20px; /* Add padding as needed */
+}
+
+/* Style for carousel text */
+.carousel-text {
+    flex: 1; /* Occupy 50% of the carousel item width */
+    padding: 0 20px; /* Add padding as needed */
+}
+
+/* Center text content vertically */
+.carousel-text h2,
+.carousel-text p {
+    text-align: center;
+}
+
