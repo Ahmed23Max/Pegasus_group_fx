@@ -10,7 +10,7 @@
             <!-- Display user's profile information -->
             <ul>
                 <li><strong>Username:</strong> {{ user_name }}</li>
-                <li><strong>Email:</strong> {{ user_email}}</li>
+                <li><strong>Email:</strong> {{ user_email }}</li>
                 <li>
                     <strong>Date of Birth:</strong> <span id="dateOfBirth">{{ user_date_of_birth or "Not provided" }}</span>
                 </li>
@@ -25,7 +25,7 @@
     </div>
 
     <!-- Edit button -->
-    <button id="editProfile" class="btn btn-primary mt-3">Edit</button>
+    <button id="editProfileButton" class="btn btn-primary mt-3">Edit</button>
 
     <div id="editForm" style="display: none;">
         <h2 class="mt-4">Update Your Profile</h2>
@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
                 <label for="location">Location (Country):</label>
-                <select id="location" name="location" class="form-control">
+                <select id="country" name="location" class="form-control">
                     {% for country, flag in countries_with_flags.items() %}
                         <option value="{{ country }}" {% if user_location == country %}selected{% endif %}>{{ flag }} {{ country }}</option>
                     {% endfor %}
@@ -47,7 +47,8 @@
                 <input type="text" id="phone_number" name="phone_number" class="form-control" value="{{ user_phone_number }}">
             </div>
             <!-- Add a submit button to submit the form -->
-            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <button type="submit" id="saveChangesButton" class="btn btn-primary">Save Changes</button>
+            <button type="button" id="cancelEditButton" class="btn btn-secondary">Cancel</button>
         </form>
     </div>
 </div>
