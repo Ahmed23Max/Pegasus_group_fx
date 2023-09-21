@@ -110,3 +110,17 @@ loginForm.addEventListener('submit', async (event) => {
         alert('An error occurred. Please try again.');
     }
 });
+
+// Select the edit button
+const editProfileButton = document.getElementById('editProfileButton');
+const editForm = document.getElementById('editForm');
+
+// Event listener for the edit button
+editProfileButton.addEventListener('click', () => {
+    // Toggle the display style of the editForm element
+    if (editForm.style.display === 'none' || editForm.style.display === '') {
+        editForm.style.display = 'block';
+    } else {
+        editForm.style.display = 'none';
+    }
+});
