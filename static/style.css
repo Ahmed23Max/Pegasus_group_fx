@@ -170,41 +170,27 @@ footer {
 
 /* Intro Section */
 .intro-section {
-    position: relative;
     padding: 5rem 0; /* Adjust padding as needed */
-    color: #ffffff; /* Text color */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    color: #ffffff;
+    text-align: center; /* Center the text on mobile devices */
 }
 
 .intro-content {
-    width: 100%; /* Full width */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-}
-
-.intro-text {
-    flex: 1;
-    padding: 2rem;
+    padding: 2rem; /* Add padding to the content */
     box-sizing: border-box;
 }
 
+.intro-text {
+    padding: 1rem;
+}
+
 .intro-text h3 {
-    font-size: 8rem; /* 3 times bigger font-size */
-    margin-bottom: 1rem;
+    font-size: 3rem; /* Adjust the font size for mobile devices */
 }
 
-
-/* Increase the font size three times */
 .intro-text p {
-    font-size: 4.5rem; /* 3 times bigger font-size */
-    margin: 0;
+    font-size: 1.5rem; /* Adjust the font size for mobile devices */
 }
-
 
 
 
